@@ -5,14 +5,14 @@
 
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/harrison-cutfield-site   # <-- change this
+  repo: harrycutfield-dev/harrison-cutfield-site
   branch: main
 
 # Lets you test the editor locally with the proxy server (ignored in production)
 local_backend: true
 
 # Where uploaded photos are stored / referenced from
-media_folder: "images/uploads"
+media_folder: "Cutfield & Co Website/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
@@ -22,7 +22,7 @@ collections:
     files:
       - name: listings
         label: "Featured Listings"
-        file: "data/listings.json"
+        file: "Cutfield & Co Website/data/listings.json"
         description: "The properties shown in the Featured Listings section."
         fields:
           - label: "Listings"
@@ -50,7 +50,7 @@ collections:
     files:
       - name: sales
         label: "Sold Properties"
-        file: "data/sales.json"
+        file: "Cutfield & Co Website/data/sales.json"
         description: "Sold properties shown in the Recent Sales section."
         fields:
           - label: "Sold properties"
@@ -70,7 +70,7 @@ collections:
     files:
       - name: reviews
         label: "Client Testimonials"
-        file: "data/reviews.json"
+        file: "Cutfield & Co Website/data/reviews.json"
         description: "Quotes shown in the Reviews section."
         fields:
           - label: "Testimonials"
@@ -88,7 +88,7 @@ collections:
     files:
       - name: team
         label: "Team Members"
-        file: "data/team.json"
+        file: "Cutfield & Co Website/data/team.json"
         description: "People shown in The Team section."
         fields:
           - label: "Team members"
@@ -107,7 +107,7 @@ collections:
     files:
       - name: offmarket
         label: "Off-Market Listings"
-        file: "data/offmarket.json"
+        file: "Cutfield & Co Website/data/offmarket.json"
         description: "Private listings shown behind the unlock gate. Keep these as teasers — do NOT include the exact street address (this data is technically public). Share the precise address privately when you reply to a viewing request."
         fields:
           - label: "Off-market properties"
@@ -132,7 +132,7 @@ collections:
     files:
       - name: reels
         label: "Property Reels"
-        file: "data/reels.json"
+        file: "Cutfield & Co Website/data/reels.json"
         description: "Vertical (9:16) sold-home videos. Per reel, EITHER upload an MP4 OR paste a YouTube/Vimeo link."
         fields:
           - label: "Reels"
@@ -153,7 +153,7 @@ collections:
     files:
       - name: areas
         label: "Suburbs"
-        file: "data/areas.json"
+        file: "Cutfield & Co Website/data/areas.json"
         description: "The North Shore suburb tiles. Upload a photo of one of your best/luxury homes in each suburb."
         fields:
           - label: "Suburbs"
@@ -171,7 +171,7 @@ collections:
     files:
       - name: site
         label: "Site & Contact Details"
-        file: "data/site.json"
+        file: "Cutfield & Co Website/data/site.json"
         description: "About text, headline stats, contact details and social links."
         fields:
           - { label: "Your portrait photo", name: "portrait", widget: "image", required: false, hint: "Shown in the About section. Portrait ~1000x1250." }
