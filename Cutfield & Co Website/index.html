@@ -237,6 +237,11 @@ header.nav.scrolled .menu-toggle span{background:var(--ink)}
 .modal-card .sub{font-size:13px;color:var(--muted);margin-bottom:22px}
 .modal-card .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
+/* ---------- SOLD COVER (no-photo / off-market) ---------- */
+.sold-cover{background:linear-gradient(150deg,#1b1b18,#3a3a32);display:grid;place-items:center;position:relative}
+.sold-cover .cov-suburb{font-family:var(--serif);color:#fff;font-size:27px;font-weight:600;letter-spacing:1px;opacity:.95;text-align:center;padding:0 18px}
+.sold-cover::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--rw-yellow)}
+
 /* ---------- REELS (IG 9:16) ---------- */
 .reels{padding:120px 0;background:var(--ink);color:#fff}
 .reels .sec-head h2,.reels .sec-head .eyebrow{color:#fff}
@@ -722,11 +727,16 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
     </article>`).join('');
 
   const sgr=document.getElementById('salesGrid');
-  if(sgr)sgr.innerHTML=sales.map((s,i)=>`
-    <article class="card reveal d${(i%3)+1}">
-      ${imgCell(s.image,'Sold Image (3:2)',`<span class="price">SOLD</span>`)}
-      <div class="body"><h3>${esc(s.address)}</h3><div class="meta">${esc(s.suburb)} · Sold ${esc(s.soldDate)}</div></div>
-    </article>`).join('');
+  if(sgr)sgr.innerHTML=sales.map((s,i)=>{
+    const badges=`<span class="price">SOLD</span>${s.tag?`<span class="status">${esc(s.tag)}</span>`:''}`;
+    const cell=s.image
+      ? `<div class="img">${badges}<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`
+      : `<div class="img sold-cover">${badges}<span class="cov-suburb">${esc(s.suburb)}</span></div>`;
+    const meta=esc(s.suburb)+(s.soldDate?` · Sold ${esc(s.soldDate)}`:'');
+    return `<article class="card reveal d${(i%3)+1}">${cell}
+      <div class="body"><h3>${esc(s.address)}</h3><div class="meta">${meta}</div></div>
+    </article>`;
+  }).join('');
 
   const rg=document.getElementById('reviewsGrid');
   if(rg)rg.innerHTML=reviews.map((r,i)=>`
