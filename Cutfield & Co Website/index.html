@@ -784,17 +784,24 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
   const offSec=document.getElementById('offmarket');
   const offGrid=document.getElementById('offGrid');
   if(offGrid){
-    offGrid.innerHTML=offmkt.map((o,i)=>`
-      <article class="card off-card reveal d${(i%3)+1}" data-i="${i}" data-price="${Number(o.priceValue)||0}" data-suburb="${esc(o.suburb||'')}" data-beds="${Number(o.beds)||0}" data-baths="${Number(o.baths)||0}">
-        ${imgCell(o.image,'Off-Market (3:2)',`<span class="badge">Off-Market</span><span class="price">${esc(o.priceDisplay||'POA')}</span>`)}
+    offGrid.innerHTML=offmkt.map((o,i)=>{
+      const ovl=`<span class="badge">Off-Market</span><span class="price">${esc(o.priceDisplay||'POA')}</span>`;
+      const cell=o.image
+        ? `<div class="img">${ovl}<img src="${esc(o.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`
+        : `<div class="img sold-cover">${ovl}<span class="cov-suburb">${esc((o.suburb||'').split(',')[0])}</span></div>`;
+      const feats=(Number(o.beds)>0||Number(o.baths)>0)
+        ? `<div class="feats"><span>${esc(o.beds)} Bed</span><span>${esc(o.baths)} Bath</span><span>${esc(o.cars)} Car</span></div>` : '';
+      return `<article class="card off-card reveal d${(i%3)+1}" data-i="${i}" data-price="${Number(o.priceValue)||0}" data-suburb="${esc(o.suburb||'')}" data-beds="${Number(o.beds)||0}" data-baths="${Number(o.baths)||0}">
+        ${cell}
         <div class="body">
           <h3>${esc(o.title||'Private Listing')}</h3>
           <div class="meta">${esc(o.suburb||'')}</div>
-          <div class="feats"><span>${esc(o.beds)} Bed</span><span>${esc(o.baths)} Bath</span><span>${esc(o.cars)} Car</span></div>
+          ${feats}
           ${o.blurb?`<div class="blurb">${esc(o.blurb)}</div>`:''}
           <div class="req">Request a Private Viewing &rarr;</div>
         </div>
-      </article>`).join('') || '<div class="empty">No off-market listings right now — check back soon.</div>';
+      </article>`;
+    }).join('') || '<div class="empty">No off-market listings right now — check back soon.</div>';
 
     // filter options
     const fLoc=document.getElementById('fLoc'),fMin=document.getElementById('fMin'),fMax=document.getElementById('fMax');
