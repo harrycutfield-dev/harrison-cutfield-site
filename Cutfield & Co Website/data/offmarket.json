@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "title": "Architectural Sanctuary",
+      "suburb": "Milford",
+      "priceValue": 3250000,
+      "priceDisplay": "$3,250,000",
+      "beds": 5,
+      "baths": 4,
+      "cars": 3,
+      "image": "",
+      "blurb": "A private architectural home moments from the beach, offered quietly to qualified buyers."
+    },
+    {
+      "title": "Clifftop Modern",
+      "suburb": "Castor Bay",
+      "priceValue": 2750000,
+      "priceDisplay": "$2,750,000",
+      "beds": 4,
+      "baths": 3,
+      "cars": 2,
+      "image": "",
+      "blurb": "Sweeping gulf views, seamless indoor-outdoor living. Available off-market for a limited window."
+    },
+    {
+      "title": "Coastal Family Estate",
+      "suburb": "Takapuna",
+      "priceValue": 4500000,
+      "priceDisplay": "$4,500,000",
+      "beds": 6,
+      "baths": 5,
+      "cars": 4,
+      "image": "",
+      "blurb": "A landmark family residence in a tightly held street, presented privately."
+    }
+  ]
+}

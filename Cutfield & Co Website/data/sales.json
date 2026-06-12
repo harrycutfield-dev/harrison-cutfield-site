@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "address": "45 Beach Road", "suburb": "Mairangi Bay", "soldDate": "May 2026", "image": "" },
+    { "address": "3 Kowhai Street", "suburb": "Forrest Hill", "soldDate": "April 2026", "image": "" },
+    { "address": "19 Sunnynook Road", "suburb": "Sunnynook", "soldDate": "March 2026", "image": "" }
+  ]
+}

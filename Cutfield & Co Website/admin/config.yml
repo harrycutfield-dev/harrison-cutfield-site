@@ -1,0 +1,202 @@
+# ===========================================================
+#  Harrison Cutfield & Co — CMS configuration (Sveltia / Decap compatible)
+#  EDIT the "repo" line below to your GitHub username/repo after you create it.
+# ===========================================================
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/harrison-cutfield-site   # <-- change this
+  branch: main
+
+# Lets you test the editor locally with the proxy server (ignored in production)
+local_backend: true
+
+# Where uploaded photos are stored / referenced from
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # ---------------- LISTINGS (FOR SALE) ----------------
+  - name: listings
+    label: "Listings (For Sale)"
+    files:
+      - name: listings
+        label: "Featured Listings"
+        file: "data/listings.json"
+        description: "The properties shown in the Featured Listings section."
+        fields:
+          - label: "Listings"
+            name: "items"
+            label_singular: "Listing"
+            widget: "list"
+            summary: "{{fields.address}} — {{fields.suburb}}"
+            fields:
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Suburb", name: "suburb", widget: "string", hint: "e.g. Milford, North Shore" }
+              - { label: "Price / display text", name: "price", widget: "string", hint: "e.g. $2,450,000, Auction, By Negotiation" }
+              - label: "Method"
+                name: "method"
+                widget: "select"
+                options: ["For Sale", "Auction", "Tender", "By Negotiation", "Deadline Sale"]
+                default: "For Sale"
+              - { label: "Bedrooms", name: "beds", widget: "number", value_type: "int", default: 0 }
+              - { label: "Bathrooms", name: "baths", widget: "number", value_type: "int", default: 0 }
+              - { label: "Car spaces", name: "cars", widget: "number", value_type: "int", default: 0 }
+              - { label: "Photo", name: "image", widget: "image", required: false, hint: "Landscape, ~1200x800" }
+
+  # ---------------- RECENT SALES ----------------
+  - name: sales
+    label: "Recent Sales"
+    files:
+      - name: sales
+        label: "Sold Properties"
+        file: "data/sales.json"
+        description: "Sold properties shown in the Recent Sales section."
+        fields:
+          - label: "Sold properties"
+            name: "items"
+            label_singular: "Sold property"
+            widget: "list"
+            summary: "{{fields.address}} — Sold {{fields.soldDate}}"
+            fields:
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Suburb", name: "suburb", widget: "string" }
+              - { label: "Sold date", name: "soldDate", widget: "string", hint: "e.g. May 2026" }
+              - { label: "Photo", name: "image", widget: "image", required: false, hint: "Landscape, ~1200x800" }
+
+  # ---------------- TESTIMONIALS ----------------
+  - name: reviews
+    label: "Reviews"
+    files:
+      - name: reviews
+        label: "Client Testimonials"
+        file: "data/reviews.json"
+        description: "Quotes shown in the Reviews section."
+        fields:
+          - label: "Testimonials"
+            name: "items"
+            label_singular: "Testimonial"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Client name", name: "name", widget: "string" }
+
+  # ---------------- TEAM ----------------
+  - name: team
+    label: "The Team"
+    files:
+      - name: team
+        label: "Team Members"
+        file: "data/team.json"
+        description: "People shown in The Team section."
+        fields:
+          - label: "Team members"
+            name: "items"
+            label_singular: "Team member"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string", hint: "e.g. Licensee Salesperson" }
+              - { label: "Photo", name: "photo", widget: "image", required: false, hint: "Portrait, ~900x1200" }
+
+  # ---------------- OFF-MARKET LISTINGS ----------------
+  - name: offmarket
+    label: "Off-Market"
+    files:
+      - name: offmarket
+        label: "Off-Market Listings"
+        file: "data/offmarket.json"
+        description: "Private listings shown behind the unlock gate. Keep these as teasers — do NOT include the exact street address (this data is technically public). Share the precise address privately when you reply to a viewing request."
+        fields:
+          - label: "Off-market properties"
+            name: "items"
+            label_singular: "Off-market property"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.suburb}} ({{fields.priceDisplay}})"
+            fields:
+              - { label: "Title / teaser", name: "title", widget: "string", hint: "e.g. Architectural Sanctuary (not the street address)" }
+              - { label: "Suburb", name: "suburb", widget: "string", hint: "Used for the location filter" }
+              - { label: "Price (number, for filtering)", name: "priceValue", widget: "number", value_type: "int", hint: "e.g. 3250000 — digits only, no $ or commas" }
+              - { label: "Price (display text)", name: "priceDisplay", widget: "string", hint: "e.g. $3,250,000 or By Negotiation" }
+              - { label: "Bedrooms", name: "beds", widget: "number", value_type: "int", default: 0 }
+              - { label: "Bathrooms", name: "baths", widget: "number", value_type: "int", default: 0 }
+              - { label: "Car spaces", name: "cars", widget: "number", value_type: "int", default: 0 }
+              - { label: "Photo", name: "image", widget: "image", required: false, hint: "Landscape ~1200x800. Use a tasteful exterior/lifestyle shot." }
+              - { label: "Short blurb", name: "blurb", widget: "text", required: false }
+
+  # ---------------- REELS (SOLD STORY VIDEOS) ----------------
+  - name: reels
+    label: "Reels"
+    files:
+      - name: reels
+        label: "Property Reels"
+        file: "data/reels.json"
+        description: "Vertical (9:16) sold-home videos. Per reel, EITHER upload an MP4 OR paste a YouTube/Vimeo link."
+        fields:
+          - label: "Reels"
+            name: "items"
+            label_singular: "Reel"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.suburb}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string", hint: "e.g. Sold in 3 weeks" }
+              - { label: "Suburb", name: "suburb", widget: "string", required: false }
+              - { label: "Upload video (MP4)", name: "videoFile", widget: "file", required: false, hint: "Vertical 9:16, ideally under ~40MB. Autoplays muted & loops." }
+              - { label: "OR video link", name: "videoUrl", widget: "string", required: false, hint: "YouTube or Vimeo URL (incl. Shorts). Used only if no MP4 uploaded." }
+              - { label: "Cover image", name: "poster", widget: "image", required: false, hint: "Optional thumbnail, 9:16. Recommended for link videos." }
+
+  # ---------------- AREAS / SUBURBS ----------------
+  - name: areas
+    label: "Areas"
+    files:
+      - name: areas
+        label: "Suburbs"
+        file: "data/areas.json"
+        description: "The North Shore suburb tiles. Upload a photo of one of your best/luxury homes in each suburb."
+        fields:
+          - label: "Suburbs"
+            name: "items"
+            label_singular: "Suburb"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Suburb name", name: "name", widget: "string" }
+              - { label: "Photo", name: "image", widget: "image", required: false, hint: "Portrait orientation, ~900x1200. Use your own listing/sold photography from this suburb." }
+
+  # ---------------- SITE & CONTACT SETTINGS ----------------
+  - name: settings
+    label: "Site & Contact"
+    files:
+      - name: site
+        label: "Site & Contact Details"
+        file: "data/site.json"
+        description: "About text, headline stats, contact details and social links."
+        fields:
+          - { label: "Your portrait photo", name: "portrait", widget: "image", required: false, hint: "Shown in the About section. Portrait ~1000x1250." }
+          - { label: "Hero background image", name: "heroImage", widget: "image", required: false, hint: "Full-width top banner. Wide ~1920x1080. Leave blank for the default dark gradient." }
+          - label: "About paragraphs"
+            name: "about"
+            widget: "list"
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+          - label: "Headline stats"
+            name: "stats"
+            widget: "list"
+            max: 4
+            summary: "{{fields.num}} {{fields.label}}"
+            fields:
+              - { label: "Number", name: "num", widget: "string", hint: "e.g. 100+, $250m, 92%" }
+              - { label: "Label", name: "label", widget: "string", hint: "e.g. Properties Sold" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Office address", name: "office", widget: "string" }
+          - { label: "Licensed agency name", name: "agencyName", widget: "string", hint: "For the legal footer, e.g. CR Marketing North Shore Limited" }
+          - label: "Social links"
+            name: "socials"
+            widget: "object"
+            fields:
+              - { label: "Facebook", name: "facebook", widget: "string", required: false }
+              - { label: "Instagram", name: "instagram", widget: "string", required: false }
+              - { label: "YouTube", name: "youtube", widget: "string", required: false }
+              - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
