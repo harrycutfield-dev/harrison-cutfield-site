@@ -1,7 +1,39 @@
 {
   "items": [
-    { "address": "45 Beach Road", "suburb": "Mairangi Bay", "soldDate": "May 2026", "image": "" },
-    { "address": "3 Kowhai Street", "suburb": "Forrest Hill", "soldDate": "April 2026", "image": "" },
-    { "address": "19 Sunnynook Road", "suburb": "Sunnynook", "soldDate": "March 2026", "image": "" }
+    {
+      "address": "158 Upper Harbour Drive",
+      "suburb": "Greenhithe",
+      "soldDate": "December 2025 · $1,115,000",
+      "tag": "",
+      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/9ed5-H3415535-176812284__1764124616-69470-49158UpperHarbourDrive.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg"
+    },
+    {
+      "address": "1/57A Woodlands Crescent",
+      "suburb": "Browns Bay",
+      "soldDate": "October 2025 · $1,430,000",
+      "tag": "",
+      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3ab4-H3387216-167962663__1760477393-212141-311-57AWoodlandsCrescent.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg"
+    },
+    {
+      "address": "12 Ringa Matau Road",
+      "suburb": "Hobsonville",
+      "soldDate": "August 2025",
+      "tag": "",
+      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/6017-H3346186-158487483__1754483186-119301-133806145-328-17photoprint.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg"
+    },
+    {
+      "address": "10 Kenmure Avenue",
+      "suburb": "Forrest Hill",
+      "soldDate": "",
+      "tag": "Sold Off-Market",
+      "image": ""
+    },
+    {
+      "address": "2/26 Salem Place",
+      "suburb": "Torbay",
+      "soldDate": "",
+      "tag": "Conjunctional Sale",
+      "image": ""
+    }
   ]
 }
