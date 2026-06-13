@@ -331,8 +331,83 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
   .menu-toggle{display:flex}
   .cards,.tcards,.steps,.tgrid,.area-grid,.fgrid{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
-  .bio,.listings,.process,.testi,.team,.contact,.areas{padding:80px 0}
+  .bio,.listings,.process,.testi,.team,.contact,.areas,.showcase,.method{padding:80px 0}
+  .lux-grid{grid-template-columns:1fr}
+  .blueprint{grid-template-columns:1fr 1fr}
+  .nc-panel{grid-template-columns:1fr;gap:30px}
 }
+
+/* ---------- Logo mark (SVG monogram) ---------- */
+.brand .mark{overflow:hidden}
+.brand .mark svg{width:84%;height:84%}
+footer .brand .mark svg text{fill:#141414}
+
+/* ---------- Stats disclaimer ---------- */
+.stats-note{margin-top:30px}
+.stats-note p{max-width:880px;margin:0 auto;text-align:center;font-size:11px;line-height:1.7;letter-spacing:.3px;color:rgba(255,255,255,.45)}
+.stat .num{position:relative;display:inline-flex;align-items:flex-start;justify-content:center}
+.stat .ast{font-family:var(--sans);font-size:16px;font-weight:500;color:var(--rw-yellow);margin-left:3px;margin-top:6px;line-height:1}
+
+/* ---------- Section subhead ---------- */
+.sec-head .sec-sub{margin-top:16px;font-size:15px;color:var(--ink-soft);line-height:1.7}
+
+/* ---------- Off-market COMPACT variant ---------- */
+.offmkt.compact{padding:74px 0}
+.offmkt.compact .sec-head{margin-bottom:34px}
+.offmkt.compact .off-wrap{min-height:0}
+.offmkt.compact .off-grid{grid-template-columns:repeat(4,1fr);gap:20px}
+.offmkt.compact .off-card .body{padding:18px}
+.offmkt.compact .off-card h3{font-size:19px}
+.offmkt.compact .off-card .img{aspect-ratio:4/3}
+.offmkt.compact.locked .off-grid{filter:blur(11px) saturate(.85)}
+.offmkt.compact .gate-card{padding:32px 34px;max-width:440px}
+.offmkt.compact .gate-card h3{font-size:25px}
+.offmkt.compact .gate-card .lockico{width:46px;height:46px;margin-bottom:14px;font-size:19px}
+@media(max-width:980px){.offmkt.compact .off-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.offmkt.compact .off-grid{grid-template-columns:1fr}}
+
+/* ---------- LUXURY SHOWCASE ---------- */
+.showcase{padding:120px 0;background:var(--paper-2)}
+.lux-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:8px}
+.lux{background:#fff;border:1px solid var(--line);overflow:hidden;transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+.lux:hover{transform:translateY(-8px);box-shadow:0 34px 64px -34px rgba(0,0,0,.4)}
+.lux-img{aspect-ratio:16/10;position:relative;overflow:hidden;background:linear-gradient(150deg,#1b1b18,#3a3a32)}
+.lux-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.lux:hover .lux-img img{transform:scale(1.06)}
+.lux-img.lux-cover{display:grid;place-items:center}
+.lux-img.lux-cover .cov-suburb{font-family:var(--serif);color:#fff;font-size:30px;font-weight:600}
+.lux-tag{position:absolute;top:16px;left:16px;z-index:2;background:var(--ink);color:var(--rw-yellow);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;padding:7px 13px}
+.lux-body{padding:26px 28px 30px}
+.lux-body h3{font-size:26px;font-weight:600}
+.lux-body .meta{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.lux-blurb{font-size:14.5px;color:var(--ink-soft);margin-top:14px;line-height:1.65}
+.lux-feats{display:flex;gap:22px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;letter-spacing:.5px;color:var(--ink-soft)}
+.lux-note{text-align:center;max-width:680px;margin:46px auto 0;font-size:12px;line-height:1.7;color:var(--muted)}
+
+/* ---------- METHOD / NURTURECLOUD ---------- */
+.method{padding:120px 0}
+.blueprint{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:8px}
+.bp{padding:30px 26px;border:1px solid var(--line);background:var(--paper);transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s}
+.bp:hover{transform:translateY(-6px);box-shadow:0 26px 50px -34px rgba(0,0,0,.32);border-color:var(--rw-yellow-deep)}
+.bp-n{font-family:var(--serif);font-size:34px;font-weight:600;color:var(--rw-yellow-deep);line-height:1;margin-bottom:14px}
+.bp h3{font-size:21px;font-weight:600;margin-bottom:10px}
+.bp p{font-size:14px;color:var(--ink-soft);line-height:1.65}
+.nc-panel{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:60px;background:var(--ink);color:#fff;padding:56px 52px}
+.nc-left .eyebrow.gold{color:#fff}
+.nc-left .eyebrow.gold::before{background:var(--rw-yellow)}
+.nc-left h3{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);font-weight:500;margin:16px 0 18px;color:#fff}
+.nc-left p{color:rgba(255,255,255,.78);font-size:15.5px;line-height:1.75;margin-bottom:28px}
+.nc-points{display:flex;flex-direction:column;gap:24px}
+.nc-point{display:flex;gap:18px;align-items:flex-start}
+.nc-point .ncd{flex:none;width:12px;height:12px;margin-top:6px;background:var(--rw-yellow);transform:rotate(45deg)}
+.nc-point h4{font-family:var(--sans);font-size:15px;font-weight:600;color:#fff;letter-spacing:.4px;margin-bottom:5px}
+.nc-point p{font-size:13.5px;color:rgba(255,255,255,.66);line-height:1.6}
+@media(max-width:980px){
+  .blueprint{grid-template-columns:1fr 1fr}
+  .lux-grid{grid-template-columns:1fr}
+  .nc-panel{grid-template-columns:1fr;gap:32px;padding:44px 32px}
+}
+@media(max-width:600px){.blueprint{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -341,17 +416,17 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
 <header class="nav" id="nav">
   <div class="wrap navbar">
     <a href="#top" class="brand">
-      <span class="mark">H</span>
+      <span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="600" letter-spacing="-7" fill="#141414">HC</text></svg></span>
       <span class="name">Harrison Cutfield &amp; Co<small>Ray White</small></span>
     </a>
     <nav class="navlinks" id="navlinks">
       <a href="#about">About</a>
+      <a href="#offmarket">Off-Market</a>
       <a href="#listings">Listings</a>
       <a href="#sales">Recent Sales</a>
-      <a href="#offmarket">Off-Market</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#method">The Method</a>
       <a href="#reels">Reels</a>
-      <a href="#areas">Areas</a>
-      <a href="#team">The Team</a>
       <a href="#valuation" class="cta">What's My Home Worth?</a>
     </nav>
     <button class="menu-toggle" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -381,7 +456,7 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
       <h2>Built on intention, not noise.</h2>
       <div id="aboutText"></div>
       <div class="actions">
-        <a href="#team" class="btn">Meet the Team</a>
+        <a href="#method" class="btn">Our Method</a>
         <a href="#contact" class="btn btn-solid">Get in Touch</a>
       </div>
     </div>
@@ -395,34 +470,11 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
 <!-- ===================== STATS ===================== -->
 <section class="stats">
   <div class="wrap stats-grid" id="statsGrid"></div>
+  <div class="wrap stats-note"><p id="statsNote"></p></div>
 </section>
 
-<!-- ===================== FEATURED LISTINGS ===================== -->
-<section class="listings" id="listings">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">For Sale</span>
-      <h2>Featured Listings</h2>
-    </div>
-    <div class="cards" id="listingsGrid"></div>
-    <div class="center-cta reveal"><a href="#" class="btn">View All Listings</a></div>
-  </div>
-</section>
-
-<!-- ===================== RECENT SALES ===================== -->
-<section class="listings" id="sales" style="background:var(--paper-2);">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">Track Record</span>
-      <h2>Recent Sales</h2>
-    </div>
-    <div class="cards" id="salesGrid"></div>
-    <div class="center-cta reveal"><a href="#" class="btn">View All Sales</a></div>
-  </div>
-</section>
-
-<!-- ===================== OFF-MARKET ===================== -->
-<section class="offmkt locked" id="offmarket">
+<!-- ===================== OFF-MARKET (compact) ===================== -->
+<section class="offmkt compact locked" id="offmarket">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow gold">Exclusive Access</span>
@@ -465,6 +517,30 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
   </div>
 </section>
 
+<!-- ===================== FEATURED LISTINGS ===================== -->
+<section class="listings" id="listings">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow gold">For Sale</span>
+      <h2>Featured Listings</h2>
+    </div>
+    <div class="cards" id="listingsGrid"></div>
+    <div class="center-cta reveal"><a href="#" class="btn">View All Listings</a></div>
+  </div>
+</section>
+
+<!-- ===================== RECENT SALES ===================== -->
+<section class="listings" id="sales" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow gold">Track Record</span>
+      <h2>Recent Sales</h2>
+    </div>
+    <div class="cards" id="salesGrid"></div>
+    <div class="center-cta reveal"><a href="#" class="btn">View All Sales</a></div>
+  </div>
+</section>
+
 <!-- ===================== REELS ===================== -->
 <section class="reels" id="reels">
   <div class="wrap">
@@ -476,14 +552,46 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
   <div class="wrap"><div class="reel-row" id="reelRow"></div></div>
 </section>
 
-<!-- ===================== AREAS ===================== -->
-<section class="areas" id="areas">
+<!-- ===================== LUXURY SHOWCASE ===================== -->
+<section class="showcase" id="showcase">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow gold">Local Knowledge</span>
-      <h2>The North Shore, intimately known.</h2>
+      <span class="eyebrow gold">Property Showcase</span>
+      <h2>A luxury showcase of the beautiful North Shore.</h2>
+      <p class="sec-sub" id="showcaseIntro"></p>
     </div>
-    <div class="area-grid" id="areaGrid"></div>
+    <div class="lux-grid" id="luxuryGrid"></div>
+    <p class="lux-note reveal">Homes shown reflect the calibre of residences across the Ray White North Shore network. Listings change continually; for homes available now, please get in touch.</p>
+  </div>
+</section>
+
+<!-- ===================== METHOD / NURTURECLOUD ===================== -->
+<section class="method" id="method">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow gold">The Blueprint</span>
+      <h2>How results like these are made.</h2>
+      <p class="sec-sub">A precise, repeatable method for creating genuine buyer competition around your home — powered by the Ray White network and its NurtureCloud platform.</p>
+    </div>
+    <div class="blueprint">
+      <article class="bp reveal"><div class="bp-n">01</div><h3>Smart Buyer Match</h3><p>From the very first listing presentation, NurtureCloud surfaces active buyers in real time — not just from one database, but from the entire Ray White network across Australia and New Zealand.</p></article>
+      <article class="bp reveal d1"><div class="bp-n">02</div><h3>One Intelligent Network</h3><p>Every inspection, enquiry and offer feeds a single, learning system. Your home is matched to buyers who have already shown intent on homes like yours.</p></article>
+      <article class="bp reveal d2"><div class="bp-n">03</div><h3>Considered Marketing</h3><p>Bespoke campaigns, sharp presentation and a digital-first strategy — engineered to put your home in front of the right buyers, beautifully.</p></article>
+      <article class="bp reveal d3"><div class="bp-n">04</div><h3>Competition, by Design</h3><p>Propensity insight and disciplined buyer management bring qualified buyers to the table together — the tension that quietly drives a premium result.</p></article>
+    </div>
+    <div class="nc-panel reveal">
+      <div class="nc-left">
+        <span class="eyebrow gold">Powered by NurtureCloud</span>
+        <h3>Your home, tracked in real time.</h3>
+        <p>Through Ray White's NurtureCloud vendor portal you see activity on your property as it happens — enquiries, inspections and buyer interest — so every decision across your campaign is made with clarity, not guesswork. It is the detail behind the result.</p>
+        <a href="#valuation" class="btn btn-solid">See the Method in Action</a>
+      </div>
+      <div class="nc-points">
+        <div class="nc-point reveal"><span class="ncd"></span><div><h4>Buyers, surfaced from day one</h4><p>Matched live from the entire Ray White database — the moment your home is presented.</p></div></div>
+        <div class="nc-point reveal d1"><span class="ncd"></span><div><h4>One platform, every step</h4><p>CRM, marketing and buyer matching unified — nothing slips, no buyer is missed.</p></div></div>
+        <div class="nc-point reveal d2"><span class="ncd"></span><div><h4>A real-time vendor portal</h4><p>Watch interest build on your listing and adjust the campaign with confidence.</p></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -511,17 +619,6 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
     </div>
     <div class="tcards" id="reviewsGrid"></div>
     <div class="center-cta reveal"><a href="#" class="btn">Read More on RateMyAgent</a></div>
-  </div>
-</section>
-
-<!-- ===================== TEAM ===================== -->
-<section class="team" id="team">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">Harrison Cutfield &amp; Co</span>
-      <h2>The team behind the result.</h2>
-    </div>
-    <div class="tgrid" id="teamGrid"></div>
   </div>
 </section>
 
@@ -604,7 +701,7 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <a href="#top" class="brand"><span class="mark">H</span><span class="name">Harrison Cutfield &amp; Co<small>Ray White</small></span></a>
+        <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="600" letter-spacing="-7" fill="#141414">HC</text></svg></span><span class="name">Harrison Cutfield &amp; Co<small>Ray White</small></span></a>
         <p style="margin-top:18px;font-size:14px;max-width:300px;">Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that last.</p>
         <div class="socials" id="socials">
           <a href="#" aria-label="Facebook" data-soc="facebook">f</a>
@@ -617,10 +714,11 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
         <h4>Explore</h4>
         <ul>
           <li><a href="#about">About</a></li>
+          <li><a href="#offmarket">Off-Market</a></li>
           <li><a href="#listings">Listings</a></li>
           <li><a href="#sales">Recent Sales</a></li>
-          <li><a href="#areas">Areas</a></li>
-          <li><a href="#team">The Team</a></li>
+          <li><a href="#showcase">Luxury Showcase</a></li>
+          <li><a href="#method">The Method</a></li>
         </ul>
       </div>
       <div>
@@ -690,9 +788,9 @@ const teamImg=src=>src
 async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'});if(!r.ok)throw 0;return await r.json();}catch(e){console.warn('Could not load data/'+file+' — run a local server or deploy to preview content.');return null;}}
 
 (async()=>{
-  const [site,listingsD,salesD,reviewsD,teamD,areasD,reelsD,offD]=await Promise.all(
-    ['site.json','listings.json','sales.json','reviews.json','team.json','areas.json','reels.json','offmarket.json'].map(load));
-  const listings=arr(listingsD),sales=arr(salesD),reviews=arr(reviewsD),team=arr(teamD),areas=arr(areasD),reels=arr(reelsD),offmkt=arr(offD);
+  const [site,listingsD,salesD,reviewsD,teamD,luxD,reelsD,offD]=await Promise.all(
+    ['site.json','listings.json','sales.json','reviews.json','team.json','luxury.json','reels.json','offmarket.json'].map(load));
+  const listings=arr(listingsD),sales=arr(salesD),reviews=arr(reviewsD),team=arr(teamD),luxury=arr(luxD),reels=arr(reelsD),offmkt=arr(offD);
 
   if(site){
     const at=document.getElementById('aboutText');
@@ -700,7 +798,9 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
 
     const sg=document.getElementById('statsGrid');
     if(sg&&Array.isArray(site.stats))sg.innerHTML=site.stats.map(s=>
-      `<div class="stat"><div class="num" data-count="${esc(s.num)}">0</div><div class="lbl">${esc(s.label)}</div></div>`).join('');
+      `<div class="stat"><div class="num"><span data-count="${esc(s.num)}">0</span><sup class="ast">*</sup></div><div class="lbl">${esc(s.label)}</div></div>`).join('');
+    const sn=document.getElementById('statsNote');
+    if(sn)sn.textContent=site.statsNote||'* Indicative figures reflecting results achieved across the wider Ray White group and network — not individual, specific or guaranteed results. Provided as a general guide only; individual results vary. Substantiation available on request.';
 
     // portrait
     if(site.portrait){
@@ -746,12 +846,24 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
   if(tg)tg.innerHTML=team.map((m,i)=>`
     <div class="member reveal d${(i%4)+1}">${teamImg(m.photo)}<h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join('');
 
-  const ag=document.getElementById('areaGrid');
-  if(ag)ag.innerHTML=areas.map((a,i)=>`
-    <a href="#listings" class="area reveal d${(i%4)+1}">
-      <div class="abg">${a.image?`<img src="${esc(a.image)}" alt="Luxury homes in ${esc(a.name)}" loading="lazy" onerror="this.remove()">`:''}</div>
-      <span class="lbl">${esc(a.name)}</span>
-    </a>`).join('');
+  const showIntro=document.getElementById('showcaseIntro');
+  if(showIntro&&luxD&&luxD.intro)showIntro.textContent=luxD.intro;
+  const lxg=document.getElementById('luxuryGrid');
+  if(lxg)lxg.innerHTML=luxury.map((p,i)=>{
+    const cell=p.image
+      ? `<div class="lux-img"><img src="${esc(p.image)}" alt="${esc(p.address)}, ${esc(p.suburb)}" loading="lazy" onerror="this.closest('.lux-img').classList.add('lux-cover');this.remove()"><span class="lux-tag">${esc(p.tag||'North Shore')}</span></div>`
+      : `<div class="lux-img lux-cover"><span class="lux-tag">${esc(p.tag||'North Shore')}</span><span class="cov-suburb">${esc(p.suburb||'')}</span></div>`;
+    const feats=(Number(p.beds)>0||Number(p.baths)>0)
+      ? `<div class="lux-feats"><span>${esc(p.beds)} Bed</span><span>${esc(p.baths)} Bath</span><span>${esc(p.cars)} Car</span></div>` : '';
+    return `<article class="lux reveal d${(i%2)+1}">${cell}
+      <div class="lux-body">
+        <h3>${esc(p.address||'')}</h3>
+        <div class="meta">${esc(p.suburb||'')}</div>
+        ${p.blurb?`<p class="lux-blurb">${esc(p.blurb)}</p>`:''}
+        ${feats}
+      </div>
+    </article>`;
+  }).join('');
 
   // ----- Reels (IG 9:16): uploaded MP4 or YouTube/Vimeo link -----
   const ytId=u=>{const m=String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);return m?m[1]:null;};
@@ -868,7 +980,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
   // wire up reveals + counters after content is injected
   observeReveals();
   const statObserver=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animateCount(e.target,e.target.dataset.count);statObserver.unobserve(e.target);}});},{threshold:.6});
-  document.querySelectorAll('.stat .num[data-count]').forEach(el=>statObserver.observe(el));
+  document.querySelectorAll('.stat [data-count]').forEach(el=>statObserver.observe(el));
 })();
 
 // observe any reveals already in the static markup
