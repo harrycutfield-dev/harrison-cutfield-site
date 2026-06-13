@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harrison Cutfield &amp; Co | Ray White North Shore Real Estate</title>
-<meta name="description" content="Harrison Cutfield &amp; Co — Ray White. Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that speak quietly and clearly.">
+<meta name="description" content="Harrison Cutfield &amp; Co, Ray White. Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that speak quietly and clearly.">
 <meta name="theme-color" content="#FFE512">
 
 <!-- ============================================================= -->
-<!--  HARRISON CUTFIELD & CO · Ray White · Corporate Identity       -->
-<!--  Content is edited via /admin (no code). This file renders     -->
-<!--  everything from /data/*.json. Opal-style motion + sections.   -->
+<!-- HARRISON CUTFIELD & CO · Ray White · Corporate Identity -->
+<!-- Content is edited via /admin (no code). This file renders -->
+<!-- everything from /data/*.json. Opal-style motion + sections. -->
 <!-- ============================================================= -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,18 +19,18 @@
 
 <style>
 :root{
-  --rw-yellow:#FFE512;
-  --rw-yellow-deep:#F2D200;
-  --ink:#141414;
-  --ink-soft:#2b2b2b;
-  --paper:#FAF8F2;
-  --paper-2:#F1EEE6;
-  --line:#e3ddcf;
-  --muted:#6f6a5e;
-  --serif:'Cormorant Garamond', Georgia, serif;
-  --sans:'Montserrat', -apple-system, 'Segoe UI', sans-serif;
-  --maxw:1240px;
-  --ease:cubic-bezier(.22,.61,.36,1);
+ --rw-yellow:#FFE512;
+ --rw-yellow-deep:#F2D200;
+ --ink:#141414;
+ --ink-soft:#2b2b2b;
+ --paper:#FAF8F2;
+ --paper-2:#F1EEE6;
+ --line:#e3ddcf;
+ --muted:#6f6a5e;
+ --serif:'Cormorant Garamond', Georgia, serif;
+ --sans:'Montserrat', -apple-system, 'Segoe UI', sans-serif;
+ --maxw:1240px;
+ --ease:cubic-bezier(.22,.61,.36,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -120,6 +120,16 @@ header.nav.scrolled .menu-toggle span{background:var(--ink)}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
 .stat .num{font-family:var(--serif);font-size:clamp(40px,5vw,56px);font-weight:500;color:var(--rw-yellow)}
 .stat .lbl{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:6px}
+/* ---------- BLUEPRINT (compact "how we get the result") ---------- */
+.blueprint{background:var(--paper);padding:78px 0;border-bottom:1px solid var(--line)}
+.bp-row{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:1000px;margin:0 auto;align-items:start}
+.bp-step{text-align:center;padding:0 10px}
+.bp-step .bn{font-family:var(--serif);font-size:32px;color:var(--rw-yellow-deep);font-weight:600;line-height:1}
+.bp-step h4{font-size:16px;font-weight:600;margin:14px 0 8px;letter-spacing:.3px}
+.bp-step p{font-size:13.5px;line-height:1.65;color:var(--ink-soft)}
+.bmore{text-align:center;margin-top:44px}
+.bmore a{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--ink);border-bottom:2px solid var(--rw-yellow);padding-bottom:4px}
+@media(max-width:760px){.bp-row{grid-template-columns:1fr;gap:34px}}
 
 /* ---------- SECTION HEAD ---------- */
 .sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
@@ -304,37 +314,37 @@ footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-colo
 /* ---------- MOBILE ---------- */
 /* Collapse nav to the mobile menu early so links never wrap/cram */
 @media(max-width:1024px){
-  .navlinks{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;align-items:flex-start;gap:0;padding:10px 28px 24px;transform:translateY(-130%);transition:.45s var(--ease);box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
-  .navlinks.open{transform:translateY(0)}
-  header.nav:not(.scrolled) .navlinks a{color:var(--ink)}
-  .navlinks a{width:100%;padding:14px 0;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:1.5px}
-  .navlinks a:not(.cta)::after{display:none}
-  .navlinks .cta{border:0;padding:14px 0}
-  .menu-toggle{display:flex}
+ .navlinks{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;align-items:flex-start;gap:0;padding:10px 28px 24px;transform:translateY(-130%);transition:.45s var(--ease);box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
+ .navlinks.open{transform:translateY(0)}
+ header.nav:not(.scrolled) .navlinks a{color:var(--ink)}
+ .navlinks a{width:100%;padding:14px 0;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:1.5px}
+ .navlinks a:not(.cta)::after{display:none}
+ .navlinks .cta{border:0;padding:14px 0}
+ .menu-toggle{display:flex}
 }
 @media(max-width:980px){
-  .bio-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
-  .cards,.tcards,.steps{grid-template-columns:1fr 1fr}
-  .tgrid,.area-grid{grid-template-columns:1fr 1fr}
-  .tile-grid{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:1fr 1fr;gap:44px 20px}
-  .fgrid{grid-template-columns:1fr 1fr}
-  .valuation{background-attachment:scroll}
+ .bio-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+ .cards,.tcards,.steps{grid-template-columns:1fr 1fr}
+ .tgrid,.area-grid{grid-template-columns:1fr 1fr}
+ .tile-grid{grid-template-columns:1fr}
+ .stats-grid{grid-template-columns:1fr 1fr;gap:44px 20px}
+ .fgrid{grid-template-columns:1fr 1fr}
+ .valuation{background-attachment:scroll}
 }
 @media(max-width:680px){
-  .navlinks{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;align-items:flex-start;gap:0;padding:10px 28px 24px;transform:translateY(-130%);transition:.45s var(--ease);box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
-  .navlinks.open{transform:translateY(0)}
-  header.nav:not(.scrolled) .navlinks a{color:var(--ink)}
-  .navlinks a{width:100%;padding:14px 0;border-bottom:1px solid var(--line)}
-  .navlinks a:not(.cta)::after{display:none}
-  .navlinks .cta{border:0;padding:14px 0}
-  .menu-toggle{display:flex}
-  .cards,.tcards,.steps,.tgrid,.area-grid,.fgrid{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .bio,.listings,.process,.testi,.team,.contact,.areas,.showcase,.method{padding:80px 0}
-  .lux-grid{grid-template-columns:1fr}
-  .blueprint{grid-template-columns:1fr 1fr}
-  .nc-panel{grid-template-columns:1fr;gap:30px}
+ .navlinks{position:fixed;inset:72px 0 auto 0;background:var(--paper);flex-direction:column;align-items:flex-start;gap:0;padding:10px 28px 24px;transform:translateY(-130%);transition:.45s var(--ease);box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
+ .navlinks.open{transform:translateY(0)}
+ header.nav:not(.scrolled) .navlinks a{color:var(--ink)}
+ .navlinks a{width:100%;padding:14px 0;border-bottom:1px solid var(--line)}
+ .navlinks a:not(.cta)::after{display:none}
+ .navlinks .cta{border:0;padding:14px 0}
+ .menu-toggle{display:flex}
+ .cards,.tcards,.steps,.tgrid,.area-grid,.fgrid{grid-template-columns:1fr}
+ .stats-grid{grid-template-columns:1fr 1fr}
+ .bio,.listings,.process,.testi,.team,.contact,.areas,.showcase,.method{padding:80px 0}
+ .lux-grid{grid-template-columns:1fr}
+ .blueprint{grid-template-columns:1fr 1fr}
+ .nc-panel{grid-template-columns:1fr;gap:30px}
 }
 
 /* ---------- Logo mark (SVG monogram) ---------- */
@@ -403,9 +413,9 @@ footer .brand .mark svg text{fill:#141414}
 .nc-point h4{font-family:var(--sans);font-size:15px;font-weight:600;color:#fff;letter-spacing:.4px;margin-bottom:5px}
 .nc-point p{font-size:13.5px;color:rgba(255,255,255,.66);line-height:1.6}
 @media(max-width:980px){
-  .blueprint{grid-template-columns:1fr 1fr}
-  .lux-grid{grid-template-columns:1fr}
-  .nc-panel{grid-template-columns:1fr;gap:32px;padding:44px 32px}
+ .blueprint{grid-template-columns:1fr 1fr}
+ .lux-grid{grid-template-columns:1fr}
+ .nc-panel{grid-template-columns:1fr;gap:32px;padding:44px 32px}
 }
 @media(max-width:600px){.blueprint{grid-template-columns:1fr}}
 </style>
@@ -414,338 +424,355 @@ footer .brand .mark svg text{fill:#141414}
 
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
-  <div class="wrap navbar">
-    <a href="#top" class="brand">
-      <span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="600" letter-spacing="-7" fill="#141414">HC</text></svg></span>
-      <span class="name">Harrison Cutfield &amp; Co<small>Ray White</small></span>
-    </a>
-    <nav class="navlinks" id="navlinks">
-      <a href="#about">About</a>
-      <a href="#offmarket">Off-Market</a>
-      <a href="#listings">Listings</a>
-      <a href="#sales">Recent Sales</a>
-      <a href="#showcase">Showcase</a>
-      <a href="#method">The Method</a>
-      <a href="#reels">Reels</a>
-      <a href="#valuation" class="cta">What's My Home Worth?</a>
-    </nav>
-    <button class="menu-toggle" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
+ <div class="wrap navbar">
+ <a href="#top" class="brand">
+ <span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="600" letter-spacing="-7" fill="#141414">HC</text></svg></span>
+ <span class="name">Harrison Cutfield &amp; Co<small>Ray White</small></span>
+ </a>
+ <nav class="navlinks" id="navlinks">
+ <a href="#about">About</a>
+ <a href="#offmarket">Off-Market</a>
+ <a href="#listings">Listings</a>
+ <a href="#sales">Recent Sales</a>
+ <a href="#showcase">Showcase</a>
+ <a href="#method">The Method</a>
+ <a href="#reels">Property Videos</a>
+ <a href="#valuation" class="cta">What's My Home Worth?</a>
+ </nav>
+ <button class="menu-toggle" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+ </div>
 </header>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="top">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="wrap hero-inner">
-    <span class="eyebrow">Ray White · Auckland North Shore</span>
-    <h1><span class="line"><span>The quiet art of</span></span><span class="line"><span>selling exceptional homes.</span></span></h1>
-    <p>Considered marketing, sharp negotiation, and a level of care that lets the result speak for itself. This is real estate, refined.</p>
-    <div class="actions">
-      <a href="#valuation" class="btn btn-solid">Request an Appraisal</a>
-      <a href="#listings" class="btn btn-light">View Listings</a>
-    </div>
-  </div>
-  <div class="scrollcue">Discover</div>
+ <div class="hero-bg" id="heroBg"></div>
+ <div class="wrap hero-inner">
+ <span class="eyebrow">Ray White · Auckland North Shore</span>
+ <h1><span class="line"><span>The quiet art of</span></span><span class="line"><span>selling exceptional homes.</span></span></h1>
+ <p>Considered marketing, sharp negotiation, and a level of care that lets the result speak for itself. This is real estate, refined.</p>
+ <div class="actions">
+ <a href="#valuation" class="btn btn-solid">Request an Appraisal</a>
+ <a href="#listings" class="btn btn-light">View Listings</a>
+ </div>
+ </div>
+ <div class="scrollcue">Discover</div>
 </section>
 
 <!-- ===================== BRAND BIO ===================== -->
 <section class="bio" id="about">
-  <div class="wrap bio-grid">
-    <div class="reveal">
-      <span class="eyebrow gold">The Practice</span>
-      <h2>Built on intention, not noise.</h2>
-      <div id="aboutText"></div>
-      <div class="actions">
-        <a href="#method" class="btn">Our Method</a>
-        <a href="#contact" class="btn btn-solid">Get in Touch</a>
-      </div>
-    </div>
-    <div class="bio-photo reveal d2" id="bioPhoto">
-      <div class="ph" style="position:absolute;inset:0">Portrait of Harrison<br>(4:5 image)</div>
-      <span class="tag">Harrison Cutfield</span>
-    </div>
-  </div>
+ <div class="wrap bio-grid">
+ <div class="reveal">
+ <span class="eyebrow gold">The Practice</span>
+ <h2>Built on intention, not noise.</h2>
+ <div id="aboutText"></div>
+ <div class="actions">
+ <a href="#method" class="btn">Our Method</a>
+ <a href="#contact" class="btn btn-solid">Get in Touch</a>
+ </div>
+ </div>
+ <div class="bio-photo reveal d2" id="bioPhoto">
+ <div class="ph" style="position:absolute;inset:0">Portrait of Harrison<br>(4:5 image)</div>
+ <span class="tag">Harrison Cutfield</span>
+ </div>
+ </div>
 </section>
 
 <!-- ===================== STATS ===================== -->
 <section class="stats">
-  <div class="wrap stats-grid" id="statsGrid"></div>
-  <div class="wrap stats-note"><p id="statsNote"></p></div>
+ <div class="wrap stats-grid" id="statsGrid"></div>
+ <div class="wrap stats-note"><p id="statsNote"></p></div>
+</section>
+
+<!-- ===================== BLUEPRINT ===================== -->
+<section class="blueprint" id="blueprint">
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">The Blueprint</span>
+ <h2>How we get the result.</h2>
+ <p class="sec-sub">A simple, repeatable approach behind every premium sale. Here is the short version.</p>
+ </div>
+ <div class="bp-row">
+ <div class="bp-step reveal"><div class="bn">01</div><h4>Price with evidence</h4><p>A data-backed appraisal and a clear strategy, so your campaign starts from the right number, not a guess.</p></div>
+ <div class="bp-step reveal d1"><div class="bn">02</div><h4>Market to the right buyers</h4><p>Bespoke presentation and the full Ray White network put your home in front of active, qualified buyers.</p></div>
+ <div class="bp-step reveal d2"><div class="bn">03</div><h4>Create competition</h4><p>Disciplined buyer management brings them to the table together, the quiet tension that lifts the final price.</p></div>
+ </div>
+ <div class="bmore reveal"><a href="#method">See the full method</a></div>
+ </div>
 </section>
 
 <!-- ===================== OFF-MARKET (compact) ===================== -->
 <section class="offmkt compact locked" id="offmarket">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">Exclusive Access</span>
-      <h2>Off-Market Listings</h2>
-    </div>
-    <div class="off-wrap">
-      <div class="off-bar" id="offBar">
-        <select id="fLoc"><option value="">All Locations</option></select>
-        <select id="fMin"><option value="">Min Price</option></select>
-        <select id="fMax"><option value="">Max Price</option></select>
-        <select id="fBeds"><option value="0">Beds: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
-        <select id="fBaths"><option value="0">Baths: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
-        <div class="off-count" id="offCount"></div>
-      </div>
-      <div class="off-grid" id="offGrid"></div>
-      <div class="off-gate">
-        <div class="gate-card reveal">
-          <div class="lockico">&#128274;</div>
-          <h3>Unlock Off-Market Listings</h3>
-          <p>Enter your details to view homes available privately — before they reach the open market.</p>
-          <form id="gateForm" novalidate>
-            <div class="f"><label>Email</label><input type="email" name="Email" required placeholder="you@email.com"></div>
-            <div class="f"><label>Mobile</label><input type="tel" name="Mobile" required pattern="[0-9+()\s-]{8,}" placeholder="021 234 5678"></div>
-            <div class="f"><label>Address of property you own (optional)</label><input type="text" name="Own Property Address" placeholder="e.g. 12 Seaview Tce, Milford"></div>
-            <div class="f"><label>When are you looking to buy?</label>
-              <select name="Buying Timeframe" required>
-                <option value="" disabled selected>Select…</option>
-                <option>Now</option>
-                <option>1–2 months</option>
-                <option>3–6 months</option>
-                <option>Longer</option>
-              </select>
-            </div>
-            <button class="btn btn-solid" type="submit" id="gateBtn" style="width:100%">Unlock Access</button>
-            <p class="gate-msg" id="gateMsg"></p>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">Exclusive Access</span>
+ <h2>Off-Market Listings</h2>
+ </div>
+ <div class="off-wrap">
+ <div class="off-bar" id="offBar">
+ <select id="fLoc"><option value="">All Locations</option></select>
+ <select id="fMin"><option value="">Min Price</option></select>
+ <select id="fMax"><option value="">Max Price</option></select>
+ <select id="fBeds"><option value="0">Beds: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
+ <select id="fBaths"><option value="0">Baths: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
+ <div class="off-count" id="offCount"></div>
+ </div>
+ <div class="off-grid" id="offGrid"></div>
+ <div class="off-gate">
+ <div class="gate-card">
+ <div class="lockico">&#128274;</div>
+ <h3>Unlock Off-Market Listings</h3>
+ <p>Enter your details to view homes available privately, before they reach the open market.</p>
+ <form id="gateForm" novalidate>
+ <div class="f"><label>Email</label><input type="email" name="Email" required placeholder="you@email.com"></div>
+ <div class="f"><label>Mobile</label><input type="tel" name="Mobile" required pattern="[0-9+()\s-]{8,}" placeholder="021 234 5678"></div>
+ <div class="f"><label>Address of property you own (optional)</label><input type="text" name="Own Property Address" placeholder="e.g. 12 Seaview Tce, Milford"></div>
+ <div class="f"><label>When are you looking to buy?</label>
+ <select name="Buying Timeframe" required>
+ <option value="" disabled selected>Select…</option>
+ <option>Now</option>
+ <option>1 to 2 months</option>
+ <option>3 to 6 months</option>
+ <option>Longer</option>
+ </select>
+ </div>
+ <button class="btn btn-solid" type="submit" id="gateBtn" style="width:100%">Unlock Access</button>
+ <p class="gate-msg" id="gateMsg"></p>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ===================== FEATURED LISTINGS ===================== -->
 <section class="listings" id="listings">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">For Sale</span>
-      <h2>Featured Listings</h2>
-    </div>
-    <div class="cards" id="listingsGrid"></div>
-    <div class="center-cta reveal"><a href="#" class="btn">View All Listings</a></div>
-  </div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">For Sale</span>
+ <h2>Featured Listings</h2>
+ </div>
+ <div class="cards" id="listingsGrid"></div>
+ <div class="center-cta reveal"><a href="#" class="btn">View All Listings</a></div>
+ </div>
 </section>
 
 <!-- ===================== RECENT SALES ===================== -->
 <section class="listings" id="sales" style="background:var(--paper-2);">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">Track Record</span>
-      <h2>Recent Sales</h2>
-    </div>
-    <div class="cards" id="salesGrid"></div>
-    <div class="center-cta reveal"><a href="#" class="btn">View All Sales</a></div>
-  </div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">Track Record</span>
+ <h2>Recent Sales</h2>
+ </div>
+ <div class="cards" id="salesGrid"></div>
+ <div class="center-cta reveal"><a href="#" class="btn">View All Sales</a></div>
+ </div>
 </section>
 
 <!-- ===================== REELS ===================== -->
 <section class="reels" id="reels">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">Sold Stories</span>
-      <h2>Property reels.</h2>
-    </div>
-  </div>
-  <div class="wrap"><div class="reel-row" id="reelRow"></div></div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">Sold Stories</span>
+ <h2>Property Video Showcase</h2>
+ </div>
+ </div>
+ <div class="wrap"><div class="reel-row" id="reelRow"></div></div>
 </section>
 
 <!-- ===================== LUXURY SHOWCASE ===================== -->
 <section class="showcase" id="showcase">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">Property Showcase</span>
-      <h2>A luxury showcase of the beautiful North Shore.</h2>
-      <p class="sec-sub" id="showcaseIntro"></p>
-    </div>
-    <div class="lux-grid" id="luxuryGrid"></div>
-    <p class="lux-note reveal">Homes shown reflect the calibre of residences across the Ray White North Shore network. Listings change continually; for homes available now, please get in touch.</p>
-  </div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">Property Showcase</span>
+ <h2>A luxury showcase of the beautiful North Shore.</h2>
+ <p class="sec-sub" id="showcaseIntro"></p>
+ </div>
+ <div class="lux-grid" id="luxuryGrid"></div>
+ <p class="lux-note reveal">Homes shown reflect the calibre of residences across the Ray White North Shore network. Listings change continually; for homes available now, please get in touch.</p>
+ </div>
 </section>
 
 <!-- ===================== METHOD / NURTURECLOUD ===================== -->
 <section class="method" id="method">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">The Blueprint</span>
-      <h2>How results like these are made.</h2>
-      <p class="sec-sub">A precise, repeatable method for creating genuine buyer competition around your home — powered by the Ray White network and its NurtureCloud platform.</p>
-    </div>
-    <div class="blueprint">
-      <article class="bp reveal"><div class="bp-n">01</div><h3>Smart Buyer Match</h3><p>From the very first listing presentation, NurtureCloud surfaces active buyers in real time — not just from one database, but from the entire Ray White network across Australia and New Zealand.</p></article>
-      <article class="bp reveal d1"><div class="bp-n">02</div><h3>One Intelligent Network</h3><p>Every inspection, enquiry and offer feeds a single, learning system. Your home is matched to buyers who have already shown intent on homes like yours.</p></article>
-      <article class="bp reveal d2"><div class="bp-n">03</div><h3>Considered Marketing</h3><p>Bespoke campaigns, sharp presentation and a digital-first strategy — engineered to put your home in front of the right buyers, beautifully.</p></article>
-      <article class="bp reveal d3"><div class="bp-n">04</div><h3>Competition, by Design</h3><p>Propensity insight and disciplined buyer management bring qualified buyers to the table together — the tension that quietly drives a premium result.</p></article>
-    </div>
-    <div class="nc-panel reveal">
-      <div class="nc-left">
-        <span class="eyebrow gold">Powered by NurtureCloud</span>
-        <h3>Your home, tracked in real time.</h3>
-        <p>Through Ray White's NurtureCloud vendor portal you see activity on your property as it happens — enquiries, inspections and buyer interest — so every decision across your campaign is made with clarity, not guesswork. It is the detail behind the result.</p>
-        <a href="#valuation" class="btn btn-solid">See the Method in Action</a>
-      </div>
-      <div class="nc-points">
-        <div class="nc-point reveal"><span class="ncd"></span><div><h4>Buyers, surfaced from day one</h4><p>Matched live from the entire Ray White database — the moment your home is presented.</p></div></div>
-        <div class="nc-point reveal d1"><span class="ncd"></span><div><h4>One platform, every step</h4><p>CRM, marketing and buyer matching unified — nothing slips, no buyer is missed.</p></div></div>
-        <div class="nc-point reveal d2"><span class="ncd"></span><div><h4>A real-time vendor portal</h4><p>Watch interest build on your listing and adjust the campaign with confidence.</p></div></div>
-      </div>
-    </div>
-  </div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">The Blueprint</span>
+ <h2>How results like these are made.</h2>
+ <p class="sec-sub">A precise, repeatable method for creating genuine buyer competition around your home, powered by the Ray White network and its NurtureCloud platform.</p>
+ </div>
+ <div class="blueprint">
+ <article class="bp reveal"><div class="bp-n">01</div><h3>Smart Buyer Match</h3><p>From the very first listing presentation, NurtureCloud surfaces active buyers in real time, not just from one database, but from the entire Ray White network across Australia and New Zealand.</p></article>
+ <article class="bp reveal d1"><div class="bp-n">02</div><h3>One Intelligent Network</h3><p>Every inspection, enquiry and offer feeds a single, learning system. Your home is matched to buyers who have already shown intent on homes like yours.</p></article>
+ <article class="bp reveal d2"><div class="bp-n">03</div><h3>Considered Marketing</h3><p>Bespoke campaigns, sharp presentation and a digital-first strategy, engineered to put your home in front of the right buyers, beautifully.</p></article>
+ <article class="bp reveal d3"><div class="bp-n">04</div><h3>Competition, by Design</h3><p>Propensity insight and disciplined buyer management bring qualified buyers to the table together, the tension that quietly drives a premium result.</p></article>
+ </div>
+ <div class="nc-panel reveal">
+ <div class="nc-left">
+ <span class="eyebrow gold">Powered by NurtureCloud</span>
+ <h3>Your home, tracked in real time.</h3>
+ <p>Through Ray White's NurtureCloud vendor portal you see activity on your property as it happens, enquiries, inspections and buyer interest, so every decision across your campaign is made with clarity, not guesswork. It is the detail behind the result.</p>
+ <a href="#valuation" class="btn btn-solid">See the Method in Action</a>
+ </div>
+ <div class="nc-points">
+ <div class="nc-point reveal"><span class="ncd"></span><div><h4>Buyers, surfaced from day one</h4><p>Matched live from the entire Ray White database, the moment your home is presented.</p></div></div>
+ <div class="nc-point reveal d1"><span class="ncd"></span><div><h4>One platform, every step</h4><p>CRM, marketing and buyer matching unified, nothing slips, no buyer is missed.</p></div></div>
+ <div class="nc-point reveal d2"><span class="ncd"></span><div><h4>A real-time vendor portal</h4><p>Watch interest build on your listing and adjust the campaign with confidence.</p></div></div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ===================== PROCESS ===================== -->
 <section class="process">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">The Approach</span>
-      <h2>Real estate, done right.</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal"><div class="n">1</div><h3>Understand Your Goals</h3><p>It starts with a conversation. We learn what matters to you and where you're headed, then build the plan around it.</p></div>
-      <div class="step reveal d1"><div class="n">2</div><h3>Craft the Campaign</h3><p>From pricing to presentation to a digital-first marketing strategy — every detail is dialled in to attract the right buyers.</p></div>
-      <div class="step reveal d2"><div class="n">3</div><h3>Achieve the Result</h3><p>Clear communication, honest feedback, and sharp negotiation through to an outcome that exceeds expectations.</p></div>
-    </div>
-  </div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">The Approach</span>
+ <h2>Real estate, done right.</h2>
+ </div>
+ <div class="steps">
+ <div class="step reveal"><div class="n">1</div><h3>Understand Your Goals</h3><p>It starts with a conversation. We learn what matters to you and where you're headed, then build the plan around it.</p></div>
+ <div class="step reveal d1"><div class="n">2</div><h3>Craft the Campaign</h3><p>From pricing to presentation to a digital-first marketing strategy, every detail is dialled in to attract the right buyers.</p></div>
+ <div class="step reveal d2"><div class="n">3</div><h3>Achieve the Result</h3><p>Clear communication, honest feedback, and sharp negotiation through to an outcome that exceeds expectations.</p></div>
+ </div>
+ </div>
 </section>
 
 <!-- ===================== TESTIMONIALS ===================== -->
 <section class="testi" id="testimonials">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow gold">Client Reviews</span>
-      <h2>In their words.</h2>
-    </div>
-    <div class="tcards" id="reviewsGrid"></div>
-    <div class="center-cta reveal"><a href="#" class="btn">Read More on RateMyAgent</a></div>
-  </div>
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">Client Reviews</span>
+ <h2>In their words.</h2>
+ </div>
+ <div class="tcards" id="reviewsGrid"></div>
+ <div class="center-cta reveal"><a href="#" class="btn">Read More on RateMyAgent</a></div>
+ </div>
 </section>
 
 <!-- ===================== CTA TILES ===================== -->
 <section class="tiles">
-  <div class="tile-grid">
-    <a href="#valuation" class="tile reveal"><div class="tbg"></div><div class="inner"><h3>Selling</h3><span class="go">Start Here</span></div></a>
-    <a href="#listings" class="tile reveal d1"><div class="tbg"></div><div class="inner"><h3>Buying</h3><span class="go">View Listings</span></div></a>
-    <a href="#contact" class="tile reveal d2"><div class="tbg"></div><div class="inner"><h3>Free Appraisal</h3><span class="go">Book a Time</span></div></a>
-  </div>
+ <div class="tile-grid">
+ <a href="#valuation" class="tile reveal"><div class="tbg"></div><div class="inner"><h3>Selling</h3><span class="go">Start Here</span></div></a>
+ <a href="#listings" class="tile reveal d1"><div class="tbg"></div><div class="inner"><h3>Buying</h3><span class="go">View Listings</span></div></a>
+ <a href="#contact" class="tile reveal d2"><div class="tbg"></div><div class="inner"><h3>Free Appraisal</h3><span class="go">Book a Time</span></div></a>
+ </div>
 </section>
 
 <!-- ===================== VALUATION ===================== -->
 <section class="valuation" id="valuation">
-  <div class="wrap">
-    <span class="eyebrow reveal">Free &amp; No Obligation</span>
-    <h2 class="reveal d1">What's your property worth today?</h2>
-    <p class="reveal d2">Get a considered, data-backed appraisal of your home from someone who knows the North Shore intimately.</p>
-    <div class="reveal d3"><a href="#contact" class="btn btn-solid">Request Your Appraisal</a></div>
-  </div>
+ <div class="wrap">
+ <span class="eyebrow reveal">Free &amp; No Obligation</span>
+ <h2 class="reveal d1">What's your property worth today?</h2>
+ <p class="reveal d2">Get a considered, data-backed appraisal of your home from someone who knows the North Shore intimately.</p>
+ <div class="reveal d3"><a href="#contact" class="btn btn-solid">Request Your Appraisal</a></div>
+ </div>
 </section>
 
 <!-- ===================== CONTACT ===================== -->
 <section class="contact" id="contact">
-  <div class="wrap contact-grid">
-    <div class="reveal">
-      <span class="eyebrow gold">Get in Touch</span>
-      <h2>Let's talk about your move.</h2>
-      <p class="lead">Whether you're thinking of selling, buying, or simply want a confidential chat about the market — I'd love to hear from you.</p>
-      <div class="cinfo">
-        <div class="row"><span class="k">✆</span><div><div class="lbl">Phone</div><div class="val" id="cPhone"></div></div></div>
-        <div class="row"><span class="k">✉</span><div><div class="lbl">Email</div><div class="val" id="cEmail"></div></div></div>
-        <div class="row"><span class="k">⌖</span><div><div class="lbl">Office</div><div class="val" id="cOffice"></div></div></div>
-      </div>
-    </div>
-    <!-- Live form. Emails to harrison.cutfield@raywhite.com + CC harrycutfield@gmail.com
-         via FormSubmit (no account needed). First real submission triggers a one-time
-         confirmation email to the Ray White address — click the link once to activate. -->
-    <form id="enquiryForm" class="reveal d2">
-      <div class="two">
-        <div class="f"><label>First Name</label><input type="text" name="First Name" required></div>
-        <div class="f"><label>Last Name</label><input type="text" name="Last Name" required></div>
-      </div>
-      <div class="two">
-        <div class="f"><label>Email</label><input type="email" name="Email" required></div>
-        <div class="f"><label>Phone</label><input type="tel" name="Phone"></div>
-      </div>
-      <div class="f"><label>How can I help?</label><textarea name="Message" rows="5"></textarea></div>
-      <button class="btn btn-solid" type="submit" id="enquiryBtn">Send Enquiry</button>
-      <p id="enquiryMsg" style="margin-top:16px;font-size:14px;"></p>
-    </form>
-  </div>
+ <div class="wrap contact-grid">
+ <div class="reveal">
+ <span class="eyebrow gold">Get in Touch</span>
+ <h2>Let's talk about your move.</h2>
+ <p class="lead">Whether you're thinking of selling, buying, or simply want a confidential chat about the market, I'd love to hear from you.</p>
+ <div class="cinfo">
+ <div class="row"><span class="k">✆</span><div><div class="lbl">Phone</div><div class="val" id="cPhone"></div></div></div>
+ <div class="row"><span class="k">✉</span><div><div class="lbl">Email</div><div class="val" id="cEmail"></div></div></div>
+ <div class="row"><span class="k">⌖</span><div><div class="lbl">Office</div><div class="val" id="cOffice"></div></div></div>
+ </div>
+ </div>
+ <!-- Live form. Emails to harrison.cutfield@raywhite.com + CC harrycutfield@gmail.com
+ via FormSubmit (no account needed). First real submission triggers a one-time
+ confirmation email to the Ray White address, click the link once to activate. -->
+ <form id="enquiryForm" class="reveal d2">
+ <div class="two">
+ <div class="f"><label>First Name</label><input type="text" name="First Name" required></div>
+ <div class="f"><label>Last Name</label><input type="text" name="Last Name" required></div>
+ </div>
+ <div class="two">
+ <div class="f"><label>Email</label><input type="email" name="Email" required></div>
+ <div class="f"><label>Phone</label><input type="tel" name="Phone"></div>
+ </div>
+ <div class="f"><label>How can I help?</label><textarea name="Message" rows="5"></textarea></div>
+ <button class="btn btn-solid" type="submit" id="enquiryBtn">Send Enquiry</button>
+ <p id="enquiryMsg" style="margin-top:16px;font-size:14px;"></p>
+ </form>
+ </div>
 </section>
 
 <!-- ===================== PRIVATE VIEWING MODAL ===================== -->
 <div class="modal" id="viewModal" aria-hidden="true">
-  <div class="modal-card">
-    <button class="x" id="viewClose" aria-label="Close">&times;</button>
-    <span class="eyebrow gold">Private Viewing</span>
-    <h3 id="viewTitle">Request a Private Viewing</h3>
-    <div class="sub" id="viewSub">Confirm your details and preferred time — Harrison will be in touch to arrange access.</div>
-    <form id="viewForm" novalidate>
-      <div class="f"><label>Full Name</label><input type="text" name="Full Name" required></div>
-      <div class="two">
-        <div class="f"><label>Email</label><input type="email" name="Email" required></div>
-        <div class="f"><label>Phone</label><input type="tel" name="Phone" required pattern="[0-9+()\s-]{8,}"></div>
-      </div>
-      <div class="two">
-        <div class="f"><label>Preferred day</label><input type="date" name="Preferred Day" required></div>
-        <div class="f"><label>Preferred time</label><input type="time" name="Preferred Time" required></div>
-      </div>
-      <button class="btn btn-solid" type="submit" id="viewBtn" style="width:100%">Send Viewing Request</button>
-      <p class="gate-msg" id="viewMsg" style="color:var(--muted)"></p>
-    </form>
-  </div>
+ <div class="modal-card">
+ <button class="x" id="viewClose" aria-label="Close">&times;</button>
+ <span class="eyebrow gold">Private Viewing</span>
+ <h3 id="viewTitle">Request a Private Viewing</h3>
+ <div class="sub" id="viewSub">Confirm your details and preferred time, Harrison will be in touch to arrange access.</div>
+ <form id="viewForm" novalidate>
+ <div class="f"><label>Full Name</label><input type="text" name="Full Name" required></div>
+ <div class="two">
+ <div class="f"><label>Email</label><input type="email" name="Email" required></div>
+ <div class="f"><label>Phone</label><input type="tel" name="Phone" required pattern="[0-9+()\s-]{8,}"></div>
+ </div>
+ <div class="two">
+ <div class="f"><label>Preferred day</label><input type="date" name="Preferred Day" required></div>
+ <div class="f"><label>Preferred time</label><input type="time" name="Preferred Time" required></div>
+ </div>
+ <button class="btn btn-solid" type="submit" id="viewBtn" style="width:100%">Send Viewing Request</button>
+ <p class="gate-msg" id="viewMsg" style="color:var(--muted)"></p>
+ </form>
+ </div>
 </div>
 
 <!-- ===================== FOOTER ===================== -->
 <footer>
-  <div class="wrap">
-    <div class="fgrid">
-      <div>
-        <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="600" letter-spacing="-7" fill="#141414">HC</text></svg></span><span class="name">Harrison Cutfield &amp; Co<small>Ray White</small></span></a>
-        <p style="margin-top:18px;font-size:14px;max-width:300px;">Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that last.</p>
-        <div class="socials" id="socials">
-          <a href="#" aria-label="Facebook" data-soc="facebook">f</a>
-          <a href="#" aria-label="Instagram" data-soc="instagram">◎</a>
-          <a href="#" aria-label="YouTube" data-soc="youtube">▶</a>
-          <a href="#" aria-label="LinkedIn" data-soc="linkedin">in</a>
-        </div>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#offmarket">Off-Market</a></li>
-          <li><a href="#listings">Listings</a></li>
-          <li><a href="#sales">Recent Sales</a></li>
-          <li><a href="#showcase">Luxury Showcase</a></li>
-          <li><a href="#method">The Method</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Sellers</h4>
-        <ul>
-          <li><a href="#valuation">What's My Home Worth?</a></li>
-          <li><a href="#testimonials">Reviews</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li id="fPhone"></li>
-          <li><a id="fEmail" href="#"></a></li>
-          <li id="fOffice"></li>
-        </ul>
-      </div>
-    </div>
-    <div class="legal">
-      <div class="top">
-        <span>© <span id="yr"></span> Harrison Cutfield &amp; Co · Ray White</span>
-        <span><a href="https://raywhite.co.nz/privacy-policy/">Privacy</a> · <a href="https://raywhite.co.nz/legal-information/">Legal</a> · <a href="https://www.rea.govt.nz/">REA</a> · <a href="https://raywhite.co.nz/anti-money-laundering-aml/">AML</a></span>
-      </div>
-      <p>Harrison Cutfield is licensed under the REAA 2008 and works for <span id="agencyName"></span> (REAA 2008). All information is provided in good faith; prospective purchasers should make their own enquiries.</p>
-    </div>
-  </div>
+ <div class="wrap">
+ <div class="fgrid">
+ <div>
+ <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="600" letter-spacing="-7" fill="#141414">HC</text></svg></span><span class="name">Harrison Cutfield &amp; Co<small>Ray White</small></span></a>
+ <p style="margin-top:18px;font-size:14px;max-width:300px;">Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that last.</p>
+ <div class="socials" id="socials">
+ <a href="#" aria-label="Facebook" data-soc="facebook">f</a>
+ <a href="#" aria-label="Instagram" data-soc="instagram">◎</a>
+ <a href="#" aria-label="YouTube" data-soc="youtube">▶</a>
+ <a href="#" aria-label="LinkedIn" data-soc="linkedin">in</a>
+ </div>
+ </div>
+ <div>
+ <h4>Explore</h4>
+ <ul>
+ <li><a href="#about">About</a></li>
+ <li><a href="#offmarket">Off-Market</a></li>
+ <li><a href="#listings">Listings</a></li>
+ <li><a href="#sales">Recent Sales</a></li>
+ <li><a href="#showcase">Luxury Showcase</a></li>
+ <li><a href="#method">The Method</a></li>
+ </ul>
+ </div>
+ <div>
+ <h4>Sellers</h4>
+ <ul>
+ <li><a href="#valuation">What's My Home Worth?</a></li>
+ <li><a href="#testimonials">Reviews</a></li>
+ <li><a href="#contact">Contact</a></li>
+ </ul>
+ </div>
+ <div>
+ <h4>Contact</h4>
+ <ul>
+ <li id="fPhone"></li>
+ <li><a id="fEmail" href="#"></a></li>
+ <li id="fOffice"></li>
+ </ul>
+ </div>
+ </div>
+ <div class="legal">
+ <div class="top">
+ <span>© <span id="yr"></span> Harrison Cutfield &amp; Co · Ray White</span>
+ <span><a href="https://raywhite.co.nz/privacy-policy/">Privacy</a> · <a href="https://raywhite.co.nz/legal-information/">Legal</a> · <a href="https://www.rea.govt.nz/">REA</a> · <a href="https://raywhite.co.nz/anti-money-laundering-aml/">AML</a></span>
+ </div>
+ <p>Harrison Cutfield is licensed under the REAA 2008 and works for <span id="agencyName"></span> (REAA 2008). All information is provided in good faith; prospective purchasers should make their own enquiries.</p>
+ </div>
+ </div>
 </footer>
 
 <script>
@@ -764,253 +791,253 @@ const observeReveals=()=>document.querySelectorAll('.reveal:not(.in),.reveal-img
 
 // ---------- Animated stat counter ----------
 function animateCount(el,raw){
-  const m=String(raw).match(/^([^\d]*)(\d[\d,]*)(.*)$/);
-  if(!m){el.textContent=raw;return;}
-  const pre=m[1],digits=m[2].replace(/,/g,''),suf=m[3],target=parseInt(digits,10);
-  const grouped=m[2].includes(',');const dur=1400;const t0=performance.now();
-  (function tick(now){
-    const p=Math.min(1,(now-t0)/dur);const eased=1-Math.pow(1-p,3);
-    let val=Math.round(target*eased);
-    el.textContent=pre+(grouped?val.toLocaleString():val)+suf;
-    if(p<1)requestAnimationFrame(tick);
-  })(t0);
+ const m=String(raw).match(/^([^\d]*)(\d[\d,]*)(.*)$/);
+ if(!m){el.textContent=raw;return;}
+ const pre=m[1],digits=m[2].replace(/,/g,''),suf=m[3],target=parseInt(digits,10);
+ const grouped=m[2].includes(',');const dur=1400;const t0=performance.now();
+ (function tick(now){
+ const p=Math.min(1,(now-t0)/dur);const eased=1-Math.pow(1-p,3);
+ let val=Math.round(target*eased);
+ el.textContent=pre+(grouped?val.toLocaleString():val)+suf;
+ if(p<1)requestAnimationFrame(tick);
+ })(t0);
 }
 
 // ---------- Helpers ----------
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const arr=d=>Array.isArray(d)?d:(d&&Array.isArray(d.items)?d.items:[]);
 const imgCell=(src,label,extra='')=>src
-  ? `<div class="img">${extra}<img src="${esc(src)}" alt="${esc(label)}" loading="lazy" onerror="this.remove()"></div>`
-  : `<div class="img ph">${esc(label)}${extra}</div>`;
+ ? `<div class="img">${extra}<img src="${esc(src)}" alt="${esc(label)}" loading="lazy" onerror="this.remove()"></div>`
+ : `<div class="img ph">${esc(label)}${extra}</div>`;
 const teamImg=src=>src
-  ? `<div class="img"><img src="${esc(src)}" alt="" loading="lazy" onerror="this.closest('.img').className='img ph';this.closest('.img').textContent='Photo (3:4)'"></div>`
-  : `<div class="img ph">Photo (3:4)</div>`;
-async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'});if(!r.ok)throw 0;return await r.json();}catch(e){console.warn('Could not load data/'+file+' — run a local server or deploy to preview content.');return null;}}
+ ? `<div class="img"><img src="${esc(src)}" alt="" loading="lazy" onerror="this.closest('.img').className='img ph';this.closest('.img').textContent='Photo (3:4)'"></div>`
+ : `<div class="img ph">Photo (3:4)</div>`;
+async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'});if(!r.ok)throw 0;return await r.json();}catch(e){console.warn('Could not load data/'+file+', run a local server or deploy to preview content.');return null;}}
 
 (async()=>{
-  const [site,listingsD,salesD,reviewsD,teamD,luxD,reelsD,offD]=await Promise.all(
-    ['site.json','listings.json','sales.json','reviews.json','team.json','luxury.json','reels.json','offmarket.json'].map(load));
-  const listings=arr(listingsD),sales=arr(salesD),reviews=arr(reviewsD),team=arr(teamD),luxury=arr(luxD),reels=arr(reelsD),offmkt=arr(offD);
+ const [site,listingsD,salesD,reviewsD,teamD,luxD,reelsD,offD]=await Promise.all(
+ ['site.json','listings.json','sales.json','reviews.json','team.json','luxury.json','reels.json','offmarket.json'].map(load));
+ const listings=arr(listingsD),sales=arr(salesD),reviews=arr(reviewsD),team=arr(teamD),luxury=arr(luxD),reels=arr(reelsD),offmkt=arr(offD);
 
-  if(site){
-    const at=document.getElementById('aboutText');
-    if(at&&Array.isArray(site.about))at.innerHTML=site.about.map(p=>`<p>${esc(p)}</p>`).join('');
+ if(site){
+ const at=document.getElementById('aboutText');
+ if(at&&Array.isArray(site.about))at.innerHTML=site.about.map(p=>`<p>${esc(p)}</p>`).join('');
 
-    const sg=document.getElementById('statsGrid');
-    if(sg&&Array.isArray(site.stats))sg.innerHTML=site.stats.map(s=>
-      `<div class="stat"><div class="num"><span data-count="${esc(s.num)}">0</span><sup class="ast">*</sup></div><div class="lbl">${esc(s.label)}</div></div>`).join('');
-    const sn=document.getElementById('statsNote');
-    if(sn)sn.textContent=site.statsNote||'* Indicative figures reflecting results achieved across the wider Ray White group and network — not individual, specific or guaranteed results. Provided as a general guide only; individual results vary. Substantiation available on request.';
+ const sg=document.getElementById('statsGrid');
+ if(sg&&Array.isArray(site.stats))sg.innerHTML=site.stats.map(s=>
+ `<div class="stat"><div class="num"><span data-count="${esc(s.num)}">0</span><sup class="ast">*</sup></div><div class="lbl">${esc(s.label)}</div></div>`).join('');
+ const sn=document.getElementById('statsNote');
+ if(sn)sn.textContent=site.statsNote||'* Indicative figures reflecting results achieved across the wider Ray White group and network, not individual, specific or guaranteed results. Provided as a general guide only; individual results vary. Substantiation available on request.';
 
-    // portrait
-    if(site.portrait){
-      const bp=document.getElementById('bioPhoto');
-      const img=new Image();img.alt='Harrison Cutfield';img.src=site.portrait;
-      img.onload=()=>{const ph=bp.querySelector('.ph');if(ph)ph.remove();bp.insertBefore(img,bp.firstChild);};
-    }
-    // hero image
-    if(site.heroImage){document.getElementById('heroBg').innerHTML=`<img src="${esc(site.heroImage)}" alt="">`;}
+ // portrait
+ if(site.portrait){
+ const bp=document.getElementById('bioPhoto');
+ const img=new Image();img.alt='Harrison Cutfield';img.src=site.portrait;
+ img.onload=()=>{const ph=bp.querySelector('.ph');if(ph)ph.remove();bp.insertBefore(img,bp.firstChild);};
+ }
+ // hero image
+ if(site.heroImage){document.getElementById('heroBg').innerHTML=`<img src="${esc(site.heroImage)}" alt="">`;}
 
-    const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v||'';};
-    set('cPhone',site.phone);set('cEmail',site.email);set('cOffice',site.office);
-    set('fPhone',site.phone);set('fOffice',site.office);set('agencyName',site.agencyName);
-    const fe=document.getElementById('fEmail');if(fe&&site.email){fe.textContent=site.email;fe.href='mailto:'+site.email;}
-    if(site.socials)document.querySelectorAll('#socials a[data-soc]').forEach(a=>{const u=site.socials[a.dataset.soc];if(u)a.href=u;else a.style.display='none';});
-  }
+ const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v||'';};
+ set('cPhone',site.phone);set('cEmail',site.email);set('cOffice',site.office);
+ set('fPhone',site.phone);set('fOffice',site.office);set('agencyName',site.agencyName);
+ const fe=document.getElementById('fEmail');if(fe&&site.email){fe.textContent=site.email;fe.href='mailto:'+site.email;}
+ if(site.socials)document.querySelectorAll('#socials a[data-soc]').forEach(a=>{const u=site.socials[a.dataset.soc];if(u)a.href=u;else a.style.display='none';});
+ }
 
-  const lg=document.getElementById('listingsGrid');
-  if(lg)lg.innerHTML=listings.map((l,i)=>`
-    <article class="card reveal d${(i%3)+1}">
-      ${imgCell(l.image,'Listing Image (3:2)',`<span class="price">${esc(l.price)}</span><span class="status">${esc(l.method)}</span>`)}
-      <div class="body"><h3>${esc(l.address)}</h3><div class="meta">${esc(l.suburb)}</div>
-        <div class="feats"><span>${esc(l.beds)} Bed</span><span>${esc(l.baths)} Bath</span><span>${esc(l.cars)} Car</span></div></div>
-    </article>`).join('');
+ const lg=document.getElementById('listingsGrid');
+ if(lg)lg.innerHTML=listings.map((l,i)=>`
+ <article class="card reveal d${(i%3)+1}">
+ ${imgCell(l.image,'Listing Image (3:2)',`<span class="price">${esc(l.price)}</span><span class="status">${esc(l.method)}</span>`)}
+ <div class="body"><h3>${esc(l.address)}</h3><div class="meta">${esc(l.suburb)}</div>
+ <div class="feats"><span>${esc(l.beds)} Bed</span><span>${esc(l.baths)} Bath</span><span>${esc(l.cars)} Car</span></div></div>
+ </article>`).join('');
 
-  const sgr=document.getElementById('salesGrid');
-  if(sgr)sgr.innerHTML=sales.map((s,i)=>{
-    const badges=`<span class="price">SOLD</span>${s.tag?`<span class="status">${esc(s.tag)}</span>`:''}`;
-    const cell=s.image
-      ? `<div class="img">${badges}<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`
-      : `<div class="img sold-cover">${badges}<span class="cov-suburb">${esc(s.suburb)}</span></div>`;
-    const meta=esc(s.suburb)+(s.soldDate?` · Sold ${esc(s.soldDate)}`:'');
-    return `<article class="card reveal d${(i%3)+1}">${cell}
-      <div class="body"><h3>${esc(s.address)}</h3><div class="meta">${meta}</div></div>
-    </article>`;
-  }).join('');
+ const sgr=document.getElementById('salesGrid');
+ if(sgr)sgr.innerHTML=sales.map((s,i)=>{
+ const badges=`<span class="price">SOLD</span>${s.tag?`<span class="status">${esc(s.tag)}</span>`:''}`;
+ const cell=s.image
+ ? `<div class="img">${badges}<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`
+ : `<div class="img sold-cover">${badges}<span class="cov-suburb">${esc(s.suburb)}</span></div>`;
+ const meta=esc(s.suburb)+(s.soldDate?` · Sold ${esc(s.soldDate)}`:'');
+ return `<article class="card reveal d${(i%3)+1}">${cell}
+ <div class="body"><h3>${esc(s.address)}</h3><div class="meta">${meta}</div></div>
+ </article>`;
+ }).join('');
 
-  const rg=document.getElementById('reviewsGrid');
-  if(rg)rg.innerHTML=reviews.map((r,i)=>`
-    <div class="tcard reveal d${(i%3)+1}"><div class="quote">&ldquo;</div><p>${esc(r.quote)}</p><div class="who">— ${esc(r.name)}</div></div>`).join('');
+ const rg=document.getElementById('reviewsGrid');
+ if(rg)rg.innerHTML=reviews.map((r,i)=>`
+ <div class="tcard reveal d${(i%3)+1}"><div class="quote">&ldquo;</div><p>${esc(r.quote)}</p><div class="who">${esc(r.name)}</div></div>`).join('');
 
-  const tg=document.getElementById('teamGrid');
-  if(tg)tg.innerHTML=team.map((m,i)=>`
-    <div class="member reveal d${(i%4)+1}">${teamImg(m.photo)}<h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join('');
+ const tg=document.getElementById('teamGrid');
+ if(tg)tg.innerHTML=team.map((m,i)=>`
+ <div class="member reveal d${(i%4)+1}">${teamImg(m.photo)}<h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div></div>`).join('');
 
-  const showIntro=document.getElementById('showcaseIntro');
-  if(showIntro&&luxD&&luxD.intro)showIntro.textContent=luxD.intro;
-  const lxg=document.getElementById('luxuryGrid');
-  if(lxg)lxg.innerHTML=luxury.map((p,i)=>{
-    const cell=p.image
-      ? `<div class="lux-img"><img src="${esc(p.image)}" alt="${esc(p.address)}, ${esc(p.suburb)}" loading="lazy" onerror="this.closest('.lux-img').classList.add('lux-cover');this.remove()"><span class="lux-tag">${esc(p.tag||'North Shore')}</span></div>`
-      : `<div class="lux-img lux-cover"><span class="lux-tag">${esc(p.tag||'North Shore')}</span><span class="cov-suburb">${esc(p.suburb||'')}</span></div>`;
-    const feats=(Number(p.beds)>0||Number(p.baths)>0)
-      ? `<div class="lux-feats"><span>${esc(p.beds)} Bed</span><span>${esc(p.baths)} Bath</span><span>${esc(p.cars)} Car</span></div>` : '';
-    return `<article class="lux reveal d${(i%2)+1}">${cell}
-      <div class="lux-body">
-        <h3>${esc(p.address||'')}</h3>
-        <div class="meta">${esc(p.suburb||'')}</div>
-        ${p.blurb?`<p class="lux-blurb">${esc(p.blurb)}</p>`:''}
-        ${feats}
-      </div>
-    </article>`;
-  }).join('');
+ const showIntro=document.getElementById('showcaseIntro');
+ if(showIntro&&luxD&&luxD.intro)showIntro.textContent=luxD.intro;
+ const lxg=document.getElementById('luxuryGrid');
+ if(lxg)lxg.innerHTML=luxury.map((p,i)=>{
+ const cell=p.image
+ ? `<div class="lux-img"><img src="${esc(p.image)}" alt="${esc(p.address)}, ${esc(p.suburb)}" loading="lazy" onerror="this.closest('.lux-img').classList.add('lux-cover');this.remove()"><span class="lux-tag">${esc(p.tag||'North Shore')}</span></div>`
+ : `<div class="lux-img lux-cover"><span class="lux-tag">${esc(p.tag||'North Shore')}</span><span class="cov-suburb">${esc(p.suburb||'')}</span></div>`;
+ const feats=(Number(p.beds)>0||Number(p.baths)>0)
+ ? `<div class="lux-feats"><span>${esc(p.beds)} Bed</span><span>${esc(p.baths)} Bath</span><span>${esc(p.cars)} Car</span></div>` : '';
+ return `<article class="lux reveal d${(i%2)+1}">${cell}
+ <div class="lux-body">
+ <h3>${esc(p.address||'')}</h3>
+ <div class="meta">${esc(p.suburb||'')}</div>
+ ${p.blurb?`<p class="lux-blurb">${esc(p.blurb)}</p>`:''}
+ ${feats}
+ </div>
+ </article>`;
+ }).join('');
 
-  // ----- Reels (IG 9:16): uploaded MP4 or YouTube/Vimeo link -----
-  const ytId=u=>{const m=String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);return m?m[1]:null;};
-  const vimeoId=u=>{const m=String(u).match(/vimeo\.com\/(?:video\/)?(\d+)/);return m?m[1]:null;};
-  const rr=document.getElementById('reelRow');
-  if(rr)rr.innerHTML=reels.map((r,i)=>{
-    const cap=`<div class="cap"><h3>${esc(r.title||'')}</h3><div class="meta">${esc(r.suburb||'')}</div></div>`;
-    const poster=r.poster?`<img src="${esc(r.poster)}" alt="" loading="lazy">`:`<div class="ph">Reel ${i+1}<br>(9:16 video)</div>`;
-    if(r.videoFile){ // uploaded MP4 — autoplays muted/loop when in view (IG style)
-      return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>
-        <video src="${esc(r.videoFile)}" muted loop playsinline preload="metadata" ${r.poster?`poster="${esc(r.poster)}"`:''} data-autoplay></video></div>${cap}</div>`;
-    }
-    const yt=ytId(r.videoUrl),vm=vimeoId(r.videoUrl);
-    if(yt||vm){ // link — click to play
-      const embed=yt?`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`:`https://player.vimeo.com/video/${vm}?autoplay=1`;
-      return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>${poster}
-        <div class="play" data-embed="${esc(embed)}"><span class="btn-play"></span></div></div>${cap}</div>`;
-    }
-    return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>${poster}</div>${cap}</div>`;
-  }).join('');
-  // click-to-play for links
-  rr&&rr.querySelectorAll('.play[data-embed]').forEach(p=>p.addEventListener('click',()=>{
-    p.parentElement.innerHTML=`<iframe src="${p.dataset.embed}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
-  }));
-  // autoplay MP4 reels only while visible
-  const vids=rr?rr.querySelectorAll('video[data-autoplay]'):[];
-  if(vids.length){const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{});}else{v.pause();}}),{threshold:.5});vids.forEach(v=>vio.observe(v));}
+ // ----- Reels (IG 9:16): uploaded MP4 or YouTube/Vimeo link -----
+ const ytId=u=>{const m=String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);return m?m[1]:null;};
+ const vimeoId=u=>{const m=String(u).match(/vimeo\.com\/(?:video\/)?(\d+)/);return m?m[1]:null;};
+ const rr=document.getElementById('reelRow');
+ if(rr)rr.innerHTML=reels.map((r,i)=>{
+ const cap=`<div class="cap"><h3>${esc(r.title||'')}</h3><div class="meta">${esc(r.suburb||'')}</div></div>`;
+ const poster=r.poster?`<img src="${esc(r.poster)}" alt="" loading="lazy">`:`<div class="ph">Reel ${i+1}<br>(9:16 video)</div>`;
+ if(r.videoFile){ // uploaded MP4, autoplays muted/loop when in view (IG style)
+ return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>
+ <video src="${esc(r.videoFile)}" muted loop playsinline preload="metadata" ${r.poster?`poster="${esc(r.poster)}"`:''} data-autoplay></video></div>${cap}</div>`;
+ }
+ const yt=ytId(r.videoUrl),vm=vimeoId(r.videoUrl);
+ if(yt||vm){ // link, click to play
+ const embed=yt?`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`:`https://player.vimeo.com/video/${vm}?autoplay=1`;
+ return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>${poster}
+ <div class="play" data-embed="${esc(embed)}"><span class="btn-play"></span></div></div>${cap}</div>`;
+ }
+ return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>${poster}</div>${cap}</div>`;
+ }).join('');
+ // click-to-play for links
+ rr&&rr.querySelectorAll('.play[data-embed]').forEach(p=>p.addEventListener('click',()=>{
+ p.parentElement.innerHTML=`<iframe src="${p.dataset.embed}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+ }));
+ // autoplay MP4 reels only while visible
+ const vids=rr?rr.querySelectorAll('video[data-autoplay]'):[];
+ if(vids.length){const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{});}else{v.pause();}}),{threshold:.5});vids.forEach(v=>vio.observe(v));}
 
-  // ----- Off-market: render, filter, gate-unlock, viewing modal -----
-  const offSec=document.getElementById('offmarket');
-  const offGrid=document.getElementById('offGrid');
-  if(offGrid){
-    offGrid.innerHTML=offmkt.map((o,i)=>{
-      const ovl=`<span class="badge">Off-Market</span><span class="price">${esc(o.priceDisplay||'POA')}</span>`;
-      const cell=o.image
-        ? `<div class="img">${ovl}<img src="${esc(o.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`
-        : `<div class="img sold-cover">${ovl}<span class="cov-suburb">${esc((o.suburb||'').split(',')[0])}</span></div>`;
-      const feats=(Number(o.beds)>0||Number(o.baths)>0)
-        ? `<div class="feats"><span>${esc(o.beds)} Bed</span><span>${esc(o.baths)} Bath</span><span>${esc(o.cars)} Car</span></div>` : '';
-      return `<article class="card off-card reveal d${(i%3)+1}" data-i="${i}" data-price="${Number(o.priceValue)||0}" data-suburb="${esc(o.suburb||'')}" data-beds="${Number(o.beds)||0}" data-baths="${Number(o.baths)||0}">
-        ${cell}
-        <div class="body">
-          <h3>${esc(o.title||'Private Listing')}</h3>
-          <div class="meta">${esc(o.suburb||'')}</div>
-          ${feats}
-          ${o.blurb?`<div class="blurb">${esc(o.blurb)}</div>`:''}
-          <div class="req">Request a Private Viewing &rarr;</div>
-        </div>
-      </article>`;
-    }).join('') || '<div class="empty">No off-market listings right now — check back soon.</div>';
+ // ----- Off-market: render, filter, gate-unlock, viewing modal -----
+ const offSec=document.getElementById('offmarket');
+ const offGrid=document.getElementById('offGrid');
+ if(offGrid){
+ offGrid.innerHTML=offmkt.map((o,i)=>{
+ const ovl=`<span class="badge">Off-Market</span><span class="price">${esc(o.priceDisplay||'POA')}</span>`;
+ const cell=o.image
+ ? `<div class="img">${ovl}<img src="${esc(o.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`
+ : `<div class="img sold-cover">${ovl}<span class="cov-suburb">${esc((o.suburb||'').split(',')[0])}</span></div>`;
+ const feats=(Number(o.beds)>0||Number(o.baths)>0)
+ ? `<div class="feats"><span>${esc(o.beds)} Bed</span><span>${esc(o.baths)} Bath</span><span>${esc(o.cars)} Car</span></div>` : '';
+ return `<article class="card off-card reveal d${(i%3)+1}" data-i="${i}" data-price="${Number(o.priceValue)||0}" data-suburb="${esc(o.suburb||'')}" data-beds="${Number(o.beds)||0}" data-baths="${Number(o.baths)||0}">
+ ${cell}
+ <div class="body">
+ <h3>${esc(o.title||'Private Listing')}</h3>
+ <div class="meta">${esc(o.suburb||'')}</div>
+ ${feats}
+ ${o.blurb?`<div class="blurb">${esc(o.blurb)}</div>`:''}
+ <div class="req">Request a Private Viewing &rarr;</div>
+ </div>
+ </article>`;
+ }).join('') || '<div class="empty">No off-market listings right now, check back soon.</div>';
 
-    // filter options
-    const fLoc=document.getElementById('fLoc'),fMin=document.getElementById('fMin'),fMax=document.getElementById('fMax');
-    [...new Set(offmkt.map(o=>o.suburb).filter(Boolean))].sort().forEach(l=>fLoc.insertAdjacentHTML('beforeend',`<option value="${esc(l)}">${esc(l)}</option>`));
-    const bands=[1000000,1500000,2000000,2500000,3000000,3500000,4000000,5000000];
-    const fmt=v=>'$'+(v/1000000).toFixed(v%1000000?1:0)+'m';
-    bands.forEach(b=>{fMin.insertAdjacentHTML('beforeend',`<option value="${b}">${fmt(b)}</option>`);fMax.insertAdjacentHTML('beforeend',`<option value="${b}">${fmt(b)}</option>`);});
+ // filter options
+ const fLoc=document.getElementById('fLoc'),fMin=document.getElementById('fMin'),fMax=document.getElementById('fMax');
+ [...new Set(offmkt.map(o=>o.suburb).filter(Boolean))].sort().forEach(l=>fLoc.insertAdjacentHTML('beforeend',`<option value="${esc(l)}">${esc(l)}</option>`));
+ const bands=[1000000,1500000,2000000,2500000,3000000,3500000,4000000,5000000];
+ const fmt=v=>'$'+(v/1000000).toFixed(v%1000000?1:0)+'m';
+ bands.forEach(b=>{fMin.insertAdjacentHTML('beforeend',`<option value="${b}">${fmt(b)}</option>`);fMax.insertAdjacentHTML('beforeend',`<option value="${b}">${fmt(b)}</option>`);});
 
-    const cards=[...offGrid.querySelectorAll('.off-card')];
-    const offCount=document.getElementById('offCount');
-    function applyFilters(){
-      const loc=fLoc.value,mn=+fMin.value||0,mx=+fMax.value||Infinity,
-            bd=+document.getElementById('fBeds').value,ba=+document.getElementById('fBaths').value;
-      let n=0;
-      cards.forEach(c=>{const p=+c.dataset.price;
-        const ok=(!loc||c.dataset.suburb===loc)&&p>=mn&&p<=mx&&(+c.dataset.beds>=bd)&&(+c.dataset.baths>=ba);
-        c.style.display=ok?'':'none';if(ok)n++;});
-      if(offCount)offCount.textContent=n+(n===1?' property':' properties');
-    }
-    ['fLoc','fMin','fMax','fBeds','fBaths'].forEach(id=>document.getElementById(id).addEventListener('change',applyFilters));
-    applyFilters();
+ const cards=[...offGrid.querySelectorAll('.off-card')];
+ const offCount=document.getElementById('offCount');
+ function applyFilters(){
+ const loc=fLoc.value,mn=+fMin.value||0,mx=+fMax.value||Infinity,
+ bd=+document.getElementById('fBeds').value,ba=+document.getElementById('fBaths').value;
+ let n=0;
+ cards.forEach(c=>{const p=+c.dataset.price;
+ const ok=(!loc||c.dataset.suburb===loc)&&p>=mn&&p<=mx&&(+c.dataset.beds>=bd)&&(+c.dataset.baths>=ba);
+ c.style.display=ok?'':'none';if(ok)n++;});
+ if(offCount)offCount.textContent=n+(n===1?' property':' properties');
+ }
+ ['fLoc','fMin','fMax','fBeds','fBaths'].forEach(id=>document.getElementById(id).addEventListener('change',applyFilters));
+ applyFilters();
 
-    // viewing modal
-    const modal=document.getElementById('viewModal');
-    const closeModal=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');};
-    document.getElementById('viewClose').addEventListener('click',closeModal);
-    modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-    offGrid.addEventListener('click',e=>{
-      if(offSec.classList.contains('locked'))return;
-      const card=e.target.closest('.off-card');if(!card)return;
-      const o=offmkt[+card.dataset.i]||{};
-      document.getElementById('viewTitle').textContent='Private Viewing — '+(o.title||'Listing');
-      document.getElementById('viewSub').textContent=(o.suburb?o.suburb+' · ':'')+(o.priceDisplay||'');
-      const vf=document.getElementById('viewForm');vf.dataset.listing=(o.title||'Listing')+(o.suburb?' ('+o.suburb+')':'');
-      modal.classList.add('open');modal.setAttribute('aria-hidden','false');
-    });
-    const vf=document.getElementById('viewForm');
-    vf.addEventListener('submit',async e=>{
-      e.preventDefault();if(!vf.reportValidity())return;
-      const btn=document.getElementById('viewBtn'),msg=document.getElementById('viewMsg');
-      const fd=new FormData(vf);fd.append('Listing',vf.dataset.listing||'');
-      btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
-      const ok=await sendToInbox(fd,'Private viewing request — '+(vf.dataset.listing||''));
-      if(ok){msg.style.color='#1a7a3a';msg.textContent='Request sent — Harrison will be in touch to arrange your viewing.';vf.reset();btn.textContent='Sent ✓';setTimeout(closeModal,2600);setTimeout(()=>{btn.disabled=false;btn.textContent='Send Viewing Request';},2800);}
-      else{msg.style.color='#b00020';msg.innerHTML='Couldn’t send — please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> directly.';btn.disabled=false;btn.textContent='Send Viewing Request';}
-    });
+ // viewing modal
+ const modal=document.getElementById('viewModal');
+ const closeModal=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');};
+ document.getElementById('viewClose').addEventListener('click',closeModal);
+ modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+ offGrid.addEventListener('click',e=>{
+ if(offSec.classList.contains('locked'))return;
+ const card=e.target.closest('.off-card');if(!card)return;
+ const o=offmkt[+card.dataset.i]||{};
+ document.getElementById('viewTitle').textContent='Private Viewing, '+(o.title||'Listing');
+ document.getElementById('viewSub').textContent=(o.suburb?o.suburb+' · ':'')+(o.priceDisplay||'');
+ const vf=document.getElementById('viewForm');vf.dataset.listing=(o.title||'Listing')+(o.suburb?' ('+o.suburb+')':'');
+ modal.classList.add('open');modal.setAttribute('aria-hidden','false');
+ });
+ const vf=document.getElementById('viewForm');
+ vf.addEventListener('submit',async e=>{
+ e.preventDefault();if(!vf.reportValidity())return;
+ const btn=document.getElementById('viewBtn'),msg=document.getElementById('viewMsg');
+ const fd=new FormData(vf);fd.append('Listing',vf.dataset.listing||'');
+ btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
+ const ok=await sendToInbox(fd,'Private viewing request, '+(vf.dataset.listing||''));
+ if(ok){msg.style.color='#1a7a3a';msg.textContent='Request sent, Harrison will be in touch to arrange your viewing.';vf.reset();btn.textContent='Sent ✓';setTimeout(closeModal,2600);setTimeout(()=>{btn.disabled=false;btn.textContent='Send Viewing Request';},2800);}
+ else{msg.style.color='#b00020';msg.innerHTML='Couldn’t send, please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> directly.';btn.disabled=false;btn.textContent='Send Viewing Request';}
+ });
 
-    // gate / unlock
-    const UNLOCK_KEY='hcco_offmarket_unlocked';
-    if(localStorage.getItem(UNLOCK_KEY)==='yes')offSec.classList.remove('locked');
-    const gf=document.getElementById('gateForm');
-    gf.addEventListener('submit',async e=>{
-      e.preventDefault();if(!gf.reportValidity())return;
-      const btn=document.getElementById('gateBtn'),msg=document.getElementById('gateMsg');
-      const fd=new FormData(gf);
-      btn.disabled=true;btn.textContent='Unlocking…';msg.style.color='rgba(255,255,255,.75)';msg.textContent='';
-      await sendToInbox(fd,'Off-market access request — new lead');   // capture lead (best-effort)
-      localStorage.setItem(UNLOCK_KEY,'yes');                          // unlock so the visitor isn't trapped
-      offSec.classList.remove('locked');observeReveals();applyFilters();
-      setTimeout(()=>offSec.scrollIntoView({behavior:'smooth',block:'start'}),150);
-    });
-  }
+ // gate / unlock
+ const UNLOCK_KEY='hcco_offmarket_unlocked';
+ if(localStorage.getItem(UNLOCK_KEY)==='yes')offSec.classList.remove('locked');
+ const gf=document.getElementById('gateForm');
+ gf.addEventListener('submit',async e=>{
+ e.preventDefault();if(!gf.reportValidity())return;
+ const btn=document.getElementById('gateBtn'),msg=document.getElementById('gateMsg');
+ const fd=new FormData(gf);
+ btn.disabled=true;btn.textContent='Unlocking…';msg.style.color='rgba(255,255,255,.75)';msg.textContent='';
+ await sendToInbox(fd,'Off-market access request, new lead'); // capture lead (best-effort)
+ localStorage.setItem(UNLOCK_KEY,'yes'); // unlock so the visitor isn't trapped
+ offSec.classList.remove('locked');observeReveals();applyFilters();
+ setTimeout(()=>offSec.scrollIntoView({behavior:'smooth',block:'start'}),150);
+ });
+ }
 
-  // wire up reveals + counters after content is injected
-  observeReveals();
-  const statObserver=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animateCount(e.target,e.target.dataset.count);statObserver.unobserve(e.target);}});},{threshold:.6});
-  document.querySelectorAll('.stat [data-count]').forEach(el=>statObserver.observe(el));
+ // wire up reveals + counters after content is injected
+ observeReveals();
+ const statObserver=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){animateCount(e.target,e.target.dataset.count);statObserver.unobserve(e.target);}});},{threshold:.6});
+ document.querySelectorAll('.stat [data-count]').forEach(el=>statObserver.observe(el));
 })();
 
 // observe any reveals already in the static markup
 observeReveals();
 
 // ---------- Email sending (FormSubmit -> both inboxes) ----------
-const ENQUIRY_TO='harrison.cutfield@raywhite.com';   // primary recipient
-const ENQUIRY_CC='harrycutfield@gmail.com';          // copy
+const ENQUIRY_TO='harrison.cutfield@raywhite.com'; // primary recipient
+const ENQUIRY_CC='harrycutfield@gmail.com'; // copy
 // Shared sender used by the enquiry, off-market gate, and viewing forms.
 async function sendToInbox(fd,subject){
-  fd.append('_subject',subject);
-  fd.append('_cc',ENQUIRY_CC);
-  fd.append('_template','table');
-  fd.append('_captcha','false');
-  try{
-    const r=await fetch('https://formsubmit.co/ajax/'+ENQUIRY_TO,{method:'POST',headers:{'Accept':'application/json'},body:fd});
-    const j=await r.json().catch(()=>({}));
-    return r.ok&&(j.success==='true'||j.success===true);
-  }catch(e){return false;}
+ fd.append('_subject',subject);
+ fd.append('_cc',ENQUIRY_CC);
+ fd.append('_template','table');
+ fd.append('_captcha','false');
+ try{
+ const r=await fetch('https://formsubmit.co/ajax/'+ENQUIRY_TO,{method:'POST',headers:{'Accept':'application/json'},body:fd});
+ const j=await r.json().catch(()=>({}));
+ return r.ok&&(j.success==='true'||j.success===true);
+ }catch(e){return false;}
 }
 const ef=document.getElementById('enquiryForm');
 if(ef){
-  ef.addEventListener('submit',async(e)=>{
-    e.preventDefault();if(!ef.reportValidity())return;
-    const btn=document.getElementById('enquiryBtn'),msg=document.getElementById('enquiryMsg');
-    btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
-    const ok=await sendToInbox(new FormData(ef),'New website enquiry — Harrison Cutfield & Co');
-    if(ok){ef.reset();msg.style.color='#1a7a3a';msg.textContent='Thank you — your enquiry has been sent. Harrison will be in touch shortly.';btn.textContent='Sent ✓';}
-    else{msg.style.color='#b00020';msg.innerHTML='Sorry, something went wrong. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> directly.';btn.disabled=false;btn.textContent='Send Enquiry';}
-  });
+ ef.addEventListener('submit',async(e)=>{
+ e.preventDefault();if(!ef.reportValidity())return;
+ const btn=document.getElementById('enquiryBtn'),msg=document.getElementById('enquiryMsg');
+ btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
+ const ok=await sendToInbox(new FormData(ef),'New website enquiry, Harrison Cutfield & Co');
+ if(ok){ef.reset();msg.style.color='#1a7a3a';msg.textContent='Thank you, your enquiry has been sent. Harrison will be in touch shortly.';btn.textContent='Sent ✓';}
+ else{msg.style.color='#b00020';msg.innerHTML='Sorry, something went wrong. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> directly.';btn.disabled=false;btn.textContent='Send Enquiry';}
+ });
 }
 </script>
 </body>
