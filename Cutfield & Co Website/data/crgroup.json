@@ -1,0 +1,5 @@
+{
+  "_note": "Ray White CR Group recent sales and current listings used by the home page Compare tool. Do NOT include any selling or listing agent details. Leave the arrays empty to fall back to Harrison's own listings and sales so the tool always shows something. Each item: address, suburb, beds, baths, cars, price (listings) or soldDate (sales), priceValue (number), image.",
+  "sales": [],
+  "listings": []
+}

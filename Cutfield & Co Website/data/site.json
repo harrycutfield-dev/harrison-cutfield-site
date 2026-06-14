@@ -1,14 +1,26 @@
 {
   "about": [
-    "Harrison Cutfield & Co is a boutique real estate practice on Auckland's North Shore, built on a simple belief: a home this considered deserves to be sold with the same care it was lived in.",
-    "We don't do cookie cutter. Every campaign is bespoke, with sharp marketing, honest advice, and a small specialist team that shares one standard: doing right by every client.",
-    "The result is real estate that feels calm, confident and clear from first conversation to final signature, and a result that speaks quietly for itself."
+    "Harrison Cutfield and the team are part of Ray White on Auckland's North Shore, specialising in the marketing and sale of premium and luxury homes across Milford, Mairangi Bay and the surrounding coastline.",
+    "Backed by the reach and reputation of the Ray White network, every campaign is tailored to the individual home, with refined presentation, sharp marketing and clear, honest advice from the first conversation to the final signature.",
+    "The approach is simple: present beautiful homes at their very best, look after every client with genuine care and attention to detail, and deliver a result that speaks quietly for itself."
   ],
   "stats": [
-    { "num": "100+", "label": "Properties Sold" },
-    { "num": "$250m", "label": "Total Sales Value" },
-    { "num": "92%", "label": "Auction Clearance" },
-    { "num": "28", "label": "Days Avg. on Market" }
+    {
+      "num": "100+",
+      "label": "Properties Sold"
+    },
+    {
+      "num": "$250m",
+      "label": "Total Sales Value"
+    },
+    {
+      "num": "92%",
+      "label": "Auction Clearance"
+    },
+    {
+      "num": "28",
+      "label": "Days Avg. on Market"
+    }
   ],
   "portrait": "images/uploads/harrison.jpg",
   "heroImage": "images/uploads/hero.jpg",
@@ -21,5 +33,9 @@
     "instagram": "https://instagram.com/",
     "youtube": "https://youtube.com/",
     "linkedin": "https://linkedin.com/"
+  },
+  "analytics": {
+    "clarity": "",
+    "ga4": ""
   }
 }

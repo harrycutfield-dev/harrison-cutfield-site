@@ -1,45 +1,45 @@
 {
-  "intro": "A curated look at the calibre of homes that define the North Shore. These are representative residences from across the Ray White North Shore network — a sense of the coastline, the craftsmanship and the lifestyle this market is known for.",
-  "items": [
-    {
-      "address": "220 Lake Road",
-      "suburb": "Takapuna",
-      "tag": "For Sale · North Shore",
-      "beds": 4,
-      "baths": 4,
-      "cars": 7,
-      "blurb": "Timeless character meets modern luxury on a 1,047sqm freehold title, with uninterrupted Rangitoto views from nearly every room.",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/39bb-H3369272-163820483__1758065504-36357-79.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
-    },
-    {
-      "address": "92 Parr Terrace",
-      "suburb": "Castor Bay",
-      "tag": "Recently Sold · North Shore",
-      "beds": 5,
-      "baths": 2,
-      "cars": 2,
-      "blurb": "An architectural mid-century reawakening — mezzanine living, a culinary kitchen and a poolside entertainer's retreat in a coveted cul-de-sac.",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8031-H3405804-176327415__1763943685-38885-135098581-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
-    },
-    {
-      "address": "2B Park Rise",
-      "suburb": "Campbells Bay",
-      "tag": "Recently Sold · North Shore",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "blurb": "Coastal living dialled up — a sleek, low-maintenance home moments from Milford and Mairangi Bay beaches.",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3189-H3338426-156610467__1753316923-28243-1336657810-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
-    },
-    {
-      "address": "10C Marama Street",
-      "suburb": "Castor Bay",
-      "tag": "Recently Sold · North Shore",
-      "beds": 3,
-      "baths": 2,
-      "cars": 3,
-      "blurb": "A near-new coastal sanctuary with soaring ceilings, multiple alfresco zones and a glimpse of the sea and Rangitoto Island.",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8cee-H3290759-158391015__1754438115-190531-0110CMaramaStV2-copy.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
-    }
-  ]
+ "intro": "A curated look at the calibre of homes that define the North Shore. These are representative residences from across the Ray White North Shore network, a sense of the coastline, the craftsmanship and the lifestyle this market is known for.",
+ "items": [
+ {
+ "address": "220 Lake Road",
+ "suburb": "Takapuna",
+ "tag": "For Sale · North Shore",
+ "beds": 4,
+ "baths": 4,
+ "cars": 7,
+ "blurb": "Timeless character meets modern luxury on a 1,047sqm freehold title, with uninterrupted Rangitoto views from nearly every room.",
+ "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/39bb-H3369272-163820483__1758065504-36357-79.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+ },
+ {
+ "address": "92 Parr Terrace",
+ "suburb": "Castor Bay",
+ "tag": "Recently Sold · North Shore",
+ "beds": 5,
+ "baths": 2,
+ "cars": 2,
+ "blurb": "An architectural mid-century reawakening, mezzanine living, a culinary kitchen and a poolside entertainer's retreat in a coveted cul-de-sac.",
+ "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8031-H3405804-176327415__1763943685-38885-135098581-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+ },
+ {
+ "address": "2B Park Rise",
+ "suburb": "Campbells Bay",
+ "tag": "Recently Sold · North Shore",
+ "beds": 4,
+ "baths": 2,
+ "cars": 2,
+ "blurb": "Coastal living dialled up, a sleek, low-maintenance home moments from Milford and Mairangi Bay beaches.",
+ "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3189-H3338426-156610467__1753316923-28243-1336657810-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+ },
+ {
+ "address": "10C Marama Street",
+ "suburb": "Castor Bay",
+ "tag": "Recently Sold · North Shore",
+ "beds": 3,
+ "baths": 2,
+ "cars": 3,
+ "blurb": "A near-new coastal sanctuary with soaring ceilings, multiple alfresco zones and a glimpse of the sea and Rangitoto Island.",
+ "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8cee-H3290759-158391015__1754438115-190531-0110CMaramaStV2-copy.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+ }
+ ]
 }
