@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Recent Sales | Harrison Cutfield</title>
+<meta name="description" content="Recent sales, Harrison Cutfield, Ray White North Shore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--rw-yellow:#FFE512;--rw-yellow-deep:#F2D200;--ink:#141414;--ink-soft:#2b2b2b;--paper:#FAF8F2;--line:#e4e0d6;--muted:#5a5446;--maxw:1240px;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Montserrat',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(18,18,18,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:80px}
+.brand{font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--rw-yellow);text-decoration:none;letter-spacing:.5px}
+.back{display:inline-block;color:#fff;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:600;border:1px solid rgba(255,255,255,.4);padding:13px 24px;transition:.3s}
+.back:hover{background:var(--rw-yellow);color:var(--ink);border-color:var(--rw-yellow)}
+.head{text-align:center;padding:64px 0 36px}
+.head .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);font-weight:500}
+.head h1{font-family:var(--serif);font-size:clamp(38px,6vw,64px);font-weight:500;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:30px;padding-bottom:90px}
+.card{background:#fff;border:1px solid var(--line);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.card:hover{transform:translateY(-8px);box-shadow:0 28px 56px -30px rgba(0,0,0,.34)}
+.card .img{aspect-ratio:3/2;position:relative;overflow:hidden;background:linear-gradient(150deg,#1b1b18,#3a3a32)}
+.card .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s ease}
+.card:hover .img img{transform:scale(1.07)}
+.card .img.cover{display:grid;place-items:center}
+.card .cover-suburb{font-family:var(--serif);color:#fff;font-size:27px;font-weight:600;text-align:center;padding:0 18px}
+.card .price{position:absolute;top:16px;left:16px;background:var(--rw-yellow);font-weight:600;font-size:13px;letter-spacing:1px;padding:7px 14px;z-index:2}
+.card .status{position:absolute;top:16px;right:16px;background:var(--ink);color:#fff;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:7px 12px;z-index:2}
+.card .body{padding:24px}
+.card h3{font-family:var(--serif);font-size:23px;font-weight:600;margin-bottom:6px}
+.card .meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="brand" href="index.html">Harrison Cutfield</a><a class="back" href="index.html">&#8249; Back to home</a></div></header>
+<div class="wrap">
+ <div class="head"><span class="eyebrow">Track Record</span><h1>Recent Sales</h1></div>
+ <div class="grid" id="grid"><div class="empty">Loading sales…</div></div>
+</div>
+<script>
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const moneyNum=v=>{const m=String(v==null?'':v).replace(/,/g,'').match(/\$\s*(\d{4,})/);return m?+m[1]:0;};
+const salePrice=s=>Number(s.priceValue)||moneyNum(s.soldDate)||moneyNum(s.price)||0;
+async function load(f){try{const r=await fetch('data/'+f,{cache:'no-store'});if(!r.ok)throw 0;return await r.json();}catch(e){return null;}}
+(async()=>{
+ const site=await load('site.json')||{};
+ if(site.analytics){const A=site.analytics;
+ if(A.clarity){(function(c,l,a,r,i){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};var t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;var y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',A.clarity);}
+ if(A.ga4){var g=document.createElement('script');g.async=1;g.src='https://www.googletagmanager.com/gtag/js?id='+A.ga4;document.head.appendChild(g);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',A.ga4);}}
+ const d=await load('sales.json');const items=(d&&d.items)||[];
+ items.sort((a,b)=>salePrice(b)-salePrice(a));
+ const grid=document.getElementById('grid');
+ const card=s=>{const badges=`<span class="price">SOLD</span>${s.tag?`<span class="status">${esc(s.tag)}</span>`:''}`;
+ const cell=s.image?`<div class="img">${badges}<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`:`<div class="img cover">${badges}<span class="cover-suburb">${esc(s.suburb||'')}</span></div>`;
+ const meta=esc(s.suburb||'')+(s.soldDate?` &middot; Sold ${esc(s.soldDate)}`:'');
+ return `<article class="card">${cell}<div class="body"><h3>${esc(s.address||'')}</h3><div class="meta">${meta}</div></div></article>`;};
+ grid.innerHTML=items.length?items.map(card).join(''):'<div class="empty">No sales to show yet.</div>';
+})();
+</script>
+</body>
+</html>

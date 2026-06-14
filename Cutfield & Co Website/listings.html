@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>All Listings | Harrison Cutfield</title>
+<meta name="description" content="All current listings, Harrison Cutfield, Ray White North Shore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--rw-yellow:#FFE512;--rw-yellow-deep:#F2D200;--ink:#141414;--ink-soft:#2b2b2b;--paper:#FAF8F2;--line:#e4e0d6;--muted:#5a5446;--maxw:1240px;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Montserrat',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(18,18,18,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:80px}
+.brand{font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:var(--rw-yellow);text-decoration:none;letter-spacing:.5px}
+.back{display:inline-block;color:#fff;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:600;border:1px solid rgba(255,255,255,.4);padding:13px 24px;transition:.3s}
+.back:hover{background:var(--rw-yellow);color:var(--ink);border-color:var(--rw-yellow)}
+.head{text-align:center;padding:64px 0 26px}
+.head .eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);font-weight:500}
+.head h1{font-family:var(--serif);font-size:clamp(38px,6vw,64px);font-weight:500;margin-top:8px}
+.filter-bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:0 0 36px}
+.filter-bar select{padding:13px 16px;border:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.6px;min-width:150px;cursor:pointer}
+.filter-bar select:focus{outline:none;border-color:var(--ink)}
+.count{width:100%;text-align:center;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:30px;padding-bottom:90px}
+.card{background:#fff;border:1px solid var(--line);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s}
+.card:hover{transform:translateY(-8px);box-shadow:0 28px 56px -30px rgba(0,0,0,.34)}
+.card .img{aspect-ratio:3/2;position:relative;overflow:hidden;background:linear-gradient(150deg,#1b1b18,#3a3a32)}
+.card .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s ease}
+.card:hover .img img{transform:scale(1.07)}
+.card .price{position:absolute;top:16px;left:16px;background:var(--rw-yellow);font-weight:600;font-size:14px;letter-spacing:1px;padding:7px 14px}
+.card .status{position:absolute;top:16px;right:16px;background:var(--ink);color:#fff;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:7px 12px}
+.card .body{padding:24px}
+.card h3{font-family:var(--serif);font-size:23px;font-weight:600;margin-bottom:6px}
+.card .meta{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.card .feats{display:flex;gap:20px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-soft)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="brand" href="index.html">Harrison Cutfield</a><a class="back" href="index.html">&#8249; Back to home</a></div></header>
+<div class="wrap">
+ <div class="head"><span class="eyebrow">For Sale</span><h1>All Listings</h1></div>
+ <div class="filter-bar">
+ <select id="lLoc"><option value="">All Locations</option></select>
+ <select id="lBeds"><option value="0">Beds: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
+ <select id="lBaths"><option value="0">Baths: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
+ <select id="lMin"><option value="">Min Price</option></select>
+ <select id="lMax"><option value="">Max Price</option></select>
+ <div class="count" id="lCount"></div>
+ </div>
+ <div class="grid" id="grid"><div class="empty">Loading listings…</div></div>
+</div>
+<script>
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const moneyNum=v=>{const m=String(v==null?'':v).replace(/,/g,'').match(/\$\s*(\d{4,})/);return m?+m[1]:0;};
+const listPrice=l=>Number(l.priceValue)||moneyNum(l.price)||0;
+async function load(f){try{const r=await fetch('data/'+f,{cache:'no-store'});if(!r.ok)throw 0;return await r.json();}catch(e){return null;}}
+(async()=>{
+ const site=await load('site.json')||{};
+ if(site.analytics){const A=site.analytics;
+ if(A.clarity){(function(c,l,a,r,i){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};var t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;var y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script',A.clarity);}
+ if(A.ga4){var g=document.createElement('script');g.async=1;g.src='https://www.googletagmanager.com/gtag/js?id='+A.ga4;document.head.appendChild(g);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',A.ga4);}}
+ const d=await load('listings.json');const items=(d&&d.items)||[];
+ items.sort((a,b)=>listPrice(b)-listPrice(a));
+ const grid=document.getElementById('grid');
+ const card=l=>`<article class="card" data-suburb="${esc(l.suburb||'')}" data-beds="${Number(l.beds)||0}" data-baths="${Number(l.baths)||0}" data-price="${listPrice(l)}">
+ <div class="img">${l.price?`<span class="price">${esc(l.price)}</span>`:''}${l.method?`<span class="status">${esc(l.method)}</span>`:''}${l.image?`<img src="${esc(l.image)}" alt="" loading="lazy" onerror="this.remove()">`:''}</div>
+ <div class="body"><h3>${esc(l.address||'')}</h3><div class="meta">${esc(l.suburb||'')}</div>
+ <div class="feats"><span>${esc(l.beds)} Bed</span><span>${esc(l.baths)} Bath</span><span>${esc(l.cars)} Car</span></div></div></article>`;
+ grid.innerHTML=items.length?items.map(card).join(''):'<div class="empty">No listings available right now.</div>';
+ const lLoc=document.getElementById('lLoc'),lMin=document.getElementById('lMin'),lMax=document.getElementById('lMax'),lCount=document.getElementById('lCount');
+ [...new Set(items.map(l=>l.suburb).filter(Boolean))].sort().forEach(v=>lLoc.insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`));
+ const lfmt=v=>'$'+(v/1000000).toFixed(v%1000000?1:0)+'m';
+ [1000000,1500000,2000000,2500000,3000000,4000000,5000000].forEach(b=>{lMin.insertAdjacentHTML('beforeend',`<option value="${b}">${lfmt(b)}</option>`);lMax.insertAdjacentHTML('beforeend',`<option value="${b}">${lfmt(b)}</option>`);});
+ const cards=[...grid.querySelectorAll('.card')];
+ function apply(){const loc=lLoc.value,mn=+lMin.value||0,mx=+lMax.value||Infinity,bd=+document.getElementById('lBeds').value,ba=+document.getElementById('lBaths').value;let n=0;
+ cards.forEach(c=>{const p=+c.dataset.price,pk=p===0?true:(p>=mn&&p<=mx);const ok=(!loc||c.dataset.suburb===loc)&&pk&&(+c.dataset.beds>=bd)&&(+c.dataset.baths>=ba);c.style.display=ok?'':'none';if(ok)n++;});
+ lCount.textContent=n+(n===1?' listing':' listings');}
+ ['lLoc','lMin','lMax','lBeds','lBaths'].forEach(id=>document.getElementById(id).addEventListener('change',apply));apply();
+})();
+</script>
+</body>
+</html>
