@@ -59,12 +59,14 @@ async function load(f){try{const r=await fetch('data/'+f,{cache:'no-store'});if(
  const d=await load('sales.json');const items=(d&&d.items)||[];
  items.sort((a,b)=>salePrice(b)-salePrice(a));
  const grid=document.getElementById('grid');
- const card=s=>{const badges=`<span class="price">SOLD</span>${s.tag?`<span class="status">${esc(s.tag)}</span>`:''}`;
+ const card=(s,i)=>{const badges=`<span class="price">SOLD</span>${s.tag?`<span class="status">${esc(s.tag)}</span>`:''}`;
  const cell=s.image?`<div class="img">${badges}<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`:`<div class="img cover">${badges}<span class="cover-suburb">${esc(s.suburb||'')}</span></div>`;
  const meta=esc(s.suburb||'')+(s.soldDate?` &middot; Sold ${esc(s.soldDate)}`:'');
- return `<article class="card">${cell}<div class="body"><h3>${esc(s.address||'')}</h3><div class="meta">${meta}</div></div></article>`;};
+ return `<article class="card" data-i="${i}">${cell}<div class="body"><h3>${esc(s.address||'')}</h3><div class="meta">${meta}</div></div></article>`;};
  grid.innerHTML=items.length?items.map(card).join(''):'<div class="empty">No sales to show yet.</div>';
+ if(window.PropDetail)PropDetail.wireGrid(grid,items,'sale');
 })();
 </script>
+<script src="detail.js"></script>
 </body>
 </html>

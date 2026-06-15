@@ -141,7 +141,7 @@ async function sendToInbox(fd,subject){fd.append('_subject',subject);fd.append('
  const close=()=>{modal.classList.remove('open');};
  document.getElementById('vClose').addEventListener('click',close);
  modal.addEventListener('click',e=>{if(e.target===modal)close();});
- grid.addEventListener('click',e=>{if(wrap.classList.contains('locked'))return;const c=e.target.closest('.card');if(!c)return;const o=items[+c.dataset.i]||{};document.getElementById('vTitle').textContent='Private Viewing, '+(o.title||'Listing');document.getElementById('vSub').textContent=(o.suburb||'')+(o.priceDisplay?' · '+o.priceDisplay:'');vForm.dataset.listing=(o.title||'Listing')+(o.suburb?' ('+o.suburb+')':'');modal.classList.add('open');});
+ grid.addEventListener('click',e=>{if(wrap.classList.contains('locked'))return;const c=e.target.closest('.card');if(!c)return;const o=items[+c.dataset.i];if(o&&window.PropDetail)PropDetail.openDetail(o,'offmarket');});
  vForm.addEventListener('submit',async e=>{e.preventDefault();if(!vForm.reportValidity())return;const btn=document.getElementById('vBtn'),msg=document.getElementById('vMsg');const fd=new FormData(vForm);fd.append('Listing',vForm.dataset.listing||'');btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';const ok=await sendToInbox(fd,'Private viewing request, '+(vForm.dataset.listing||''));if(ok){msg.style.color='#1a7a3a';msg.textContent='Request received. Harrison will confirm your viewing time with the vendor and be in touch with you very soon.';vForm.reset();btn.textContent='Sent ✓';setTimeout(close,2400);setTimeout(()=>{btn.disabled=false;btn.textContent='Send Viewing Request';},2600);}else{msg.style.color='#b00020';msg.textContent='Could not send. Please email '+ENQUIRY_TO;btn.disabled=false;btn.textContent='Send Viewing Request';}});
 })();
 </script>
@@ -163,5 +163,6 @@ async function sendToInbox(fd,subject){fd.append('_subject',subject);fd.append('
  if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
 })();
 </script>
+<script src="detail.js"></script>
 </body>
 </html>

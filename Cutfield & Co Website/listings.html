@@ -70,7 +70,7 @@ async function load(f){try{const r=await fetch('data/'+f,{cache:'no-store'});if(
  const d=await load('listings.json');const items=(d&&d.items)||[];
  items.sort((a,b)=>listPrice(b)-listPrice(a));
  const grid=document.getElementById('grid');
- const card=l=>`<article class="card" data-suburb="${esc(l.suburb||'')}" data-beds="${Number(l.beds)||0}" data-baths="${Number(l.baths)||0}" data-price="${listPrice(l)}">
+ const card=(l,i)=>`<article class="card" data-i="${i}" data-suburb="${esc(l.suburb||'')}" data-beds="${Number(l.beds)||0}" data-baths="${Number(l.baths)||0}" data-price="${listPrice(l)}">
  <div class="img">${l.price?`<span class="price">${esc(l.price)}</span>`:''}${l.method?`<span class="status">${esc(l.method)}</span>`:''}${l.image?`<img src="${esc(l.image)}" alt="" loading="lazy" onerror="this.remove()">`:''}</div>
  <div class="body"><h3>${esc(l.address||'')}</h3><div class="meta">${esc(l.suburb||'')}</div>
  <div class="feats"><span>${esc(l.beds)} Bed</span><span>${esc(l.baths)} Bath</span><span>${esc(l.cars)} Car</span></div></div></article>`;
@@ -84,7 +84,9 @@ async function load(f){try{const r=await fetch('data/'+f,{cache:'no-store'});if(
  cards.forEach(c=>{const p=+c.dataset.price,pk=p===0?true:(p>=mn&&p<=mx);const ok=(!loc||c.dataset.suburb===loc)&&pk&&(+c.dataset.beds>=bd)&&(+c.dataset.baths>=ba);c.style.display=ok?'':'none';if(ok)n++;});
  lCount.textContent=n+(n===1?' listing':' listings');}
  ['lLoc','lMin','lMax','lBeds','lBaths'].forEach(id=>document.getElementById(id).addEventListener('change',apply));apply();
+ if(window.PropDetail)PropDetail.wireGrid(grid,items,'listing');
 })();
 </script>
+<script src="detail.js"></script>
 </body>
 </html>
