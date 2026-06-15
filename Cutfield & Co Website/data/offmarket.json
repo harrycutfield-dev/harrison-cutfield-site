@@ -8,7 +8,15 @@
       "beds": 3,
       "baths": 1,
       "cars": 2,
-      "image": ""
+      "image": "",
+      "detail": {
+        "description": "A private, off market opportunity in Forrest Hill. Three bedrooms, one bathroom and parking for two, in one of the North Shore's most tightly held school zones close to Milford and Takapuna. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      }
     },
     {
       "title": "1/23a Becroft Drive",
@@ -18,7 +26,15 @@
       "beds": 2,
       "baths": 1,
       "cars": 1,
-      "image": ""
+      "image": "",
+      "detail": {
+        "description": "A private, off market opportunity in Forrest Hill. A low maintenance two bedroom home in a sought after school zone, ideal for first home buyers, downsizers or investors. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      }
     },
     {
       "title": "8 Aberdeen Road",
@@ -28,7 +44,15 @@
       "beds": 5,
       "baths": 3,
       "cars": 6,
-      "image": ""
+      "image": "",
+      "detail": {
+        "description": "A private, off market opportunity in Campbells Bay. A substantial five bedroom, three bathroom home with parking for up to six, in a blue chip coastal suburb zoned for top North Shore schools and moments from the beach and reserve. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
+        "schools": {
+          "primary": "Campbells Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College"
+        }
+      }
     },
     {
       "title": "16 Madison Drive",
@@ -38,7 +62,15 @@
       "beds": 4,
       "baths": 2,
       "cars": 1,
-      "image": ""
+      "image": "",
+      "detail": {
+        "description": "A private, off market opportunity in Forrest Hill. A four bedroom, two bathroom family home in one of the North Shore's strongest school zones, close to parks, shops and the motorway. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      }
     }
   ]
 }

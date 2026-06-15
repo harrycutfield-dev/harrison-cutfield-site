@@ -5,42 +5,92 @@
       "suburb": "Forrest Hill, North Shore",
       "soldDate": "June 2026",
       "tag": "",
-      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1770850158205-Y0VUT80FEMBJ84J8ON1B/1358289730-328-17photoprint.jpg"
+      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1770850158205-Y0VUT80FEMBJ84J8ON1B/1358289730-328-17photoprint.jpg",
+      "detail": {
+        "description": "Sold by Harrison in June 2026. A Forrest Hill home in one of the North Shore's most tightly held suburbs, close to Milford and Takapuna and zoned for sought after schools. The sale price is available on request. Thinking of selling in Forrest Hill? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      }
     },
     {
       "address": "158 Upper Harbour Drive",
       "suburb": "Greenhithe",
       "soldDate": "December 2025 · $1,115,000",
       "tag": "",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/9ed5-H3415535-176812284__1764124616-69470-49158UpperHarbourDrive.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg"
+      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/9ed5-H3415535-176812284__1764124616-69470-49158UpperHarbourDrive.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg",
+      "detail": {
+        "soldPrice": "$1,115,000",
+        "description": "Sold by Harrison in December 2025 for $1,115,000. A Greenhithe home in a leafy, family friendly Upper Harbour setting, close to motorway links, the village and the marina. Thinking of selling in Greenhithe? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Greenhithe School",
+          "intermediate": "Albany Junior High School",
+          "secondary": "Albany Senior High School"
+        }
+      }
     },
     {
       "address": "1/57A Woodlands Crescent",
       "suburb": "Browns Bay",
       "soldDate": "October 2025 · $1,430,000",
       "tag": "",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3ab4-H3387216-167962663__1760477393-212141-311-57AWoodlandsCrescent.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg"
+      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3ab4-H3387216-167962663__1760477393-212141-311-57AWoodlandsCrescent.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg",
+      "detail": {
+        "soldPrice": "$1,430,000",
+        "description": "Sold by Harrison in October 2025 for $1,430,000. A Browns Bay home moments from the beach, village cafes and the Woodlands Crescent reserves, in a strong North Shore school zone. Thinking of selling in Browns Bay? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Browns Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College"
+        }
+      }
     },
     {
       "address": "12 Ringa Matau Road",
       "suburb": "Hobsonville",
       "soldDate": "August 2025",
       "tag": "",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/6017-H3346186-158487483__1754483186-119301-133806145-328-17photoprint.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg"
+      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/6017-H3346186-158487483__1754483186-119301-133806145-328-17photoprint.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg",
+      "detail": {
+        "description": "Sold by Harrison in August 2025. A Hobsonville home in a modern, master planned community close to the Hobsonville Point ferry, shops and waterfront walkways. The sale price is available on request. Thinking of selling in Hobsonville? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Hobsonville Point Primary School",
+          "intermediate": "Hobsonville Point Primary School (Years 1 to 8)",
+          "secondary": "Hobsonville Point Secondary School"
+        }
+      }
     },
     {
       "address": "10 Kenmure Avenue",
       "suburb": "Forrest Hill",
       "soldDate": "",
       "tag": "Sold Off-Market",
-      "image": ""
+      "image": "",
+      "detail": {
+        "description": "Sold by Harrison off market in Forrest Hill, with no public marketing campaign. A quiet, qualified sale to a buyer from Harrison's database. The sale price is available on request. Curious what a confidential, off market sale could achieve for your home? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      }
     },
     {
       "address": "2/26 Salem Place",
       "suburb": "Torbay",
       "soldDate": "",
       "tag": "Conjunctional Sale",
-      "image": ""
+      "image": "",
+      "detail": {
+        "description": "Sold by Harrison as a conjunctional sale in Torbay, a relaxed, coastal North Shore suburb known for its beach, village and walkways. The sale price is available on request. Thinking of selling in Torbay? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Torbay School",
+          "intermediate": "Northcross Intermediate",
+          "secondary": "Long Bay College"
+        }
+      }
     }
   ]
 }
