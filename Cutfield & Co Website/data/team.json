@@ -1,8 +1,8 @@
 {
   "items": [
-    { "name": "Harrison Cutfield", "role": "Principal · Licensee Salesperson", "photo": "images/uploads/harrison.jpg" },
-    { "name": "Team Member", "role": "Sales Associate", "photo": "" },
-    { "name": "Team Member", "role": "Marketing & Campaigns", "photo": "" },
-    { "name": "Team Member", "role": "Client Care", "photo": "" }
+    { "name": "Drew Miller", "role": "Licensed Real Estate Agent", "photo": "https://fastly.ratemyagent.co.nz/photo/acd8be67-9e87-45b3-9288-5d8735be1ac9.png?width=700&height=900&quality=90&format=auto&fit=crop" },
+    { "name": "Paige Field", "role": "Licensee Salesperson", "photo": "https://cdn6.ep.dynamics.net/s3/rw-media/memberphotos/9641b93d-3242-4efd-9df2-c586828e2324.jpg?width=700&height=900&mode=crop&scale=both&quality=90&_ext=.jpg" },
+    { "name": "Dane Smuts", "role": "Licensee Salesperson", "photo": "https://cdn6.ep.dynamics.net/s3/rw-media/memberphotos/47b5755d-922b-46c0-8aa2-f3eecf2fd315.png?width=700&height=900&mode=crop&scale=both&quality=90&_ext=.jpg" },
+    { "name": "Shane Crowle", "role": "Licensee Salesperson", "photo": "https://cdn6.ep.dynamics.net/s3/rw-media/memberphotos/3b8021b6-c59c-4bcf-862f-75b5775b639f.jpg?width=700&height=900&mode=crop&scale=both&quality=90&_ext=.jpg" }
   ]
 }
