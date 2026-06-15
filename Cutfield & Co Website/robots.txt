@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harrisoncutfield.co.nz/sitemap.xml

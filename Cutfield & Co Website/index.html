@@ -3,9 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harrison Cutfield | Ray White North Shore Real Estate</title>
-<meta name="description" content="Harrison Cutfield, Ray White. Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that speak quietly and clearly.">
+<title>Harrison Cutfield | Ray White Real Estate Agent, Milford & Mairangi Bay, North Shore Auckland</title>
+<meta name="description" content="Harrison Cutfield is a Ray White real estate agent specialising in premium and luxury homes across Milford, Mairangi Bay and the North Shore of Auckland. Considered marketing, sharp negotiation, and results that speak quietly and clearly.">
 <meta name="theme-color" content="#FFE512">
+<link rel="canonical" href="https://harrisoncutfield.co.nz/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Harrison Cutfield">
+<meta name="geo.region" content="NZ-AUK">
+<meta name="geo.placename" content="North Shore, Auckland">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Harrison Cutfield, Ray White">
+<meta property="og:title" content="Harrison Cutfield | Ray White Real Estate, North Shore Auckland">
+<meta property="og:description" content="Premium and luxury homes across Milford, Mairangi Bay and the North Shore. Considered marketing, sharp negotiation, results that speak for themselves.">
+<meta property="og:url" content="https://harrisoncutfield.co.nz/">
+<meta property="og:image" content="https://harrisoncutfield.co.nz/images/uploads/harrison.jpg">
+<meta property="og:locale" content="en_NZ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Harrison Cutfield | Ray White Real Estate, North Shore Auckland">
+<meta name="twitter:description" content="Premium and luxury homes across Milford, Mairangi Bay and the North Shore.">
+<meta name="twitter:image" content="https://harrisoncutfield.co.nz/images/uploads/harrison.jpg">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "RealEstateAgent",
+ "name": "Harrison Cutfield",
+ "image": "https://harrisoncutfield.co.nz/images/uploads/harrison.jpg",
+ "url": "https://harrisoncutfield.co.nz/",
+ "telephone": "+64211361955",
+ "email": "harrison.cutfield@raywhite.com",
+ "jobTitle": "Licensee Salesperson",
+ "worksFor": { "@type": "Organization", "name": "Ray White Mairangi Bay & Milford" },
+ "areaServed": ["Milford", "Mairangi Bay", "Castor Bay", "Campbells Bay", "Forrest Hill", "Takapuna", "Browns Bay", "North Shore, Auckland"],
+ "address": { "@type": "PostalAddress", "streetAddress": "425 Beach Road", "addressLocality": "Mairangi Bay", "addressRegion": "Auckland", "postalCode": "0630", "addressCountry": "NZ" },
+ "sameAs": [
+  "https://www.ratemyagent.co.nz/real-estate-agent/harrison-cutfield-bd890/sales/overview",
+  "https://rwmairangibay.co.nz/agents/harrison-cutfield/177558"
+ ]
+}
+</script>
 
 <!-- ============================================================= -->
 <!-- HARRISON CUTFIELD · Ray White · Corporate Identity -->
@@ -451,6 +487,8 @@ footer .brand .mark svg text{fill:#141414}
 .cmp-card .cb .ft{font-size:12px;letter-spacing:.5px;color:var(--ink-soft);margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
 .cmp-card .ci .cov{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);color:#fff;font-size:20px;font-weight:600;text-align:center;padding:0 14px}
 .cmp-note{text-align:center;color:var(--muted);font-size:13px;max-width:640px;margin:0 auto 22px;line-height:1.6}
+.cmp-card .cb .cmp-price-btn{margin-top:12px;background:none;border:0;padding:0;font-family:var(--sans);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--rw-yellow-deep);cursor:pointer;transition:.25s}
+.cmp-card .cb .cmp-price-btn:hover{color:var(--ink)}
 .cmp-disclaimer{text-align:center;max-width:680px;margin:30px auto 0;font-size:12.5px;line-height:1.6;color:var(--muted)}
 .cmp-cta{text-align:center;margin-top:22px}
 @media(max-width:760px){.cmp-row{grid-template-columns:1fr}}
@@ -1252,7 +1290,7 @@ async function sendToInbox(fd,subject){
 const enqModal=document.getElementById('enqModal');
 if(enqModal){
  const ef2=document.getElementById('enqForm'),eTitle=document.getElementById('enqTitle'),eSub=document.getElementById('enqSub'),eMsg=document.getElementById('enqMsg'),eBtn=document.getElementById('enqBtn');
- const openEnq=(ref,kind)=>{ef2.dataset.ref=ref||'';eTitle.textContent=(kind==='sale'?'Ask about this sale':'Enquire about this property');eSub.textContent=ref||'Send your details and Harrison will be in touch.';eMsg.textContent='';enqModal.classList.add('open');enqModal.setAttribute('aria-hidden','false');};
+ const openEnq=(ref,kind)=>{ef2.dataset.ref=ref||'';eTitle.textContent=(kind==='price'?'Request the sale price':(kind==='sale'?'Ask about this sale':'Enquire about this property'));eSub.textContent=(kind==='price'?'Send your details and Harrison will be in touch with the recent sale price for this property.':(ref||'Send your details and Harrison will be in touch.'));eMsg.textContent='';enqModal.classList.add('open');enqModal.setAttribute('aria-hidden','false');};
  const closeEnq=()=>{enqModal.classList.remove('open');enqModal.setAttribute('aria-hidden','true');};
  document.getElementById('enqClose').addEventListener('click',closeEnq);
  enqModal.addEventListener('click',e=>{if(e.target===enqModal)closeEnq();});
@@ -1276,7 +1314,7 @@ if(cmpForm){
  const inSub=(it,sub)=>!!sub&&norm(it.suburb).includes(norm(sub));
  const feat=x=>`${Number(x.beds)||0} Bed &middot; ${Number(x.baths)||0} Bath${Number(x.cars)?(' &middot; '+(Number(x.cars))+' Car'):''}`;
  const cov=x=>`<span class="cov">${esc(String(x.suburb||'').split(',')[0])}</span>`;
- const saleMini=s=>`<div class="cmp-card"><div class="ci"><span class="tg">Sold</span>${s.image?`<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()">`:cov(s)}</div><div class="cb"><h5>${esc(s.address||'')}</h5><div class="m">${esc(s.suburb||'')}${s.soldDate?' &middot; Sold '+esc(s.soldDate):''}</div><div class="ft">${feat(s)}</div></div></div>`;
+ const saleMini=s=>`<div class="cmp-card"><div class="ci"><span class="tg">Sold</span>${s.image?`<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()">`:cov(s)}</div><div class="cb"><h5>${esc(s.address||'')}</h5><div class="m">${esc(s.suburb||'')}${s.soldDate?' &middot; Sold '+esc(s.soldDate):''}</div><div class="ft">${feat(s)}</div><button type="button" class="enq-link cmp-price-btn" data-kind="price" data-ref="${esc('Sale price, '+(s.address||'')+', '+(s.suburb||''))}">Request sale price &#8250;</button></div></div>`;
  const listMini=l=>`<div class="cmp-card"><div class="ci"><span class="tg">${esc(l.method||'For Sale')}</span>${l.image?`<img src="${esc(l.image)}" alt="" loading="lazy" onerror="this.remove()">`:cov(l)}</div><div class="cb"><h5>${esc(l.address||'')}</h5><div class="m">${esc(l.suburb||'')} &middot; ${esc(l.price||'By Negotiation')}</div><div class="ft">${feat(l)}</div></div></div>`;
  const pick=(arr,sub,bd,ba)=>{let pool=sub?arr.filter(x=>inSub(x,sub)):arr.slice();const exact=pool.length>0;if(!pool.length)pool=arr.slice();const sc=x=>{let n=0;if(bd)n-=Math.abs((Number(x.beds)||0)-bd);if(ba)n-=Math.abs((Number(x.baths)||0)-ba)*0.5;return n;};pool=pool.map(x=>[sc(x),x]).sort((p,q)=>q[0]-p[0]).map(x=>x[1]).slice(0,3);return {items:pool,exact};};
  const group=(title,cards)=>`<div class="cmp-group"><h4>${title}</h4><div class="cmp-row">${cards.join('')}</div></div>`;
