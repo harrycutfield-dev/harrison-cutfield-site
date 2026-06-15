@@ -5,33 +5,30 @@
       "suburb": "Forrest Hill, North Shore",
       "priceValue": 1150000,
       "priceDisplay": "By Negotiation",
-      "beds": 0,
-      "baths": 0,
-      "cars": 0,
-      "image": "",
-      "blurb": "A tightly held address in the double Westlake zone, offered privately ahead of the market."
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "image": ""
     },
     {
       "title": "1/23a Becroft Drive",
       "suburb": "Forrest Hill, North Shore",
       "priceValue": 1050000,
       "priceDisplay": "By Negotiation",
-      "beds": 0,
-      "baths": 0,
-      "cars": 0,
-      "image": "",
-      "blurb": "Low-maintenance living in a sought-after, school-zoned pocket. Available off-market."
+      "beds": 2,
+      "baths": 1,
+      "cars": 1,
+      "image": ""
     },
     {
       "title": "8 Aberdeen Road",
       "suburb": "Campbells Bay",
       "priceValue": 2200000,
       "priceDisplay": "By Negotiation",
-      "beds": 0,
-      "baths": 0,
-      "cars": 0,
-      "image": "",
-      "blurb": "A substantial home on a generous site in blue-ribbon Campbells Bay, presented quietly."
+      "beds": 5,
+      "baths": 3,
+      "cars": 6,
+      "image": ""
     },
     {
       "title": "16 Madison Drive",
@@ -41,8 +38,7 @@
       "beds": 4,
       "baths": 2,
       "cars": 1,
-      "image": "",
-      "blurb": "Brand-new architectural living in elite school zones, a limited off-market release."
+      "image": ""
     }
   ]
 }

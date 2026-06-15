@@ -1,45 +1,95 @@
 {
  "intro": "A curated look at the calibre of homes that define the North Shore. These are representative residences from across the Ray White North Shore network, a sense of the coastline, the craftsmanship and the lifestyle this market is known for.",
  "items": [
- {
- "address": "220 Lake Road",
- "suburb": "Takapuna",
- "tag": "For Sale · North Shore",
- "beds": 4,
- "baths": 4,
- "cars": 7,
- "blurb": "Timeless character meets modern luxury on a 1,047sqm freehold title, with uninterrupted Rangitoto views from nearly every room.",
- "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/39bb-H3369272-163820483__1758065504-36357-79.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
- },
- {
- "address": "92 Parr Terrace",
- "suburb": "Castor Bay",
- "tag": "Recently Sold · North Shore",
- "beds": 5,
- "baths": 2,
- "cars": 2,
- "blurb": "An architectural mid-century reawakening, mezzanine living, a culinary kitchen and a poolside entertainer's retreat in a coveted cul-de-sac.",
- "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8031-H3405804-176327415__1763943685-38885-135098581-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
- },
- {
- "address": "2B Park Rise",
- "suburb": "Campbells Bay",
- "tag": "Recently Sold · North Shore",
- "beds": 4,
- "baths": 2,
- "cars": 2,
- "blurb": "Coastal living dialled up, a sleek, low-maintenance home moments from Milford and Mairangi Bay beaches.",
- "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3189-H3338426-156610467__1753316923-28243-1336657810-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
- },
- {
- "address": "10C Marama Street",
- "suburb": "Castor Bay",
- "tag": "Recently Sold · North Shore",
- "beds": 3,
- "baths": 2,
- "cars": 3,
- "blurb": "A near-new coastal sanctuary with soaring ceilings, multiple alfresco zones and a glimpse of the sea and Rangitoto Island.",
- "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8cee-H3290759-158391015__1754438115-190531-0110CMaramaStV2-copy.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
- }
+  {
+   "address": "220 Lake Road",
+   "suburb": "Takapuna",
+   "tag": "For Sale · North Shore",
+   "beds": 4,
+   "baths": 4,
+   "cars": 7,
+   "blurb": "Timeless character meets modern luxury on a 1,047sqm freehold title, with uninterrupted Rangitoto views from nearly every room.",
+   "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/39bb-H3369272-163820483__1758065504-36357-79.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+   "gallery": [
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/39bb-H3369272-163820483__1758065504-36357-79.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8fa0-H3369272-163820225__1758065432-24509-0.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8e2a-H3369272-163872088__1758075080-50552-2.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/66d2-H3369272-163858299__1758072348-54692-10.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/56cc-H3369272-163820229__1758065436-36216-15.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/0866-H3369272-163820233__1758065441-24454-23.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/a644-H3369272-163820237__1758065446-36883-30.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/2d77-H3369272-163820240__1758065448-36148-31.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/df4c-H3369272-163820243__1758065450-36286-32.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/ce12-H3369272-163820249__1758065453-24492-34.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/cdd5-H3369272-163820257__1758065455-24636-36.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/408a-H3369272-163820313__1758065457-36258-38.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+   ]
+  },
+  {
+   "address": "92 Parr Terrace",
+   "suburb": "Castor Bay",
+   "tag": "Recently Sold · North Shore",
+   "beds": 5,
+   "baths": 2,
+   "cars": 2,
+   "blurb": "An architectural mid-century reawakening, mezzanine living, a culinary kitchen and a poolside entertainer's retreat in a coveted cul-de-sac.",
+   "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8031-H3405804-176327415__1763943685-38885-135098581-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+   "gallery": [
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8031-H3405804-176327415__1763943685-38885-135098581-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/e169-H3405804-174481785__1762919037-68473-1350989641-328-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/da6c-H3405804-174483976__1762919349-69367-1350985814-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/5bce-H3405804-174483902__1762919331-69354-1350985811-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3fd8-H3405804-174489566__1762920353-85053-1350985817-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/501d-H3405804-174493120__1762921319-74610-135098583-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/29a4-H3405804-174493331__1762921372-74828-135098585-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/d9ff-H3405804-174493736__1762921581-88441-135098582-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/fd9d-H3405804-174500234__1762924415-82353-135098588-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/b108-H3405804-176328719__1763943787-52756-1350989636-328-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+   ]
+  },
+  {
+   "address": "2B Park Rise",
+   "suburb": "Campbells Bay",
+   "tag": "Recently Sold · North Shore",
+   "beds": 4,
+   "baths": 2,
+   "cars": 2,
+   "blurb": "Coastal living dialled up, a sleek, low-maintenance home moments from Milford and Mairangi Bay beaches.",
+   "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3189-H3338426-156610467__1753316923-28243-1336657810-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+   "gallery": [
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3189-H3338426-156610467__1753316923-28243-1336657810-325-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/481c-H3338426-156509676__1753244618-70136-133665781-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/6156-H3338426-156610462__1753316917-37195-1336657330-328-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3844-H3338426-156610464__1753316921-37220-1336657331-328-17photoprintedit.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/2eb2-H3338426-156509715__1753244627-70190-133665785-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/a939-H3338426-156514443__1753246161-64922-1336657324-328-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/b59c-H3338426-156514439__1753246159-64694-1336657325-328-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/0090-H3338426-156514436__1753246157-73636-1336657333-328-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/19ce-H3338426-156514422__1753246151-73576-1336657326-328-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/7e74-H3338426-156509771__1753244638-61213-1336657811-325-17photoprint.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+   ]
+  },
+  {
+   "address": "10C Marama Street",
+   "suburb": "Castor Bay",
+   "tag": "Recently Sold · North Shore",
+   "beds": 3,
+   "baths": 2,
+   "cars": 3,
+   "blurb": "A near-new coastal sanctuary with soaring ceilings, multiple alfresco zones and a glimpse of the sea and Rangitoto Island.",
+   "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8cee-H3290759-158391015__1754438115-190531-0110CMaramaStV2-copy.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+   "gallery": [
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/8cee-H3290759-158391015__1754438115-190531-0110CMaramaStV2-copy.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/996f-H3290759-158391019__1754438120-34988-0210CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/a42b-H3290759-158391021__1754438122-34842-0310CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/9285-H3290759-158391024__1754438124-34913-0410CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/f0a8-H3290759-158391048__1754438127-34975-0510CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/ef79-H3290759-158391051__1754438130-34935-0610CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/eb81-H3290759-158391056__1754438132-34902-0710CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/e5c0-H3290759-158391059__1754438135-35354-0810CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/d83c-H3290759-158391061__1754438137-34893-0910CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg",
+    "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/6168-H3290759-158391063__1754438139-25349-1010CMaramaStV2-.jpg?bgcolor=1b1b1b&height=1100&mode=crop&quality=85&scale=both&width=1600&_ext=.jpg"
+   ]
+  }
  ]
 }
