@@ -177,6 +177,12 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
 .sec-head .eyebrow{display:inline-block}
 .sec-head h2{font-size:clamp(30px,4vw,48px);margin-top:14px}
+/* scroll-in highlight box behind each section eyebrow (uniform) */
+.sec-head .eyebrow.gold{display:inline-block;position:relative;z-index:1;padding:7px 18px;color:var(--ink);overflow:hidden;transition:color .5s var(--ease)}
+.sec-head .eyebrow.gold::before{display:none}
+.sec-head .eyebrow.gold::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--rw-yellow);transform:scaleX(0);transform-origin:left center;transition:transform .8s var(--ease)}
+.sec-head.reveal.in .eyebrow.gold::after{transform:scaleX(1)}
+.team .sec-head .eyebrow.gold,.reels .sec-head .eyebrow.gold{color:var(--ink)}
 
 /* ---------- LISTINGS / SALES ---------- */
 .listings{padding:72px 0}
@@ -763,25 +769,6 @@ footer .brand .mark svg text{fill:#141414}
  </div></div>
 </section>
 
-<!-- ===================== MEET THE TEAM ===================== -->
-<section class="team" id="team">
- <div class="wrap">
- <div class="sec-head reveal">
- <span class="eyebrow gold">The Team</span>
- <h2>Meet the team.</h2>
- <p class="sec-sub">A specialist North Shore team, backed by the full reach and track record of Ray White CR Group.</p>
- </div>
- <div class="team-stats reveal">
- <div class="tstat"><div class="tnum">178<sup>*</sup></div><div class="tlbl">Homes Sold</div></div>
- <div class="tstat"><div class="tnum">$209M+<sup>*</sup></div><div class="tlbl">Total Sales Value</div></div>
- <div class="tstat"><div class="tnum">$41.5M<sup>*</sup></div><div class="tlbl">Sold, Last 24 Months</div></div>
- <div class="tstat"><div class="tnum">Top 100<sup>*</sup></div><div class="tlbl">RateMyAgent NZ Agent</div></div>
- </div>
- <div class="tgrid" id="teamGrid"></div>
- <p class="team-note reveal">Track record reflects results achieved across the team and Ray White CR Group partners. Figures sourced from homes.co.nz and RateMyAgent, current as at June 2026. Indicative of combined team and partner results, not individual, specific or guaranteed results. Substantiation available on request.</p>
- </div>
-</section>
-
 <!-- ===================== LUXURY SHOWCASE ===================== -->
 <section class="showcase" id="showcase">
  <div class="wrap">
@@ -889,6 +876,25 @@ footer .brand .mark svg text{fill:#141414}
  <button class="btn btn-solid" type="submit" id="enquiryBtn">Send Enquiry</button>
  <p id="enquiryMsg" style="margin-top:16px;font-size:14px;"></p>
  </form>
+ </div>
+</section>
+
+<!-- ===================== MEET THE TEAM ===================== -->
+<section class="team" id="team">
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">The Team</span>
+ <h2>Meet the team.</h2>
+ <p class="sec-sub">A specialist North Shore team, backed by the full reach and track record of Ray White CR Group.</p>
+ </div>
+ <div class="team-stats reveal">
+ <div class="tstat"><div class="tnum">178<sup>*</sup></div><div class="tlbl">Homes Sold</div></div>
+ <div class="tstat"><div class="tnum">$209M+<sup>*</sup></div><div class="tlbl">Total Sales Value</div></div>
+ <div class="tstat"><div class="tnum">$41.5M<sup>*</sup></div><div class="tlbl">Sold, Last 24 Months</div></div>
+ <div class="tstat"><div class="tnum">Top 100<sup>*</sup></div><div class="tlbl">RateMyAgent NZ Agent</div></div>
+ </div>
+ <div class="tgrid" id="teamGrid"></div>
+ <p class="team-note reveal">Track record reflects results achieved across the team and Ray White CR Group partners. Figures sourced from homes.co.nz and RateMyAgent, current as at June 2026. Indicative of combined team and partner results, not individual, specific or guaranteed results. Substantiation available on request.</p>
  </div>
 </section>
 
