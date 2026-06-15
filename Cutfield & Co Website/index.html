@@ -55,7 +55,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -67,8 +67,8 @@
  --paper-2:#FAF8F2;
  --line:#e3ddcf;
  --muted:#5a5446;
- --serif:'Cormorant Garamond', Georgia, serif;
- --sans:'Montserrat', -apple-system, 'Segoe UI', sans-serif;
+ --serif:'Playfair Display', Georgia, serif;
+ --sans:'Lato', -apple-system, 'Segoe UI', sans-serif;
  --maxw:1240px;
  --ease:cubic-bezier(.22,.61,.36,1);
 }
@@ -451,6 +451,8 @@ footer .brand .mark svg text{fill:#141414}
 .offmkt.compact{padding:72px 0}
 .offmkt.compact .sec-head{margin-bottom:34px}
 .offmkt.compact .off-wrap{min-height:0}
+.offmkt.compact.locked .off-wrap{min-height:640px}
+.offmkt.compact .off-gate{place-items:center}
 .offmkt.compact .off-grid{grid-template-columns:repeat(4,1fr);gap:20px}
 .offmkt.compact .off-card .body{padding:18px}
 .offmkt.compact .off-card h3{font-size:19px}
@@ -501,6 +503,7 @@ footer .brand .mark svg text{fill:#141414}
 .card .card-actions{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:18px}
 .card .enq-link,.card .view-link{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--rw-yellow-deep);background:none;border:0;padding:0;cursor:pointer;font-family:var(--sans)}
 .card .enq-link:hover,.card .view-link:hover{color:var(--ink)}
+.listing-card{cursor:pointer}
 .lightbox{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(8,8,8,.93);padding:30px}
 .lightbox.open{display:flex}
 .lightbox .lb-img{max-width:90vw;max-height:84vh;object-fit:contain;box-shadow:0 40px 100px -30px rgba(0,0,0,.8)}
@@ -891,7 +894,7 @@ footer .brand .mark svg text{fill:#141414}
  <div class="wrap">
  <div class="fgrid">
  <div>
- <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="600" letter-spacing="-7" fill="#141414">HC</text></svg></span><span class="name">Harrison Cutfield<small>Ray White</small></span></a>
+ <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="64" font-weight="700" letter-spacing="-4" fill="#141414">HC</text></svg></span><span class="name">Harrison Cutfield<small>Ray White</small></span></a>
  <p style="margin-top:18px;font-size:14px;max-width:300px;">Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that last.</p>
  <div class="socials" id="socials">
  <a href="#" aria-label="Facebook" data-soc="facebook">f</a>
@@ -1028,13 +1031,14 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  const track=car.querySelector('.carousel-track');if(!track)return;
  const step=()=>{const c=track.querySelector('.card');return c?c.getBoundingClientRect().width+30:380;};
  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
- let raf=null,hovering=false,down=false,sx=0,sl=0;
+ let raf=null,hovering=false,down=false,sx=0,sl=0,moved=false;
  let acc=0;const loop=()=>{const half=track.scrollWidth/2;acc+=0.175;const inc=Math.floor(acc);if(inc){acc-=inc;track.scrollLeft+=inc;if(half&&track.scrollLeft>=half)track.scrollLeft-=half;}raf=requestAnimationFrame(loop);};
  const play=()=>{if(reduce||raf||down||hovering)return;raf=requestAnimationFrame(loop);};
  const stop=()=>{if(raf){cancelAnimationFrame(raf);raf=null;}};
  car.querySelectorAll('.carousel-arrow').forEach(b=>b.addEventListener('click',()=>track.scrollBy({left:(+b.dataset.dir)*step(),behavior:'smooth'})));
- track.addEventListener('pointerdown',e=>{down=true;sx=e.clientX;sl=track.scrollLeft;track.classList.add('grabbing');try{track.setPointerCapture(e.pointerId);}catch(_){}stop();});
- track.addEventListener('pointermove',e=>{if(down)track.scrollLeft=sl-(e.clientX-sx);});
+ track.addEventListener('pointerdown',e=>{down=true;moved=false;sx=e.clientX;sl=track.scrollLeft;track.classList.add('grabbing');try{track.setPointerCapture(e.pointerId);}catch(_){}stop();});
+ track.addEventListener('pointermove',e=>{if(down){if(Math.abs(e.clientX-sx)>6)moved=true;track.scrollLeft=sl-(e.clientX-sx);}});
+ track.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;}},true);
  const endDrag=()=>{if(down){down=false;track.classList.remove('grabbing');play();}};
  track.addEventListener('pointerup',endDrag);track.addEventListener('pointercancel',endDrag);
  car.addEventListener('mouseenter',()=>{hovering=true;stop();});
@@ -1042,7 +1046,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  play();
  }
  const listingCard=l=>`
- <article class="card" data-suburb="${esc(l.suburb||'')}" data-beds="${Number(l.beds)||0}" data-baths="${Number(l.baths)||0}" data-price="${Number(l.priceValue)||0}">
+ <article class="card listing-card" data-suburb="${esc(l.suburb||'')}" data-beds="${Number(l.beds)||0}" data-baths="${Number(l.baths)||0}" data-price="${Number(l.priceValue)||0}" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}" data-kind="listing">
  ${imgCell(l.image,'Listing Image (3:2)',`<span class="price">${esc(l.price)}</span><span class="status">${esc(l.method)}</span>`)}
  <div class="body"><h3>${esc(l.address)}</h3><div class="meta">${esc(l.suburb)}</div>
  <div class="feats"><span>${esc(l.beds)} Bed</span><span>${esc(l.baths)} Bath</span><span>${esc(l.cars)} Car</span></div><div class="card-actions"><button class="enq-link" data-kind="listing" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}">Enquire</button><button class="view-link" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}">Book a viewing</button></div></div>
@@ -1299,6 +1303,7 @@ if(enqModal){
  document.getElementById('enqClose').addEventListener('click',closeEnq);
  enqModal.addEventListener('click',e=>{if(e.target===enqModal)closeEnq();});
  document.addEventListener('click',e=>{const b=e.target.closest('.enq-link');if(!b)return;e.preventDefault();openEnq(b.dataset.ref,b.dataset.kind);});
+ document.addEventListener('click',e=>{if(e.target.closest('.enq-link')||e.target.closest('.view-link'))return;const card=e.target.closest('.listing-card[data-ref]');if(!card)return;e.preventDefault();openEnq(card.dataset.ref,'listing');});
  ef2.addEventListener('submit',async e=>{e.preventDefault();if(!ef2.reportValidity())return;
  const fd=new FormData(ef2);const ref=ef2.dataset.ref||'';if(ref)fd.append('Property',ref);
  eBtn.disabled=true;eBtn.textContent='Sending…';eMsg.style.color='var(--muted)';eMsg.textContent='';
