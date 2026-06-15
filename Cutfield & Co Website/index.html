@@ -20,12 +20,15 @@
 <meta property="og:title" content="Harrison Cutfield | Ray White Real Estate, North Shore Auckland">
 <meta property="og:description" content="Premium and luxury homes across Milford, Mairangi Bay and the North Shore. Considered marketing, sharp negotiation, results that speak for themselves.">
 <meta property="og:url" content="https://harrisoncutfield.co.nz/">
-<meta property="og:image" content="https://harrisoncutfield.co.nz/images/uploads/harrison.jpg">
+<meta property="og:image" content="https://harrisoncutfield.co.nz/images/uploads/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Harrison Cutfield, Ray White Milford & Mairangi Bay, 021 136 1955">
 <meta property="og:locale" content="en_NZ">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Harrison Cutfield | Ray White Real Estate, North Shore Auckland">
 <meta name="twitter:description" content="Premium and luxury homes across Milford, Mairangi Bay and the North Shore.">
-<meta name="twitter:image" content="https://harrisoncutfield.co.nz/images/uploads/harrison.jpg">
+<meta name="twitter:image" content="https://harrisoncutfield.co.nz/images/uploads/og-card.jpg">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <script type="application/ld+json">
 {
@@ -963,6 +966,24 @@ footer .brand .mark svg text{fill:#141414}
  </div>
 </div></div>
 
+<!-- ===================== APPRAISAL THANK YOU POPUP ===================== -->
+<div class="modal" id="apprThanks" aria-hidden="true">
+ <div class="modal-card">
+ <button class="x" id="apprThanksClose" aria-label="Close">&times;</button>
+ <div class="thanks-ico">&#10003;</div>
+ <span class="eyebrow gold">Appraisal Request Received</span>
+ <h3>Thank you, your request is in.</h3>
+ <p class="ts-lead">Here is what happens next:</p>
+ <ol class="ts-steps">
+ <li>Harrison personally reviews your property details.</li>
+ <li>He will reach out by phone or email within one business day to discuss your appraisal further and arrange a time that suits.</li>
+ <li>You receive a considered, no-obligation appraisal and a clear plan for your home.</li>
+ </ol>
+ <p class="ts-call" id="apprThanksCall"></p>
+ <button class="btn btn-solid" id="apprThanksOk" style="width:100%;margin-top:10px">Close</button>
+ </div>
+</div>
+
 <!-- ===================== FOOTER ===================== -->
 <footer>
  <div class="wrap">
@@ -1196,6 +1217,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  else{acts+='<button class="btn btn-solid enq-link" data-kind="listing" data-ref="'+esc(ref)+'">Enquire</button>';acts+='<button class="btn view-link" data-ref="'+esc(ref)+'">Book a viewing</button>';}
  gid('pdActions').innerHTML=acts;
  propModal.classList.add('open');propModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+ if(window.gtag)gtag('event','property_view',{property:ref,property_kind:kind});
  }
  const closeProp=()=>{if(propModal){propModal.classList.remove('open');propModal.setAttribute('aria-hidden','true');document.body.style.overflow='';}};
  if(propModal){gid('pdClose').addEventListener('click',closeProp);propModal.addEventListener('click',e=>{if(e.target===propModal)closeProp();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProp();});}
@@ -1467,11 +1489,13 @@ if(ef){
  e.preventDefault();if(!ef.reportValidity())return;
  const btn=document.getElementById('enquiryBtn'),msg=document.getElementById('enquiryMsg');
  btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
- const ok=await sendToInbox(new FormData(ef),'New website enquiry, Harrison Cutfield');
- if(ok){const ph=(site&&site.phone)?String(site.phone):'';ef.innerHTML='<div class="thanks"><div class="thanks-ico">&#10003;</div><h3>Thank you, your request is in.</h3><p class="ts-lead">Here is what happens next:</p><ol class="ts-steps"><li>Harrison personally reviews your details.</li><li>He will call or email you within one business day to arrange a time that suits.</li><li>You receive a considered, no-obligation appraisal and a clear plan for your home.</li></ol>'+(ph?('<p class="ts-call">Prefer to talk now? Call <a href="tel:'+ph.replace(/\s/g,'')+'">'+ph+'</a>.</p>'):'')+'</div>';}
+ const ok=await sendToInbox(new FormData(ef),'Appraisal request, Harrison Cutfield');
+ if(ok){if(window.gtag)gtag('event','generate_lead',{lead_type:'appraisal'});ef.reset();msg.style.color='#1a7a3a';msg.textContent='Request sent.';btn.disabled=false;btn.textContent='Send Enquiry';var tm=document.getElementById('apprThanks');var ph=(site&&site.phone)?String(site.phone):'';var tc=document.getElementById('apprThanksCall');if(tc)tc.innerHTML=ph?('Prefer to talk now? Call <a href="tel:'+ph.replace(/\s/g,'')+'">'+ph+'</a>.'):'';if(tm){tm.classList.add('open');tm.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}}
  else{msg.style.color='#b00020';msg.innerHTML='Sorry, something went wrong. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> directly.';btn.disabled=false;btn.textContent='Send Enquiry';}
  });
 }
+const __at=document.getElementById('apprThanks');
+if(__at){const cl=()=>{__at.classList.remove('open');__at.setAttribute('aria-hidden','true');document.body.style.overflow='';};const x1=document.getElementById('apprThanksClose'),x2=document.getElementById('apprThanksOk');if(x1)x1.addEventListener('click',cl);if(x2)x2.addEventListener('click',cl);__at.addEventListener('click',e=>{if(e.target===__at)cl();});document.addEventListener('keydown',e=>{if(e.key==='Escape')cl();});}
 })();
 </script>
 <div class="modal" id="enqModal" aria-hidden="true">

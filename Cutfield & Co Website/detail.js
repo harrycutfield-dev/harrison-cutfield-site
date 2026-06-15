@@ -45,7 +45,8 @@
     + '.pdx-suggest{position:absolute;left:0;right:0;top:100%;z-index:60;background:#fff;border:1px solid var(--line,#e4e0d6);border-top:0;max-height:236px;overflow:auto;box-shadow:0 18px 40px -22px rgba(0,0,0,.45);text-align:left}'
     + '.pdx-suggest div{padding:10px 14px;font-size:13px;line-height:1.35;cursor:pointer;color:var(--ink,#141414);border-bottom:1px solid #f1eee5}'
     + '.pdx-suggest div:last-child{border-bottom:0}'
-    + '.pdx-suggest div:hover,.pdx-suggest div.active{background:var(--rw-yellow,#FFE512)}';
+    + '.pdx-suggest div:hover,.pdx-suggest div.active{background:var(--rw-yellow,#FFE512)}'
+    + '@media(max-width:560px){.pdx-two{grid-template-columns:1fr}.pdx-fcard{padding:34px 24px}}';
 
   var html = ''
     + '<div class="pdx-modal pdx-detail" id="pdxDetail" aria-hidden="true"><div class="pdx-card">'
@@ -120,6 +121,7 @@
     else { acts += '<button class="pdx-btn solid pdx-enq" data-kind="listing" data-ref="' + esc(ref) + '">Enquire</button>'; acts += '<button class="pdx-btn pdx-view" data-ref="' + esc(ref) + '">Book a viewing</button>'; }
     gid('pdxActions').innerHTML = acts;
     openModal(detail);
+    if (window.gtag) gtag('event', 'property_view', { property: ref, property_kind: kind });
   }
 
   function openEnq(ref, kind) {
@@ -162,7 +164,7 @@
     var fd = new FormData(f), ref = f.dataset.ref || ''; if (ref) fd.append('Property', ref);
     var btn = gid('pdxEnqBtn'), msg = gid('pdxEnqMsg'); btn.disabled = true; btn.textContent = 'Sending…'; msg.style.color = 'var(--muted,#5a5446)'; msg.textContent = '';
     var ok = await sendToInbox(fd, 'Property enquiry' + (ref ? ', ' + ref : ''));
-    if (ok) { msg.style.color = '#1a7a3a'; msg.textContent = 'Sent. Harrison will be in touch shortly.'; f.reset(); btn.textContent = 'Sent ✓'; setTimeout(function () { closeModal(enq); }, 2400); setTimeout(function () { btn.disabled = false; btn.textContent = 'Send Enquiry'; }, 2600); }
+    if (ok) { if (window.gtag) gtag('event', 'generate_lead', { property: ref, lead_type: 'enquiry' }); msg.style.color = '#1a7a3a'; msg.textContent = 'Sent. Harrison will be in touch shortly.'; f.reset(); btn.textContent = 'Sent ✓'; setTimeout(function () { closeModal(enq); }, 2400); setTimeout(function () { btn.disabled = false; btn.textContent = 'Send Enquiry'; }, 2600); }
     else { msg.style.color = '#b00020'; msg.innerHTML = 'Could not send, please email <a href="mailto:' + ENQUIRY_TO + '">' + ENQUIRY_TO + '</a>.'; btn.disabled = false; btn.textContent = 'Send Enquiry'; }
   });
   /* viewing submit */
@@ -171,7 +173,7 @@
     var fd = new FormData(f), ref = f.dataset.ref || ''; if (ref) fd.append('Listing', ref);
     var btn = gid('pdxViewBtn'), msg = gid('pdxViewMsg'); btn.disabled = true; btn.textContent = 'Sending…'; msg.style.color = 'var(--muted,#5a5446)'; msg.textContent = '';
     var ok = await sendToInbox(fd, 'Private viewing request' + (ref ? ', ' + ref : ''));
-    if (ok) { msg.style.color = '#1a7a3a'; msg.textContent = 'Request received. Harrison will confirm a time and be in touch very soon.'; f.reset(); btn.textContent = 'Sent ✓'; setTimeout(function () { closeModal(view); }, 2400); setTimeout(function () { btn.disabled = false; btn.textContent = 'Send Viewing Request'; }, 2600); }
+    if (ok) { if (window.gtag) gtag('event', 'schedule_viewing', { property: ref }); msg.style.color = '#1a7a3a'; msg.textContent = 'Request received. Harrison will confirm a time and be in touch very soon.'; f.reset(); btn.textContent = 'Sent ✓'; setTimeout(function () { closeModal(view); }, 2400); setTimeout(function () { btn.disabled = false; btn.textContent = 'Send Viewing Request'; }, 2600); }
     else { msg.style.color = '#b00020'; msg.innerHTML = 'Could not send, please email <a href="mailto:' + ENQUIRY_TO + '">' + ENQUIRY_TO + '</a>.'; btn.disabled = false; btn.textContent = 'Send Viewing Request'; }
   });
 

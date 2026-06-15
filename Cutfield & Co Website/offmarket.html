@@ -135,7 +135,7 @@ async function sendToInbox(fd,subject){fd.append('_subject',subject);fd.append('
  const wrap=document.getElementById('offWrap');
  const UNLOCK_KEY='hcco_offmarket_unlocked';
  try{if(localStorage.getItem(UNLOCK_KEY)==='yes')wrap.classList.remove('locked');}catch(_){ }
- document.getElementById('gateForm').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;if(!f.reportValidity())return;const btn=document.getElementById('gateBtn'),msg=document.getElementById('gateMsg');btn.disabled=true;btn.textContent='Unlocking…';msg.style.color='rgba(255,255,255,.75)';msg.textContent='';await sendToInbox(new FormData(f),'Off-market access request, new lead');try{localStorage.setItem(UNLOCK_KEY,'yes');}catch(_){ }var li=document.getElementById('lockIco');if(li)li.classList.add('open');setTimeout(()=>wrap.classList.remove('locked'),650);});
+ document.getElementById('gateForm').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;if(!f.reportValidity())return;const btn=document.getElementById('gateBtn'),msg=document.getElementById('gateMsg');btn.disabled=true;btn.textContent='Unlocking…';msg.style.color='rgba(255,255,255,.75)';msg.textContent='';await sendToInbox(new FormData(f),'Off-market access request, new lead');if(window.gtag)gtag('event','unlock_offmarket',{lead_type:'offmarket_access'});try{localStorage.setItem(UNLOCK_KEY,'yes');}catch(_){ }var li=document.getElementById('lockIco');if(li)li.classList.add('open');setTimeout(()=>wrap.classList.remove('locked'),650);});
 
  const modal=document.getElementById('viewModal'),vForm=document.getElementById('vForm');
  const close=()=>{modal.classList.remove('open');};
