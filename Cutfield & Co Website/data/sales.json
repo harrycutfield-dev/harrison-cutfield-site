@@ -1,6 +1,13 @@
 {
   "items": [
     {
+      "address": "45a Seine Road",
+      "suburb": "Forrest Hill, North Shore",
+      "soldDate": "June 2026",
+      "tag": "",
+      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1770850158205-Y0VUT80FEMBJ84J8ON1B/1358289730-328-17photoprint.jpg"
+    },
+    {
       "address": "158 Upper Harbour Drive",
       "suburb": "Greenhithe",
       "soldDate": "December 2025 · $1,115,000",
