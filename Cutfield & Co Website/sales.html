@@ -64,7 +64,7 @@ async function load(f){try{const r=await fetch('data/'+f,{cache:'no-store'});if(
  const meta=esc(s.suburb||'')+(s.soldDate?` &middot; Sold ${esc(s.soldDate)}`:'');
  return `<article class="card" data-i="${i}">${cell}<div class="body"><h3>${esc(s.address||'')}</h3><div class="meta">${meta}</div></div></article>`;};
  grid.innerHTML=items.length?items.map(card).join(''):'<div class="empty">No sales to show yet.</div>';
- if(window.PropDetail)PropDetail.wireGrid(grid,items,'sale');
+ (function wd(){if(window.PropDetail){PropDetail.wireGrid(grid,items,'sale');}else{setTimeout(wd,50);}})();
 })();
 </script>
 <script src="detail.js"></script>

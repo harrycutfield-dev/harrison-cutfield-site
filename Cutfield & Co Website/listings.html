@@ -84,7 +84,7 @@ async function load(f){try{const r=await fetch('data/'+f,{cache:'no-store'});if(
  cards.forEach(c=>{const p=+c.dataset.price,pk=p===0?true:(p>=mn&&p<=mx);const ok=(!loc||c.dataset.suburb===loc)&&pk&&(+c.dataset.beds>=bd)&&(+c.dataset.baths>=ba);c.style.display=ok?'':'none';if(ok)n++;});
  lCount.textContent=n+(n===1?' listing':' listings');}
  ['lLoc','lMin','lMax','lBeds','lBaths'].forEach(id=>document.getElementById(id).addEventListener('change',apply));apply();
- if(window.PropDetail)PropDetail.wireGrid(grid,items,'listing');
+ (function wd(){if(window.PropDetail){PropDetail.wireGrid(grid,items,'listing');}else{setTimeout(wd,50);}})();
 })();
 </script>
 <script src="detail.js"></script>
