@@ -183,6 +183,12 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .sec-head .eyebrow.gold::after{content:"";position:absolute;inset:0;z-index:-1;background:var(--rw-yellow);transform:scaleX(0);transform-origin:left center;transition:transform .8s var(--ease)}
 .sec-head.reveal.in .eyebrow.gold::after{transform:scaleX(1)}
 .team .sec-head .eyebrow.gold,.reels .sec-head .eyebrow.gold{color:var(--ink)}
+/* address autocomplete (self-fill) */
+.f{position:relative}
+.addr-suggest{position:absolute;left:0;right:0;top:100%;z-index:60;background:#fff;border:1px solid var(--line);border-top:0;max-height:236px;overflow:auto;box-shadow:0 18px 40px -22px rgba(0,0,0,.45);text-align:left}
+.addr-suggest div{padding:10px 14px;font-size:13px;line-height:1.35;cursor:pointer;color:var(--ink);border-bottom:1px solid #f1eee5}
+.addr-suggest div:last-child{border-bottom:0}
+.addr-suggest div:hover,.addr-suggest div.active{background:var(--rw-yellow)}
 
 /* ---------- LISTINGS / SALES ---------- */
 .listings{padding:72px 0}
@@ -694,7 +700,7 @@ footer .brand .mark svg text{fill:#141414}
  <form id="gateForm" novalidate>
  <div class="f"><label>Email</label><input type="email" name="Email" required placeholder="you@email.com"></div>
  <div class="f"><label>Mobile</label><input type="tel" name="Mobile" required pattern="[0-9+()\s-]{8,}" placeholder="021 234 5678"></div>
- <div class="f"><label>Address of property you own</label><input type="text" name="Own Property Address" placeholder="e.g. 12 Seaview Tce, Milford"></div>
+ <div class="f"><label>Address of property you own</label><input type="text" name="Own Property Address" class="addr-auto" autocomplete="street-address" required placeholder="Start typing your address…"></div>
  <div class="f"><label>When are you looking to buy?</label>
  <select name="Buying Timeframe" required>
  <option value="" disabled selected>Select…</option>
@@ -853,7 +859,7 @@ footer .brand .mark svg text{fill:#141414}
  <div class="reveal">
  <span class="eyebrow gold">Request an Appraisal</span>
  <h2>Let's talk about your move.</h2>
- <p class="lead">Whether you're thinking of selling, buying, or simply want a confidential chat about the market, I'd love to hear from you.</p>
+ <p class="lead">Whether you're thinking of selling, buying, or simply want a confidential chat about the market, I'd love to hear from you. Include your property address and I will come prepared with tailored, up to date insights for your home.</p>
  <div class="cinfo">
  <div class="row"><span class="k">✆</span><div><div class="lbl">Phone</div><div class="val" id="cPhone"></div></div></div>
  <div class="row"><span class="k">✉</span><div><div class="lbl">Email</div><div class="val" id="cEmail"></div></div></div>
@@ -865,14 +871,15 @@ footer .brand .mark svg text{fill:#141414}
  confirmation email to the Ray White address, click the link once to activate. -->
  <form id="enquiryForm" class="reveal d2">
  <div class="two">
- <div class="f"><label>First Name</label><input type="text" name="First Name" required></div>
- <div class="f"><label>Last Name</label><input type="text" name="Last Name" required></div>
+ <div class="f"><label>First Name</label><input type="text" name="First Name" autocomplete="given-name" required></div>
+ <div class="f"><label>Last Name</label><input type="text" name="Last Name" autocomplete="family-name" required></div>
  </div>
  <div class="two">
- <div class="f"><label>Email</label><input type="email" name="Email" required></div>
- <div class="f"><label>Phone</label><input type="tel" name="Phone"></div>
+ <div class="f"><label>Email</label><input type="email" name="Email" autocomplete="email" required></div>
+ <div class="f"><label>Mobile</label><input type="tel" name="Mobile" autocomplete="tel" required pattern="[0-9+()\s-]{8,}"></div>
  </div>
- <div class="f"><label>How can I help?</label><textarea name="Message" rows="5"></textarea></div>
+ <div class="f"><label>Property Address</label><input type="text" name="Property Address" class="addr-auto" autocomplete="street-address" required placeholder="Start typing your address…"></div>
+ <div class="f"><label>How can I help?</label><textarea name="Message" rows="4"></textarea></div>
  <button class="btn btn-solid" type="submit" id="enquiryBtn">Send Enquiry</button>
  <p id="enquiryMsg" style="margin-top:16px;font-size:14px;"></p>
  </form>
@@ -906,11 +913,12 @@ footer .brand .mark svg text{fill:#141414}
  <h3 id="viewTitle">Request a Private Viewing</h3>
  <div class="sub" id="viewSub">Confirm your details and preferred time, Harrison will be in touch to arrange access.</div>
  <form id="viewForm" novalidate>
- <div class="f"><label>Full Name</label><input type="text" name="Full Name" required></div>
+ <div class="f"><label>Full Name</label><input type="text" name="Full Name" autocomplete="name" required></div>
  <div class="two">
- <div class="f"><label>Email</label><input type="email" name="Email" required></div>
- <div class="f"><label>Phone</label><input type="tel" name="Phone" required pattern="[0-9+()\s-]{8,}"></div>
+ <div class="f"><label>Email</label><input type="email" name="Email" autocomplete="email" required></div>
+ <div class="f"><label>Mobile</label><input type="tel" name="Mobile" autocomplete="tel" required pattern="[0-9+()\s-]{8,}"></div>
  </div>
+ <div class="f"><label>Your Address</label><input type="text" name="Your Address" class="addr-auto" autocomplete="street-address" required placeholder="Start typing your address…"></div>
  <div class="two">
  <div class="f"><label>Preferred day</label><input type="date" name="Preferred Day" required></div>
  <div class="f"><label>Preferred time</label><input type="time" name="Preferred Time" required></div>
@@ -984,8 +992,8 @@ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.clas
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 // ---------- Scroll reveal (Opal-style) ----------
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15,rootMargin:'0px 0px -8% 0px'});
-const observeReveals=()=>document.querySelectorAll('.reveal:not(.in),.reveal-img:not(.in)').forEach(el=>io.observe(el));
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{e.target.classList.toggle('in',e.isIntersecting);});},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+const observeReveals=()=>document.querySelectorAll('.reveal,.reveal-img').forEach(el=>io.observe(el));
 
 // ---------- Animated stat counter ----------
 function animateCount(el,raw){
@@ -1393,9 +1401,10 @@ if(ef){
  <h3 id="enqTitle">Enquire about this property</h3>
  <div class="sub" id="enqSub">Send your details and Harrison will be in touch.</div>
  <form id="enqForm" novalidate>
- <div class="two"><div class="f"><label>Name</label><input type="text" name="Name" required></div><div class="f"><label>Phone</label><input type="tel" name="Phone"></div></div>
- <div class="f"><label>Email</label><input type="email" name="Email" required></div>
- <div class="f"><label>Message</label><textarea name="Message" rows="4"></textarea></div>
+ <div class="two"><div class="f"><label>Name</label><input type="text" name="Name" autocomplete="name" required></div><div class="f"><label>Mobile</label><input type="tel" name="Mobile" autocomplete="tel" required pattern="[0-9+()\s-]{8,}"></div></div>
+ <div class="f"><label>Email</label><input type="email" name="Email" autocomplete="email" required></div>
+ <div class="f"><label>Property Address</label><input type="text" name="Property Address" class="addr-auto" autocomplete="street-address" required placeholder="Start typing your address…"></div>
+ <div class="f"><label>Message</label><textarea name="Message" rows="3"></textarea></div>
  <button class="btn btn-solid" type="submit" id="enqBtn" style="width:100%">Send Enquiry</button>
  <p class="gate-msg" id="enqMsg" style="color:var(--muted)"></p>
  </form>
@@ -1408,5 +1417,23 @@ if(ef){
  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
  <div class="lb-cap" id="lbCap"></div>
 </div>
+<script>
+/* Address self-fill: free OpenStreetMap (Photon) autocomplete, NZ biased, no API key */
+(function(){
+ const label=p=>{const out=[];if(p.name&&!p.street)out.push(p.name);const l1=[p.housenumber,p.street].filter(Boolean).join(' ');if(l1)out.push(l1);const l2=[p.suburb||p.district,p.city,p.postcode].filter(Boolean).join(', ');if(l2)out.push(l2);return out.join(', ');};
+ function attach(inp){
+  if(inp.__addr)return;inp.__addr=1;
+  const wrap=inp.closest('.f')||inp.parentElement;let box=null,items=[],active=-1,t=null;
+  const close=()=>{if(box){box.remove();box=null;}items=[];active=-1;};
+  const render=list=>{close();if(!list.length)return;box=document.createElement('div');box.className='addr-suggest';list.forEach(txt=>{const d=document.createElement('div');d.textContent=txt;d.addEventListener('mousedown',e=>{e.preventDefault();inp.value=txt;close();});box.appendChild(d);});wrap.appendChild(box);items=[...box.children];};
+  const search=async q=>{try{const r=await fetch('https://photon.komoot.io/api/?q='+encodeURIComponent(q)+'&limit=6&lang=en&lat=-36.8&lon=174.76');const j=await r.json();const f=(j.features||[]).filter(x=>x.properties&&x.properties.countrycode==='NZ').map(x=>label(x.properties)).filter(Boolean);render([...new Set(f)]);}catch(_){close();}};
+  inp.addEventListener('input',()=>{const q=inp.value.trim();if(t)clearTimeout(t);if(q.length<3){close();return;}t=setTimeout(()=>search(q),280);});
+  inp.addEventListener('keydown',e=>{if(!box)return;if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,items.length-1);}else if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);}else if(e.key==='Enter'&&active>=0){e.preventDefault();inp.value=items[active].textContent;close();return;}else if(e.key==='Escape'){close();return;}else{return;}items.forEach((it,i)=>it.classList.toggle('active',i===active));});
+  inp.addEventListener('blur',()=>setTimeout(close,150));
+ }
+ const init=()=>document.querySelectorAll('input.addr-auto').forEach(attach);
+ if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
+})();
+</script>
 </body>
 </html>

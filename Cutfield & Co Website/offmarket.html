@@ -68,6 +68,11 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--p
 .modal-card label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .modal-card input{width:100%;padding:12px 14px;border:1px solid var(--line);font-family:var(--sans);font-size:14px}
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 0}
+.f{position:relative}
+.addr-suggest{position:absolute;left:0;right:0;top:100%;z-index:60;background:#fff;border:1px solid var(--line);border-top:0;max-height:236px;overflow:auto;box-shadow:0 18px 40px -22px rgba(0,0,0,.45);text-align:left}
+.addr-suggest div{padding:10px 14px;font-size:13px;line-height:1.35;cursor:pointer;color:var(--ink);border-bottom:1px solid #f1eee5}
+.addr-suggest div:last-child{border-bottom:0}
+.addr-suggest div:hover,.addr-suggest div.active{background:var(--rw-yellow)}
 </style>
 </head>
 <body>
@@ -83,9 +88,9 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--p
  <h3>See exclusive off-market listings</h3>
  <p>Homes you had no idea were for sale. These are not publicly available, enter your details to unlock them.</p>
  <form id="gateForm" novalidate>
- <div class="f"><label>Email</label><input type="email" name="Email" required placeholder="you@email.com"></div>
- <div class="f"><label>Mobile</label><input type="tel" name="Mobile" required pattern="[0-9+()\s-]{8,}" placeholder="021 234 5678"></div>
- <div class="f"><label>Address of property you own</label><input type="text" name="Own Property Address" placeholder="e.g. 12 Seaview Tce, Milford"></div>
+ <div class="f"><label>Email</label><input type="email" name="Email" autocomplete="email" required placeholder="you@email.com"></div>
+ <div class="f"><label>Mobile</label><input type="tel" name="Mobile" autocomplete="tel" required pattern="[0-9+()\s-]{8,}" placeholder="021 234 5678"></div>
+ <div class="f"><label>Address of property you own</label><input type="text" name="Own Property Address" class="addr-auto" autocomplete="street-address" required placeholder="Start typing your address…"></div>
  <div class="f"><label>When are you looking to buy?</label><select name="Buying Timeframe" required><option value="" disabled selected>Select…</option><option>Now</option><option>1 to 2 months</option><option>3 to 6 months</option><option>Longer</option></select></div>
  <button class="btn btn-solid" type="submit" id="gateBtn" style="width:100%">Unlock Access</button>
  <p class="msg" id="gateMsg"></p>
@@ -100,8 +105,9 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--p
  <h3 id="vTitle">Request a Private Viewing</h3>
  <div class="sub" id="vSub">Pick a day and time that suits. Harrison will confirm the viewing with the vendor and be in touch with you very soon.</div>
  <form id="vForm" novalidate>
- <div class="two"><div class="f"><label>Full Name</label><input name="Full Name" required></div><div class="f"><label>Phone</label><input name="Phone" type="tel" required></div></div>
- <div class="f"><label>Email</label><input name="Email" type="email" required></div>
+ <div class="two"><div class="f"><label>Full Name</label><input name="Full Name" autocomplete="name" required></div><div class="f"><label>Mobile</label><input name="Mobile" type="tel" autocomplete="tel" required pattern="[0-9+()\s-]{8,}"></div></div>
+ <div class="f"><label>Email</label><input name="Email" type="email" autocomplete="email" required></div>
+ <div class="f"><label>Your Address</label><input type="text" name="Your Address" class="addr-auto" autocomplete="street-address" required placeholder="Start typing your address…"></div>
  <div class="two"><div class="f"><label>Preferred Day</label><input name="Preferred Day" type="date"></div><div class="f"><label>Preferred Time</label><input name="Preferred Time" type="time"></div></div>
  <button class="btn btn-solid" type="submit" id="vBtn" style="width:100%">Send Viewing Request</button>
  <p class="msg" id="vMsg" style="color:var(--muted)"></p>
@@ -137,6 +143,24 @@ async function sendToInbox(fd,subject){fd.append('_subject',subject);fd.append('
  modal.addEventListener('click',e=>{if(e.target===modal)close();});
  grid.addEventListener('click',e=>{if(wrap.classList.contains('locked'))return;const c=e.target.closest('.card');if(!c)return;const o=items[+c.dataset.i]||{};document.getElementById('vTitle').textContent='Private Viewing, '+(o.title||'Listing');document.getElementById('vSub').textContent=(o.suburb||'')+(o.priceDisplay?' · '+o.priceDisplay:'');vForm.dataset.listing=(o.title||'Listing')+(o.suburb?' ('+o.suburb+')':'');modal.classList.add('open');});
  vForm.addEventListener('submit',async e=>{e.preventDefault();if(!vForm.reportValidity())return;const btn=document.getElementById('vBtn'),msg=document.getElementById('vMsg');const fd=new FormData(vForm);fd.append('Listing',vForm.dataset.listing||'');btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';const ok=await sendToInbox(fd,'Private viewing request, '+(vForm.dataset.listing||''));if(ok){msg.style.color='#1a7a3a';msg.textContent='Request received. Harrison will confirm your viewing time with the vendor and be in touch with you very soon.';vForm.reset();btn.textContent='Sent ✓';setTimeout(close,2400);setTimeout(()=>{btn.disabled=false;btn.textContent='Send Viewing Request';},2600);}else{msg.style.color='#b00020';msg.textContent='Could not send. Please email '+ENQUIRY_TO;btn.disabled=false;btn.textContent='Send Viewing Request';}});
+})();
+</script>
+<script>
+/* Address self-fill: free OpenStreetMap (Photon) autocomplete, NZ biased, no API key */
+(function(){
+ const label=p=>{const out=[];if(p.name&&!p.street)out.push(p.name);const l1=[p.housenumber,p.street].filter(Boolean).join(' ');if(l1)out.push(l1);const l2=[p.suburb||p.district,p.city,p.postcode].filter(Boolean).join(', ');if(l2)out.push(l2);return out.join(', ');};
+ function attach(inp){
+  if(inp.__addr)return;inp.__addr=1;
+  const wrap=inp.closest('.f')||inp.parentElement;let box=null,items=[],active=-1,t=null;
+  const close=()=>{if(box){box.remove();box=null;}items=[];active=-1;};
+  const render=list=>{close();if(!list.length)return;box=document.createElement('div');box.className='addr-suggest';list.forEach(txt=>{const d=document.createElement('div');d.textContent=txt;d.addEventListener('mousedown',e=>{e.preventDefault();inp.value=txt;close();});box.appendChild(d);});wrap.appendChild(box);items=[...box.children];};
+  const search=async q=>{try{const r=await fetch('https://photon.komoot.io/api/?q='+encodeURIComponent(q)+'&limit=6&lang=en&lat=-36.8&lon=174.76');const j=await r.json();const f=(j.features||[]).filter(x=>x.properties&&x.properties.countrycode==='NZ').map(x=>label(x.properties)).filter(Boolean);render([...new Set(f)]);}catch(_){close();}};
+  inp.addEventListener('input',()=>{const q=inp.value.trim();if(t)clearTimeout(t);if(q.length<3){close();return;}t=setTimeout(()=>search(q),280);});
+  inp.addEventListener('keydown',e=>{if(!box)return;if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,items.length-1);}else if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);}else if(e.key==='Enter'&&active>=0){e.preventDefault();inp.value=items[active].textContent;close();return;}else if(e.key==='Escape'){close();return;}else{return;}items.forEach((it,i)=>it.classList.toggle('active',i===active));});
+  inp.addEventListener('blur',()=>setTimeout(close,150));
+ }
+ const init=()=>document.querySelectorAll('input.addr-auto').forEach(attach);
+ if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
 })();
 </script>
 </body>
