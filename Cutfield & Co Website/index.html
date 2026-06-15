@@ -256,6 +256,12 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .member h3{font-size:22px;font-weight:600}
 .member .role{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rw-yellow);margin-top:5px}
 .member .ph{color:#777;background:repeating-linear-gradient(45deg,#262626,#262626 14px,#2e2e2e 14px,#2e2e2e 28px)}
+.team-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:6px 0 48px;text-align:center}
+.team-stats .tnum{font-family:var(--serif);font-size:clamp(34px,4.6vw,52px);font-weight:500;color:var(--rw-yellow);line-height:1}
+.team-stats .tnum sup{font-size:.42em;top:-1.1em;color:rgba(255,255,255,.45);margin-left:2px}
+.team-stats .tlbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:10px}
+.team-note{max-width:880px;margin:42px auto 0;text-align:center;font-size:11px;line-height:1.7;color:rgba(255,255,255,.45)}
+@media(max-width:680px){.team-stats{grid-template-columns:1fr 1fr;gap:30px 16px}.tgrid{grid-template-columns:1fr 1fr}}
 
 /* ---------- CTA TILES ---------- */
 .tiles{padding:0}
@@ -570,6 +576,7 @@ footer .brand .mark svg text{fill:#141414}
  <a href="#showcase">Showcase</a>
  <a href="#method">The Method</a>
  <a href="#reels">Property Videos</a>
+ <a href="#team">Team</a>
  <a href="#compare" class="cta">What's My Home Worth?</a>
  </nav>
  <button class="menu-toggle" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -745,7 +752,7 @@ footer .brand .mark svg text{fill:#141414}
 <section class="reels" id="reels">
  <div class="wrap">
  <div class="sec-head reveal">
- <span class="eyebrow gold">Sold Stories</span>
+ <span class="eyebrow gold">Property Reels</span>
  <h2>Property Video Showcase</h2>
  </div>
  </div>
@@ -754,6 +761,25 @@ footer .brand .mark svg text{fill:#141414}
  <div class="reel-row" id="reelRow"></div>
  <button class="carousel-arrow next" data-dir="1" aria-label="Next">&#8250;</button>
  </div></div>
+</section>
+
+<!-- ===================== MEET THE TEAM ===================== -->
+<section class="team" id="team">
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">The Team</span>
+ <h2>Meet the team.</h2>
+ <p class="sec-sub">A specialist North Shore team, backed by the full reach and track record of Ray White CR Group.</p>
+ </div>
+ <div class="team-stats reveal">
+ <div class="tstat"><div class="tnum">178<sup>*</sup></div><div class="tlbl">Homes Sold</div></div>
+ <div class="tstat"><div class="tnum">$209M+<sup>*</sup></div><div class="tlbl">Total Sales Value</div></div>
+ <div class="tstat"><div class="tnum">$41.5M<sup>*</sup></div><div class="tlbl">Sold, Last 24 Months</div></div>
+ <div class="tstat"><div class="tnum">Top 100<sup>*</sup></div><div class="tlbl">RateMyAgent NZ Agent</div></div>
+ </div>
+ <div class="tgrid" id="teamGrid"></div>
+ <p class="team-note reveal">Track record reflects results achieved across the team and Ray White CR Group partners. Figures sourced from homes.co.nz and RateMyAgent, current as at June 2026. Indicative of combined team and partner results, not individual, specific or guaranteed results. Substantiation available on request.</p>
+ </div>
 </section>
 
 <!-- ===================== LUXURY SHOWCASE ===================== -->
@@ -1139,16 +1165,16 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  const cap=`<div class="cap"><h3>${esc(r.title||'')}</h3><div class="meta">${esc(r.suburb||'')}</div></div>`;
  const poster=r.poster?`<img src="${esc(r.poster)}" alt="" loading="lazy">`:`<div class="ph">Reel ${i+1}<br>(9:16 video)</div>`;
  if(r.videoFile){ // uploaded MP4, autoplays muted/loop when in view (IG style)
- return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>
+ return `<div class="reel reveal d${(i%4)+1}"><div class="frame">
  <video src="${esc(r.videoFile)}" muted loop playsinline preload="metadata" ${r.poster?`poster="${esc(r.poster)}"`:''} data-autoplay></video></div>${cap}</div>`;
  }
  const yt=ytId(r.videoUrl),vm=vimeoId(r.videoUrl);
  if(yt||vm){ // link, click to play
  const embed=yt?`https://www.youtube.com/embed/${yt}?autoplay=1&rel=0`:`https://player.vimeo.com/video/${vm}?autoplay=1`;
- return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>${poster}
+ return `<div class="reel reveal d${(i%4)+1}"><div class="frame">${poster}
  <div class="play" data-embed="${esc(embed)}"><span class="btn-play"></span></div></div>${cap}</div>`;
  }
- return `<div class="reel reveal d${(i%4)+1}"><div class="frame"><span class="badge">Sold</span>${poster}</div>${cap}</div>`;
+ return `<div class="reel reveal d${(i%4)+1}"><div class="frame">${poster}</div>${cap}</div>`;
  }).join('');
  // click-to-play for links
  rr&&rr.querySelectorAll('.play[data-embed]').forEach(p=>p.addEventListener('click',()=>{
