@@ -395,6 +395,8 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .cinfo .row .k{width:34px;height:34px;background:var(--rw-yellow);display:grid;place-items:center;flex:none;font-size:14px}
 .cinfo .row .lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .cinfo .row .val{font-size:16px}
+a.val{color:inherit;text-decoration:none;transition:color .25s var(--ease)}
+a.val:hover{color:var(--rw-yellow-deep)}
 form .f{margin-bottom:18px}
 form label{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 form input,form textarea{width:100%;padding:14px 16px;border:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:15px;font-weight:300;transition:border-color .3s}
@@ -769,9 +771,7 @@ footer .brand .mark svg text{fill:#141414}
  </div>
  </div>
  <div class="wrap"><div class="carousel reels-carousel reveal" id="reelsCarousel">
- <button class="carousel-arrow prev" data-dir="-1" aria-label="Previous">&#8249;</button>
  <div class="reel-row" id="reelRow"></div>
- <button class="carousel-arrow next" data-dir="1" aria-label="Next">&#8250;</button>
  </div></div>
 </section>
 
@@ -861,8 +861,8 @@ footer .brand .mark svg text{fill:#141414}
  <h2>Let's talk about your move.</h2>
  <p class="lead">Whether you're thinking of selling, buying, or simply want a confidential chat about the market, I'd love to hear from you. Include your property address and I will come prepared with tailored, up to date insights for your home.</p>
  <div class="cinfo">
- <div class="row"><span class="k">✆</span><div><div class="lbl">Phone</div><div class="val" id="cPhone"></div></div></div>
- <div class="row"><span class="k">✉</span><div><div class="lbl">Email</div><div class="val" id="cEmail"></div></div></div>
+ <div class="row"><span class="k">✆</span><div><div class="lbl">Phone</div><a class="val" id="cPhone" href="#"></a></div></div>
+ <div class="row"><span class="k">✉</span><div><div class="lbl">Email</div><a class="val" id="cEmail" href="#"></a></div></div>
  <div class="row"><span class="k">⌖</span><div><div class="lbl">Office</div><div class="val" id="cOffice"></div></div></div>
  </div>
  </div>
@@ -965,7 +965,7 @@ footer .brand .mark svg text{fill:#141414}
  <div>
  <h4>Contact</h4>
  <ul>
- <li id="fPhone"></li>
+ <li><a id="fPhone" href="#"></a></li>
  <li><a id="fEmail" href="#"></a></li>
  <li id="fOffice"></li>
  </ul>
@@ -1058,9 +1058,13 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  }
 
  const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v||'';};
- set('cPhone',site.phone);set('cEmail',site.email);set('cOffice',site.office);
- set('fPhone',site.phone);set('fOffice',site.office);set('agencyName',site.agencyName);
- const fe=document.getElementById('fEmail');if(fe&&site.email){fe.textContent=site.email;fe.href='mailto:'+site.email;}
+ set('cOffice',site.office);set('fOffice',site.office);set('agencyName',site.agencyName);
+ const telHref=p=>'tel:'+String(p||'').replace(/[^0-9+]/g,'');
+ const linkEl=(id,text,href)=>{const el=document.getElementById(id);if(el&&text){el.textContent=text;el.href=href;}};
+ linkEl('cPhone',site.phone,telHref(site.phone));
+ linkEl('cEmail',site.email,'mailto:'+(site.email||''));
+ linkEl('fPhone',site.phone,telHref(site.phone));
+ linkEl('fEmail',site.email,'mailto:'+(site.email||''));
  if(site.socials)document.querySelectorAll('#socials a[data-soc]').forEach(a=>{const u=site.socials[a.dataset.soc];if(u)a.href=u;else a.style.display='none';});
  }
 
@@ -1215,8 +1219,9 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  rr.addEventListener('pointerup',endR);rr.addEventListener('pointercancel',endR);
  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
  let t=null,resumeT=null;
- const adv=()=>{const max=rr.scrollWidth-rr.clientWidth-4;if(rr.scrollLeft>=max)rr.scrollTo({left:0,behavior:'smooth'});else rr.scrollBy({left:stepR(),behavior:'smooth'});};
- const playR=()=>{if(reduce||t)return;t=setInterval(adv,4200);};
+ const tween=(to,dur)=>{const from=rr.scrollLeft,d=to-from,t0=performance.now();(function st(now){const p=Math.min(1,(now-t0)/dur);const e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;rr.scrollLeft=from+d*e;focus();if(p<1)requestAnimationFrame(st);})(performance.now());};
+ const adv=()=>{const max=rr.scrollWidth-rr.clientWidth-4;tween(rr.scrollLeft>=max-2?0:rr.scrollLeft+stepR(),1600);};
+ const playR=()=>{if(reduce||t)return;t=setInterval(adv,6000);};
  const stopR=()=>{if(t){clearInterval(t);t=null;}};
  const pauseR=()=>{stopR();clearTimeout(resumeT);resumeT=setTimeout(playR,9000);};
  reelsCar.addEventListener('mouseenter',stopR);reelsCar.addEventListener('mouseleave',playR);
