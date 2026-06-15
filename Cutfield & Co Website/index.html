@@ -189,6 +189,25 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .addr-suggest div{padding:10px 14px;font-size:13px;line-height:1.35;cursor:pointer;color:var(--ink);border-bottom:1px solid #f1eee5}
 .addr-suggest div:last-child{border-bottom:0}
 .addr-suggest div:hover,.addr-suggest div.active{background:var(--rw-yellow)}
+/* property detail panel */
+.pdetail .pd-card{background:var(--paper);max-width:940px;width:100%;max-height:92vh;overflow:auto;position:relative;display:grid;grid-template-columns:1fr 1fr}
+.pdetail .x{position:absolute;top:10px;right:14px;font-size:30px;line-height:1;background:rgba(20,20,20,.45);width:38px;height:38px;border:0;border-radius:50%;color:#fff;cursor:pointer;z-index:4}
+.pd-media{position:relative;background:linear-gradient(150deg,#1b1b18,#3a3a32);min-height:340px}
+.pd-media img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.pd-media .pd-badge{position:absolute;top:16px;left:16px;z-index:2;background:var(--ink);color:var(--rw-yellow);font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;padding:7px 12px}
+.pd-body{padding:34px 34px 32px}
+.pd-body .pd-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.pd-body h3{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.12;margin-top:5px}
+.pd-price{font-family:var(--serif);font-size:23px;color:var(--rw-yellow-deep);font-weight:600;margin-top:14px}
+.pd-facts{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.5px;color:var(--ink-soft)}
+.pd-desc{font-size:14.5px;line-height:1.7;color:var(--ink-soft);white-space:pre-line}
+.pd-schools{margin-top:18px}
+.pd-schools h4{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rw-yellow-deep);margin-bottom:8px}
+.pd-schools .sc{font-size:13.5px;color:var(--ink-soft);margin-bottom:4px}
+.pd-schools .sc b{color:var(--ink);font-weight:600}
+.pd-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.pd-actions .btn{font-size:11px;padding:14px 24px}
+@media(max-width:760px){.pdetail .pd-card{grid-template-columns:1fr}.pd-media{min-height:260px;aspect-ratio:3/2}}
 
 /* ---------- LISTINGS / SALES ---------- */
 .listings{padding:72px 0}
@@ -523,7 +542,7 @@ footer .brand .mark svg text{fill:#141414}
 .card .card-actions{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:18px}
 .card .enq-link,.card .view-link{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--rw-yellow-deep);background:none;border:0;padding:0;cursor:pointer;font-family:var(--sans)}
 .card .enq-link:hover,.card .view-link:hover{color:var(--ink)}
-.listing-card{cursor:pointer}
+.listing-card,.sale-card{cursor:pointer}
 .lightbox{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(8,8,8,.93);padding:30px}
 .lightbox.open{display:flex}
 .lightbox .lb-img{max-width:90vw;max-height:84vh;object-fit:contain;box-shadow:0 40px 100px -30px rgba(0,0,0,.8)}
@@ -929,6 +948,21 @@ footer .brand .mark svg text{fill:#141414}
  </div>
 </div>
 
+<!-- ===================== PROPERTY DETAIL PANEL ===================== -->
+<div class="modal pdetail" id="propModal" aria-hidden="true"><div class="pd-card">
+ <button class="x" id="pdClose" aria-label="Close">&times;</button>
+ <div class="pd-media" id="pdMedia"></div>
+ <div class="pd-body">
+ <div class="pd-sub" id="pdSub"></div>
+ <h3 id="pdTitle"></h3>
+ <div class="pd-price" id="pdPrice"></div>
+ <div class="pd-facts" id="pdFacts"></div>
+ <div class="pd-desc" id="pdDesc"></div>
+ <div class="pd-schools" id="pdSchools"></div>
+ <div class="pd-actions" id="pdActions"></div>
+ </div>
+</div></div>
+
 <!-- ===================== FOOTER ===================== -->
 <footer>
  <div class="wrap">
@@ -1089,8 +1123,8 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  car.addEventListener('mouseleave',()=>{hovering=false;play();});
  play();
  }
- const listingCard=l=>`
- <article class="card listing-card" data-suburb="${esc(l.suburb||'')}" data-beds="${Number(l.beds)||0}" data-baths="${Number(l.baths)||0}" data-price="${Number(l.priceValue)||0}" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}" data-kind="listing">
+ const listingCard=(l,i)=>`
+ <article class="card listing-card" data-i="${i}" data-suburb="${esc(l.suburb||'')}" data-beds="${Number(l.beds)||0}" data-baths="${Number(l.baths)||0}" data-price="${Number(l.priceValue)||0}" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}" data-kind="listing">
  ${imgCell(l.image,'Listing Image (3:2)',`<span class="price">${esc(l.price)}</span><span class="status">${esc(l.method)}</span>`)}
  <div class="body"><h3>${esc(l.address)}</h3><div class="meta">${esc(l.suburb)}</div>
  <div class="feats"><span>${esc(l.beds)} Bed</span><span>${esc(l.baths)} Bath</span><span>${esc(l.cars)} Car</span></div><div class="card-actions"><button class="enq-link" data-kind="listing" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}">Enquire</button><button class="view-link" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}">Book a viewing</button></div></div>
@@ -1119,17 +1153,53 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  initFlowCarousel(document.getElementById('listingsCarousel'));
 
  const sgr=document.getElementById('salesGrid');
- if(sgr){const scards=sales.map(s=>{
+ if(sgr){const scards=sales.map((s,i)=>{
  const badges=`<span class="price">SOLD</span>${s.tag?`<span class="status">${esc(s.tag)}</span>`:''}`;
  const cell=s.image
  ? `<div class="img">${badges}<img src="${esc(s.image)}" alt="" loading="lazy" onerror="this.remove()"></div>`
  : `<div class="img sold-cover">${badges}<span class="cov-suburb">${esc(s.suburb)}</span></div>`;
  const meta=esc(s.suburb)+(s.soldDate?` · Sold ${esc(s.soldDate)}`:'');
- return `<article class="card">${cell}
+ return `<article class="card sale-card" data-i="${i}">${cell}
  <div class="body"><h3>${esc(s.address)}</h3><div class="meta">${meta}</div><button class="enq-link" data-kind="sale" data-ref="${esc(s.address||'')}${s.suburb?', '+esc(s.suburb):''}">Ask about this sale</button></div>
  </article>`;
  }).join('');sgr.innerHTML=scards+scards;}
  initFlowCarousel(document.getElementById('salesCarousel'));
+
+ // ---------- Property detail panel ----------
+ const propModal=document.getElementById('propModal');
+ const gid=id=>document.getElementById(id);
+ function openDetail(item,kind){
+ if(!item||!propModal)return;
+ const ref=(item.address||'')+(item.suburb?', '+item.suburb:'');
+ const d=item.detail||{};
+ const img=(item.gallery&&item.gallery[0])||item.image||'';
+ const badge=kind==='sale'?'Sold':kind==='offmarket'?'Off-Market':(item.method||'For Sale');
+ gid('pdMedia').innerHTML='<span class="pd-badge">'+esc(badge)+'</span>'+(img?'<img src="'+esc(img)+'" alt="" onerror="this.remove()">':'');
+ gid('pdSub').textContent=item.suburb||'';
+ gid('pdTitle').textContent=item.address||'Private Listing';
+ let price='';
+ if(kind==='sale')price=d.soldPrice?('Sold for '+d.soldPrice):'Sold';
+ else if(kind==='offmarket')price=item.priceDisplay||'By Negotiation';
+ else price=(item.price||'By Negotiation')+(item.method?'   '+item.method:'');
+ gid('pdPrice').textContent=price;
+ const facts=[];if(+item.beds)facts.push(item.beds+' Bed');if(+item.baths)facts.push(item.baths+' Bath');if(+item.cars)facts.push(item.cars+' Car');if(d.floor)facts.push(d.floor);if(d.land)facts.push(d.land);if(d.year)facts.push('Built '+d.year);
+ gid('pdFacts').innerHTML=facts.map(f=>'<span>'+esc(f)+'</span>').join('');
+ gid('pdDesc').textContent=d.description||'';
+ const sc=d.schools||{},rows=[];
+ if(sc.primary)rows.push('<div class="sc"><b>Primary:</b> '+esc(sc.primary)+'</div>');
+ if(sc.intermediate)rows.push('<div class="sc"><b>Intermediate:</b> '+esc(sc.intermediate)+'</div>');
+ if(sc.secondary)rows.push('<div class="sc"><b>Secondary:</b> '+esc(sc.secondary)+'</div>');
+ gid('pdSchools').innerHTML=rows.length?('<h4>School Zones</h4>'+rows.join('')):'';
+ let acts='';
+ if(kind==='sale'){if(!d.soldPrice)acts+='<button class="btn btn-solid enq-link" data-kind="price" data-ref="'+esc('Sale price, '+ref)+'">Request sale price</button>';acts+='<button class="btn enq-link" data-kind="sale" data-ref="'+esc(ref)+'">Ask about this sale</button>';}
+ else if(kind==='offmarket'){acts+='<button class="btn btn-solid view-link" data-ref="'+esc(ref)+'">Request a viewing</button>';acts+='<button class="btn enq-link" data-kind="offmarket" data-ref="'+esc(ref)+'">Enquire</button>';}
+ else{acts+='<button class="btn btn-solid enq-link" data-kind="listing" data-ref="'+esc(ref)+'">Enquire</button>';acts+='<button class="btn view-link" data-ref="'+esc(ref)+'">Book a viewing</button>';}
+ gid('pdActions').innerHTML=acts;
+ propModal.classList.add('open');propModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+ }
+ const closeProp=()=>{if(propModal){propModal.classList.remove('open');propModal.setAttribute('aria-hidden','true');document.body.style.overflow='';}};
+ if(propModal){gid('pdClose').addEventListener('click',closeProp);propModal.addEventListener('click',e=>{if(e.target===propModal)closeProp();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProp();});}
+ document.addEventListener('click',e=>{if(e.target.closest('.enq-link')||e.target.closest('.view-link'))return;const lc=e.target.closest('#listingsCarousel .listing-card[data-i]');if(lc){e.preventDefault();openDetail(listings[+lc.dataset.i],'listing');return;}const scd=e.target.closest('#salesCarousel .sale-card[data-i]');if(scd){e.preventDefault();openDetail(sales[+scd.dataset.i],'sale');}});
 
  const rg=document.getElementById('reviewsGrid');
  if(rg){const cards=reviews.map(r=>`
@@ -1280,11 +1350,8 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  offGrid.addEventListener('click',e=>{
  if(offSec.classList.contains('locked'))return;
  const card=e.target.closest('.off-card');if(!card)return;
- const o=offmkt[+card.dataset.i]||{};
- document.getElementById('viewTitle').textContent='Private Viewing, '+(o.title||'Listing');
- document.getElementById('viewSub').textContent=(o.suburb?o.suburb+' · ':'')+(o.priceDisplay||'');
- const vf=document.getElementById('viewForm');vf.dataset.listing=(o.title||'Listing')+(o.suburb?' ('+o.suburb+')':'');
- modal.classList.add('open');modal.setAttribute('aria-hidden','false');
+ const src=offmkt[+card.dataset.i]||{};const o=Object.assign({},src);if(!o.address)o.address=o.title;
+ openDetail(o,'offmarket');
  });
  const vf=document.getElementById('viewForm');
  vf.addEventListener('submit',async e=>{
@@ -1298,7 +1365,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  });
 
  // listings: open the viewing calendar from a "Book a private viewing" link
- document.addEventListener('click',ev=>{const b=ev.target.closest('.view-link');if(!b)return;ev.preventDefault();const ref=b.dataset.ref||'Listing';vf.dataset.listing=ref;document.getElementById('viewTitle').textContent='Private Viewing, '+ref;document.getElementById('viewSub').textContent='Pick a day and time that suits. Harrison will confirm the viewing with the vendor and be in touch with you very soon.';modal.classList.add('open');modal.setAttribute('aria-hidden','false');});
+ document.addEventListener('click',ev=>{const b=ev.target.closest('.view-link');if(!b)return;ev.preventDefault();var pm=document.getElementById('propModal');if(pm){pm.classList.remove('open');document.body.style.overflow='';}const ref=b.dataset.ref||'Listing';vf.dataset.listing=ref;document.getElementById('viewTitle').textContent='Private Viewing, '+ref;document.getElementById('viewSub').textContent='Pick a day and time that suits. Harrison will confirm the viewing with the vendor and be in touch with you very soon.';modal.classList.add('open');modal.setAttribute('aria-hidden','false');});
 
  // gate / unlock, remembers the visitor so they do not re-enter details
  const UNLOCK_KEY='hcco_offmarket_unlocked';
@@ -1347,8 +1414,7 @@ if(enqModal){
  const closeEnq=()=>{enqModal.classList.remove('open');enqModal.setAttribute('aria-hidden','true');};
  document.getElementById('enqClose').addEventListener('click',closeEnq);
  enqModal.addEventListener('click',e=>{if(e.target===enqModal)closeEnq();});
- document.addEventListener('click',e=>{const b=e.target.closest('.enq-link');if(!b)return;e.preventDefault();openEnq(b.dataset.ref,b.dataset.kind);});
- document.addEventListener('click',e=>{if(e.target.closest('.enq-link')||e.target.closest('.view-link'))return;const card=e.target.closest('.listing-card[data-ref]');if(!card)return;e.preventDefault();openEnq(card.dataset.ref,'listing');});
+ document.addEventListener('click',e=>{const b=e.target.closest('.enq-link');if(!b)return;e.preventDefault();var pm=document.getElementById('propModal');if(pm){pm.classList.remove('open');document.body.style.overflow='';}openEnq(b.dataset.ref,b.dataset.kind);});
  ef2.addEventListener('submit',async e=>{e.preventDefault();if(!ef2.reportValidity())return;
  const fd=new FormData(ef2);const ref=ef2.dataset.ref||'';if(ref)fd.append('Property',ref);
  eBtn.disabled=true;eBtn.textContent='Sending…';eMsg.style.color='var(--muted)';eMsg.textContent='';
