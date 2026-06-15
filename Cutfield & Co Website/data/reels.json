@@ -1,8 +1,7 @@
 {
   "items": [
-    { "title": "Sold in 3 weeks", "suburb": "Milford", "videoUrl": "", "videoFile": "", "poster": "" },
-    { "title": "Record street price", "suburb": "Takapuna", "videoUrl": "", "videoFile": "", "poster": "" },
-    { "title": "Auction day", "suburb": "Castor Bay", "videoUrl": "", "videoFile": "", "poster": "" },
-    { "title": "Coastal living", "suburb": "Mairangi Bay", "videoUrl": "", "videoFile": "", "poster": "" }
+    { "title": "1/57A Woodlands Crescent", "suburb": "Browns Bay", "videoFile": "videos/woodlands.mp4", "poster": "videos/woodlands.jpg", "videoUrl": "" },
+    { "title": "504 Beach Road", "suburb": "Murrays Bay", "videoFile": "videos/beach-road.mp4", "poster": "videos/beach-road.jpg", "videoUrl": "" },
+    { "title": "26 Baltimore Place", "suburb": "Forrest Hill", "videoFile": "videos/baltimore.mp4", "poster": "videos/baltimore.jpg", "videoUrl": "" }
   ]
 }
