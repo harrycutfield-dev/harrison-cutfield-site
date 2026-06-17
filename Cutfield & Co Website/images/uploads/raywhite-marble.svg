@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" width="360" height="220" role="img" aria-label="Ray White">
+  <defs>
+    <linearGradient id="marble" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="0.45" stop-color="#efece6"/>
+      <stop offset="0.7" stop-color="#f6f4ef"/>
+      <stop offset="1" stop-color="#e7e3da"/>
+    </linearGradient>
+    <clipPath id="r"><rect x="0" y="0" width="360" height="220" rx="6"/></clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect x="0" y="0" width="360" height="220" fill="url(#marble)"/>
+    <!-- subtle marble veining -->
+    <g stroke="#d7d2c7" fill="none" stroke-linecap="round" opacity="0.7">
+      <path d="M-10 54 C 70 30, 150 92, 230 58 S 360 70, 380 40" stroke-width="2"/>
+      <path d="M-10 150 C 90 120, 150 188, 250 150 S 360 168, 380 138" stroke-width="1.4" opacity="0.55"/>
+      <path d="M40 -10 C 70 60, 30 120, 90 180 S 70 230, 110 250" stroke-width="1.2" opacity="0.4"/>
+      <path d="M300 -10 C 280 60, 330 110, 300 190" stroke-width="1.1" opacity="0.4"/>
+    </g>
+    <!-- Ray White wordmark -->
+    <text x="180" y="124" text-anchor="middle" font-family="'Lato','Helvetica Neue',Arial,sans-serif" font-weight="900" font-size="52" letter-spacing="-1.5" fill="#161616">Ray<tspan fill="#161616">White</tspan><tspan font-size="20" dy="-26">&#174;</tspan></text>
+  </g>
+</svg>
