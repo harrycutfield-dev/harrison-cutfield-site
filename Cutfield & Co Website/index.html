@@ -483,6 +483,17 @@ footer ul li a:hover{color:var(--rw-yellow)}
 footer .socials{display:flex;gap:14px;margin-top:18px}
 footer .socials a{width:36px;height:36px;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;font-size:12px;transition:.35s}
 footer .socials a:hover{background:var(--rw-yellow);color:var(--ink);border-color:var(--rw-yellow)}
+/* Enlarged footer brand / info block (bottom-left) */
+.fbrand{align-self:start}
+.fbrand .brand{gap:18px}
+.fbrand .brand .mark{width:66px;height:66px;font-size:30px}
+.fbrand .brand .name{font-size:33px}
+.fbrand .brand .name small{font-size:11px;letter-spacing:4px;margin-top:7px}
+.fbrand .fbio{margin-top:22px;font-size:17px;line-height:1.75;max-width:380px;color:rgba(255,255,255,.82)}
+.fbrand .socials{gap:16px;margin-top:26px}
+.fbrand .socials a{width:48px;height:48px;font-size:15px}
+.fbrand .rw-marble{display:block;margin-top:30px;width:240px;max-width:82%;border-radius:6px;box-shadow:0 16px 38px -18px rgba(0,0,0,.75)}
+@media(max-width:760px){.fbrand .brand .name{font-size:27px}.fbrand .brand .mark{width:58px;height:58px;font-size:26px}.fbrand .rw-marble{width:210px}}
 .legal{padding-top:28px;font-size:12px;line-height:1.8;color:rgba(255,255,255,.5)}
 .legal .top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:14px}
 .legal a:hover{color:var(--rw-yellow)}
@@ -1104,15 +1115,16 @@ footer .brand .mark svg text{fill:#141414}
 <footer>
  <div class="wrap">
  <div class="fgrid">
- <div>
+ <div class="fbrand">
  <a href="#top" class="brand"><span class="mark"><svg viewBox="0 0 120 120" aria-hidden="true"><text x="60" y="80" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="64" font-weight="700" letter-spacing="-4" fill="#141414">HC</text></svg></span><span class="name">Harrison Cutfield<small>Ray White</small></span></a>
- <p style="margin-top:18px;font-size:14px;max-width:300px;">Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that last.</p>
+ <p class="fbio">Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that last.</p>
  <div class="socials" id="socials">
  <a href="#" aria-label="Facebook" data-soc="facebook">f</a>
  <a href="#" aria-label="Instagram" data-soc="instagram">◎</a>
  <a href="#" aria-label="YouTube" data-soc="youtube">▶</a>
  <a href="#" aria-label="LinkedIn" data-soc="linkedin">in</a>
  </div>
+ <img class="rw-marble" src="images/uploads/raywhite-marble.svg" alt="Ray White" width="240" height="147" loading="lazy">
  </div>
  <div>
  <h4>Explore</h4>
