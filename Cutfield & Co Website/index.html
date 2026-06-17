@@ -726,6 +726,17 @@ footer .brand .mark svg text{fill:#141414}
 .getsocial .gs-btn svg{width:20px;height:20px;fill:currentColor;flex:0 0 auto}
 .getsocial .gs-btn:hover{background:var(--rw-yellow);color:var(--ink);border-color:var(--rw-yellow);transform:translateY(-3px)}
 @media(max-width:560px){.getsocial .gs-links{flex-direction:column;align-items:stretch;padding:0 28px}.getsocial .gs-btn{justify-content:center}}
+/* Dark marble texture on the dark sections (under a dark overlay for text legibility) */
+.stats,.team,.reels,.getsocial,footer{
+  background-color:#141310;
+  background-image:linear-gradient(180deg,rgba(17,16,13,.74),rgba(15,14,12,.84)),url("images/uploads/dark-marble.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.nc-panel{
+  background-color:#141310;
+  background-image:linear-gradient(180deg,rgba(17,16,13,.70),rgba(15,14,12,.82)),url("images/uploads/dark-marble.jpg");
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
 </style>
 <section class="getsocial reveal" id="getsocial">
  <div class="wrap">
