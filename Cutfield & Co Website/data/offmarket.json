@@ -37,24 +37,6 @@
       }
     },
     {
-      "title": "8 Aberdeen Road",
-      "suburb": "Campbells Bay",
-      "priceValue": 2200000,
-      "priceDisplay": "By Negotiation",
-      "beds": 5,
-      "baths": 3,
-      "cars": 6,
-      "image": "https://images.homes.co.nz/resize/fill/900/490/ce/0/plain/https://s3-ap-southeast-2.amazonaws.com/homes-listing-images/18134641172953699875",
-      "detail": {
-        "description": "A private, off market opportunity in Campbells Bay. A substantial five bedroom, three bathroom home with parking for up to six, in a blue chip coastal suburb zoned for top North Shore schools and moments from the beach and reserve. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
-        "schools": {
-          "primary": "Campbells Bay School",
-          "intermediate": "Murrays Bay Intermediate",
-          "secondary": "Rangitoto College"
-        }
-      }
-    },
-    {
       "title": "16 Madison Drive",
       "suburb": "Forrest Hill, North Shore",
       "priceValue": 1600000,

@@ -5,7 +5,7 @@
       "suburb": "Forrest Hill, North Shore",
       "soldDate": "June 2026",
       "tag": "",
-      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1770850158205-Y0VUT80FEMBJ84J8ON1B/1358289730-328-17photoprint.jpg",
+      "image": "images/uploads/listings/45a-seine-road/01.jpg",
       "detail": {
         "description": "Sold by Harrison in June 2026. A Forrest Hill home in one of the North Shore's most tightly held suburbs, close to Milford and Takapuna and zoned for sought after schools. The sale price is available on request. Thinking of selling in Forrest Hill? Contact Harrison for a free, no obligation appraisal.",
         "schools": {
@@ -13,14 +13,33 @@
           "intermediate": "Wairau Intermediate",
           "secondary": "Westlake Boys' and Westlake Girls' High School"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/45a-seine-road/01.jpg",
+        "images/uploads/listings/45a-seine-road/02.jpg",
+        "images/uploads/listings/45a-seine-road/03.jpg",
+        "images/uploads/listings/45a-seine-road/04.jpg",
+        "images/uploads/listings/45a-seine-road/05.jpg",
+        "images/uploads/listings/45a-seine-road/06.jpg",
+        "images/uploads/listings/45a-seine-road/07.jpg",
+        "images/uploads/listings/45a-seine-road/08.jpg",
+        "images/uploads/listings/45a-seine-road/09.jpg",
+        "images/uploads/listings/45a-seine-road/10.jpg",
+        "images/uploads/listings/45a-seine-road/11.jpg",
+        "images/uploads/listings/45a-seine-road/12.jpg",
+        "images/uploads/listings/45a-seine-road/13.jpg",
+        "images/uploads/listings/45a-seine-road/14.jpg",
+        "images/uploads/listings/45a-seine-road/15.jpg",
+        "images/uploads/listings/45a-seine-road/16.jpg",
+        "images/uploads/listings/45a-seine-road/17.jpg"
+      ]
     },
     {
       "address": "158 Upper Harbour Drive",
       "suburb": "Greenhithe",
       "soldDate": "December 2025 · $1,115,000",
       "tag": "",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/9ed5-H3415535-176812284__1764124616-69470-49158UpperHarbourDrive.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg",
+      "image": "images/uploads/listings/158-upper-harbour-drive/01.jpg",
       "detail": {
         "soldPrice": "$1,115,000",
         "description": "Sold by Harrison in December 2025 for $1,115,000. A Greenhithe home in a leafy, family friendly Upper Harbour setting, close to motorway links, the village and the marina. Thinking of selling in Greenhithe? Contact Harrison for a free, no obligation appraisal.",
@@ -29,14 +48,32 @@
           "intermediate": "Albany Junior High School",
           "secondary": "Albany Senior High School"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/158-upper-harbour-drive/01.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/02.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/03.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/04.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/05.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/06.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/07.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/08.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/09.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/10.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/11.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/12.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/13.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/14.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/15.jpg",
+        "images/uploads/listings/158-upper-harbour-drive/16.jpg"
+      ]
     },
     {
       "address": "1/57A Woodlands Crescent",
       "suburb": "Browns Bay",
       "soldDate": "October 2025 · $1,430,000",
       "tag": "",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/3ab4-H3387216-167962663__1760477393-212141-311-57AWoodlandsCrescent.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg",
+      "image": "images/uploads/listings/1-57a-woodlands-crescent/01.jpg",
       "detail": {
         "soldPrice": "$1,430,000",
         "description": "Sold by Harrison in October 2025 for $1,430,000. A Browns Bay home moments from the beach, village cafes and the Woodlands Crescent reserves, in a strong North Shore school zone. Thinking of selling in Browns Bay? Contact Harrison for a free, no obligation appraisal.",
@@ -45,14 +82,32 @@
           "intermediate": "Murrays Bay Intermediate",
           "secondary": "Rangitoto College"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/1-57a-woodlands-crescent/01.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/02.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/03.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/04.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/05.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/06.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/07.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/08.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/09.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/10.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/11.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/12.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/13.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/14.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/15.jpg",
+        "images/uploads/listings/1-57a-woodlands-crescent/16.jpg"
+      ]
     },
     {
       "address": "12 Ringa Matau Road",
       "suburb": "Hobsonville",
       "soldDate": "August 2025",
       "tag": "",
-      "image": "https://cdn6.ep.dynamics.net/s3/rw-propertyimages/6017-H3346186-158487483__1754483186-119301-133806145-328-17photoprint.jpg?maxheight=1600&maxwidth=1600&quality=90&scale=down&format=jpg",
+      "image": "images/uploads/listings/12-ringa-matau-road/01.jpg",
       "detail": {
         "description": "Sold by Harrison in August 2025. A Hobsonville home in a modern, master planned community close to the Hobsonville Point ferry, shops and waterfront walkways. The sale price is available on request. Thinking of selling in Hobsonville? Contact Harrison for a free, no obligation appraisal.",
         "schools": {
@@ -60,7 +115,74 @@
           "intermediate": "Hobsonville Point Primary School (Years 1 to 8)",
           "secondary": "Hobsonville Point Secondary School"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/12-ringa-matau-road/01.jpg",
+        "images/uploads/listings/12-ringa-matau-road/02.jpg",
+        "images/uploads/listings/12-ringa-matau-road/03.jpg",
+        "images/uploads/listings/12-ringa-matau-road/04.jpg",
+        "images/uploads/listings/12-ringa-matau-road/05.jpg",
+        "images/uploads/listings/12-ringa-matau-road/06.jpg",
+        "images/uploads/listings/12-ringa-matau-road/07.jpg",
+        "images/uploads/listings/12-ringa-matau-road/08.jpg",
+        "images/uploads/listings/12-ringa-matau-road/09.jpg",
+        "images/uploads/listings/12-ringa-matau-road/10.jpg",
+        "images/uploads/listings/12-ringa-matau-road/11.jpg",
+        "images/uploads/listings/12-ringa-matau-road/12.jpg",
+        "images/uploads/listings/12-ringa-matau-road/13.jpg",
+        "images/uploads/listings/12-ringa-matau-road/14.jpg",
+        "images/uploads/listings/12-ringa-matau-road/15.jpg",
+        "images/uploads/listings/12-ringa-matau-road/16.jpg",
+        "images/uploads/listings/12-ringa-matau-road/17.jpg",
+        "images/uploads/listings/12-ringa-matau-road/18.jpg",
+        "images/uploads/listings/12-ringa-matau-road/19.jpg",
+        "images/uploads/listings/12-ringa-matau-road/20.jpg",
+        "images/uploads/listings/12-ringa-matau-road/21.jpg",
+        "images/uploads/listings/12-ringa-matau-road/22.jpg",
+        "images/uploads/listings/12-ringa-matau-road/23.jpg",
+        "images/uploads/listings/12-ringa-matau-road/24.jpg"
+      ]
+    },
+    {
+      "address": "12 Kenmure Avenue",
+      "suburb": "Forrest Hill",
+      "soldDate": "May 2026",
+      "tag": "",
+      "image": "images/uploads/listings/12-kenmure-avenue/01.jpg",
+      "detail": {
+        "description": "Sold by Harrison in May 2026. A Forrest Hill home in one of the North Shore's most tightly held suburbs, close to Milford and Takapuna and zoned for sought after schools. The sale price is available on request. Thinking of selling in Forrest Hill? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      },
+      "gallery": [
+        "images/uploads/listings/12-kenmure-avenue/01.jpg",
+        "images/uploads/listings/12-kenmure-avenue/02.jpg",
+        "images/uploads/listings/12-kenmure-avenue/03.jpg",
+        "images/uploads/listings/12-kenmure-avenue/04.jpg",
+        "images/uploads/listings/12-kenmure-avenue/05.jpg",
+        "images/uploads/listings/12-kenmure-avenue/06.jpg",
+        "images/uploads/listings/12-kenmure-avenue/07.jpg",
+        "images/uploads/listings/12-kenmure-avenue/08.jpg",
+        "images/uploads/listings/12-kenmure-avenue/09.jpg",
+        "images/uploads/listings/12-kenmure-avenue/10.jpg",
+        "images/uploads/listings/12-kenmure-avenue/11.jpg",
+        "images/uploads/listings/12-kenmure-avenue/12.jpg",
+        "images/uploads/listings/12-kenmure-avenue/13.jpg",
+        "images/uploads/listings/12-kenmure-avenue/14.jpg",
+        "images/uploads/listings/12-kenmure-avenue/15.jpg",
+        "images/uploads/listings/12-kenmure-avenue/16.jpg",
+        "images/uploads/listings/12-kenmure-avenue/17.jpg",
+        "images/uploads/listings/12-kenmure-avenue/18.jpg",
+        "images/uploads/listings/12-kenmure-avenue/19.jpg",
+        "images/uploads/listings/12-kenmure-avenue/20.jpg",
+        "images/uploads/listings/12-kenmure-avenue/21.jpg",
+        "images/uploads/listings/12-kenmure-avenue/22.jpg",
+        "images/uploads/listings/12-kenmure-avenue/23.jpg",
+        "images/uploads/listings/12-kenmure-avenue/24.jpg"
+      ]
     },
     {
       "address": "10 Kenmure Avenue",
@@ -82,7 +204,7 @@
       "suburb": "Torbay",
       "soldDate": "",
       "tag": "Conjunctional Sale",
-      "image": "",
+      "image": "images/uploads/listings/2-26-salem-place/01.jpg",
       "detail": {
         "description": "Sold by Harrison as a conjunctional sale in Torbay, a relaxed, coastal North Shore suburb known for its beach, village and walkways. The sale price is available on request. Thinking of selling in Torbay? Contact Harrison for a free, no obligation appraisal.",
         "schools": {
@@ -90,7 +212,10 @@
           "intermediate": "Northcross Intermediate",
           "secondary": "Long Bay College"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/2-26-salem-place/01.jpg"
+      ]
     }
   ]
 }

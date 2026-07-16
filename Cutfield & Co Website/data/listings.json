@@ -1,6 +1,24 @@
 {
   "items": [
     {
+      "address": "8 Aberdeen Road",
+      "suburb": "Campbells Bay, North Shore",
+      "price": "By Negotiation",
+      "method": "For Sale",
+      "beds": 5,
+      "baths": 3,
+      "cars": 6,
+      "image": "https://images.homes.co.nz/resize/fill/900/490/ce/0/plain/https://s3-ap-southeast-2.amazonaws.com/homes-listing-images/18134641172953699875",
+      "detail": {
+        "description": "A substantial five bedroom home in blue chip Campbells Bay, with three bathrooms and parking for up to six vehicles. Campbells Bay is one of the North Shore's most sought after coastal suburbs, moments from the beach and reserve, and zoned for some of Auckland's strongest schools. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
+        "schools": {
+          "primary": "Campbells Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College"
+        }
+      }
+    },
+    {
       "address": "26 Baltimore Place",
       "suburb": "Forrest Hill, North Shore",
       "price": "By Negotiation",
@@ -8,7 +26,7 @@
       "beds": 4,
       "baths": 3,
       "cars": 4,
-      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1779226960875-PIX4XK9M1G2AELRE1KH8/6526BaltimorePlace.jpg",
+      "image": "images/uploads/listings/26-baltimore-place/01.jpg",
       "detail": {
         "description": "A substantial four bedroom home set on a quiet cul de sac in the heart of Forrest Hill. With three bathrooms and generous off street parking for up to four vehicles, the floor plan suits growing families and those who like to entertain. Forrest Hill is one of the North Shore's most tightly held pockets, prized for its proximity to Milford and Takapuna beaches, the motorway, and some of Auckland's strongest schools. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
         "schools": {
@@ -16,7 +34,43 @@
           "intermediate": "Wairau Intermediate",
           "secondary": "Westlake Boys' and Westlake Girls' High School"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/26-baltimore-place/01.jpg",
+        "images/uploads/listings/26-baltimore-place/02.jpg",
+        "images/uploads/listings/26-baltimore-place/03.jpg",
+        "images/uploads/listings/26-baltimore-place/04.jpg",
+        "images/uploads/listings/26-baltimore-place/05.jpg",
+        "images/uploads/listings/26-baltimore-place/06.jpg",
+        "images/uploads/listings/26-baltimore-place/07.jpg",
+        "images/uploads/listings/26-baltimore-place/08.jpg",
+        "images/uploads/listings/26-baltimore-place/09.jpg",
+        "images/uploads/listings/26-baltimore-place/10.jpg",
+        "images/uploads/listings/26-baltimore-place/11.jpg",
+        "images/uploads/listings/26-baltimore-place/12.jpg",
+        "images/uploads/listings/26-baltimore-place/13.jpg",
+        "images/uploads/listings/26-baltimore-place/14.jpg",
+        "images/uploads/listings/26-baltimore-place/15.jpg",
+        "images/uploads/listings/26-baltimore-place/16.jpg",
+        "images/uploads/listings/26-baltimore-place/17.jpg",
+        "images/uploads/listings/26-baltimore-place/18.jpg",
+        "images/uploads/listings/26-baltimore-place/19.jpg",
+        "images/uploads/listings/26-baltimore-place/20.jpg",
+        "images/uploads/listings/26-baltimore-place/21.jpg",
+        "images/uploads/listings/26-baltimore-place/22.jpg",
+        "images/uploads/listings/26-baltimore-place/23.jpg",
+        "images/uploads/listings/26-baltimore-place/24.jpg",
+        "images/uploads/listings/26-baltimore-place/25.jpg",
+        "images/uploads/listings/26-baltimore-place/26.jpg",
+        "images/uploads/listings/26-baltimore-place/27.jpg",
+        "images/uploads/listings/26-baltimore-place/28.jpg",
+        "images/uploads/listings/26-baltimore-place/29.jpg",
+        "images/uploads/listings/26-baltimore-place/30.jpg",
+        "images/uploads/listings/26-baltimore-place/31.jpg",
+        "images/uploads/listings/26-baltimore-place/32.jpg",
+        "images/uploads/listings/26-baltimore-place/33.jpg",
+        "images/uploads/listings/26-baltimore-place/34.jpg"
+      ]
     },
     {
       "address": "16 Madison Place",
@@ -26,7 +80,7 @@
       "beds": 4,
       "baths": 2,
       "cars": 1,
-      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1779230352996-1S91WONA9RSKEVCU5A2P/1.jpg",
+      "image": "images/uploads/listings/16-madison-place/01.jpg",
       "detail": {
         "description": "A comfortable four bedroom, two bathroom family home tucked into a peaceful Forrest Hill street. A practical layout, easy indoor to outdoor flow and a sought after address make this an ideal entry into one of the North Shore's premium school zones. Walking distance to local shops and reserves, with Milford, Takapuna and the motorway all close at hand. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
         "schools": {
@@ -34,7 +88,22 @@
           "intermediate": "Wairau Intermediate",
           "secondary": "Westlake Boys' and Westlake Girls' High School"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/16-madison-place/01.jpg",
+        "images/uploads/listings/16-madison-place/02.jpg",
+        "images/uploads/listings/16-madison-place/03.jpg",
+        "images/uploads/listings/16-madison-place/04.jpg",
+        "images/uploads/listings/16-madison-place/05.jpg",
+        "images/uploads/listings/16-madison-place/06.jpg",
+        "images/uploads/listings/16-madison-place/07.jpg",
+        "images/uploads/listings/16-madison-place/08.jpg",
+        "images/uploads/listings/16-madison-place/09.jpg",
+        "images/uploads/listings/16-madison-place/10.jpg",
+        "images/uploads/listings/16-madison-place/11.jpg",
+        "images/uploads/listings/16-madison-place/12.jpg",
+        "images/uploads/listings/16-madison-place/13.jpg"
+      ]
     },
     {
       "address": "394c East Coast Road",
@@ -44,7 +113,7 @@
       "beds": 4,
       "baths": 3,
       "cars": 2,
-      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1762399085418-UZOQNROKW482KFIXFGX0/135040012-325-17photoprint.jpg",
+      "image": "images/uploads/listings/394c-east-coast-road/01.jpg",
       "detail": {
         "description": "A modern four bedroom, three bathroom home in a convenient Sunnynook position. With double garaging and a flexible floor plan, it works equally well for families and professionals. Sunnynook offers easy motorway access, the Sunnynook Park and bus station nearby, and zoning for strong North Shore schools. Offered by deadline sale unless sold prior. Contact Harrison for the full information pack and a private viewing.",
         "schools": {
@@ -52,7 +121,28 @@
           "intermediate": "Wairau Intermediate",
           "secondary": "Westlake Boys' and Westlake Girls' High School"
         }
-      }
+      },
+      "gallery": [
+        "images/uploads/listings/394c-east-coast-road/01.jpg",
+        "images/uploads/listings/394c-east-coast-road/02.jpg",
+        "images/uploads/listings/394c-east-coast-road/03.jpg",
+        "images/uploads/listings/394c-east-coast-road/04.jpg",
+        "images/uploads/listings/394c-east-coast-road/05.jpg",
+        "images/uploads/listings/394c-east-coast-road/06.jpg",
+        "images/uploads/listings/394c-east-coast-road/07.jpg",
+        "images/uploads/listings/394c-east-coast-road/08.jpg",
+        "images/uploads/listings/394c-east-coast-road/09.jpg",
+        "images/uploads/listings/394c-east-coast-road/10.jpg",
+        "images/uploads/listings/394c-east-coast-road/11.jpg",
+        "images/uploads/listings/394c-east-coast-road/12.jpg",
+        "images/uploads/listings/394c-east-coast-road/13.jpg",
+        "images/uploads/listings/394c-east-coast-road/14.jpg",
+        "images/uploads/listings/394c-east-coast-road/15.jpg",
+        "images/uploads/listings/394c-east-coast-road/16.jpg",
+        "images/uploads/listings/394c-east-coast-road/17.jpg",
+        "images/uploads/listings/394c-east-coast-road/18.jpg",
+        "images/uploads/listings/394c-east-coast-road/19.jpg"
+      ]
     },
     {
       "address": "246 Glenmore Road",
@@ -62,7 +152,35 @@
       "beds": 5,
       "baths": 3,
       "cars": 2,
-      "image": "https://images.squarespace-cdn.com/content/v1/59560dc1e110eb2c8927dee2/1776126290747-TKSVKSQADS4QO01FOR6R/98246GlenmoreRoad.jpg",
+      "image": "images/uploads/listings/246-glenmore-road/01.jpg",
+      "gallery": [
+        "images/uploads/listings/246-glenmore-road/01.jpg",
+        "images/uploads/listings/246-glenmore-road/02.jpg",
+        "images/uploads/listings/246-glenmore-road/03.jpg",
+        "images/uploads/listings/246-glenmore-road/04.jpg",
+        "images/uploads/listings/246-glenmore-road/05.jpg",
+        "images/uploads/listings/246-glenmore-road/06.jpg",
+        "images/uploads/listings/246-glenmore-road/07.jpg",
+        "images/uploads/listings/246-glenmore-road/08.jpg",
+        "images/uploads/listings/246-glenmore-road/09.jpg",
+        "images/uploads/listings/246-glenmore-road/10.jpg",
+        "images/uploads/listings/246-glenmore-road/11.jpg",
+        "images/uploads/listings/246-glenmore-road/12.jpg",
+        "images/uploads/listings/246-glenmore-road/13.jpg",
+        "images/uploads/listings/246-glenmore-road/14.jpg",
+        "images/uploads/listings/246-glenmore-road/15.jpg",
+        "images/uploads/listings/246-glenmore-road/16.jpg",
+        "images/uploads/listings/246-glenmore-road/17.jpg",
+        "images/uploads/listings/246-glenmore-road/18.jpg",
+        "images/uploads/listings/246-glenmore-road/19.jpg",
+        "images/uploads/listings/246-glenmore-road/20.jpg",
+        "images/uploads/listings/246-glenmore-road/21.jpg",
+        "images/uploads/listings/246-glenmore-road/22.jpg",
+        "images/uploads/listings/246-glenmore-road/23.jpg",
+        "images/uploads/listings/246-glenmore-road/24.jpg",
+        "images/uploads/listings/246-glenmore-road/25.jpg",
+        "images/uploads/listings/246-glenmore-road/26.jpg"
+      ],
       "detail": {
         "description": "A spacious five bedroom, three bathroom home set in the rural lifestyle surrounds of Coatesville. With room to spread out inside and out, it offers the space and privacy of country living within easy reach of Albany's shops, motorway and amenities. A rare opportunity in one of the North Shore's most desirable lifestyle locations. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
         "schools": {
@@ -70,6 +188,46 @@
           "intermediate": "Albany Junior High School",
           "secondary": "Albany Senior High School"
         }
+      }
+    },
+    {
+      "address": "2/8 Park Rise",
+      "suburb": "Campbells Bay, North Shore",
+      "price": "By Negotiation",
+      "method": "For Sale",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "image": "images/uploads/listings/2-8-park-rise/01.jpg",
+      "gallery": [
+        "images/uploads/listings/2-8-park-rise/01.jpg",
+        "images/uploads/listings/2-8-park-rise/02.jpg",
+        "images/uploads/listings/2-8-park-rise/03.jpg",
+        "images/uploads/listings/2-8-park-rise/04.jpg",
+        "images/uploads/listings/2-8-park-rise/05.jpg",
+        "images/uploads/listings/2-8-park-rise/06.jpg",
+        "images/uploads/listings/2-8-park-rise/07.jpg",
+        "images/uploads/listings/2-8-park-rise/08.jpg",
+        "images/uploads/listings/2-8-park-rise/09.jpg",
+        "images/uploads/listings/2-8-park-rise/10.jpg",
+        "images/uploads/listings/2-8-park-rise/11.jpg",
+        "images/uploads/listings/2-8-park-rise/12.jpg",
+        "images/uploads/listings/2-8-park-rise/13.jpg",
+        "images/uploads/listings/2-8-park-rise/14.jpg",
+        "images/uploads/listings/2-8-park-rise/15.jpg",
+        "images/uploads/listings/2-8-park-rise/16.jpg",
+        "images/uploads/listings/2-8-park-rise/17.jpg",
+        "images/uploads/listings/2-8-park-rise/18.jpg"
+      ],
+      "detail": {
+        "description": "A near-new four bedroom, two bathroom home in a tightly held Campbells Bay setting, with single garaging plus additional off street parking, 191 sqm of floor area on a 200 sqm site. Campbells Bay is one of the North Shore's most sought after coastal suburbs, known for its sandy beach, reserves and relaxed village feel, and zoned for some of Auckland's strongest schools. Mairangi Bay, Milford and the motorway are all a short drive away. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
+        "schools": {
+          "primary": "Campbells Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College"
+        },
+        "floor": "191 sqm",
+        "land": "200 sqm"
       }
     }
   ]
