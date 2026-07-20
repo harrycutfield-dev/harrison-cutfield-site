@@ -5,8 +5,8 @@
       "suburb": "Forrest Hill, North Shore",
       "priceValue": 1150000,
       "priceDisplay": "By Negotiation",
-      "beds": 3,
-      "baths": 1,
+      "beds": 5,
+      "baths": 3,
       "cars": 2,
       "image": "images/uploads/listings/8a-becroft-drive/01.jpg",
       "gallery": [
@@ -22,7 +22,7 @@
         "images/uploads/listings/8a-becroft-drive/10.jpg"
       ],
       "detail": {
-        "description": "A private, off market opportunity in Forrest Hill. Three bedrooms, one bathroom and parking for two, in one of the North Shore's most tightly held school zones close to Milford and Takapuna. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
+        "description": "A private, off market opportunity in Forrest Hill. Five bedrooms, three bathrooms and parking for two, in one of the North Shore's most tightly held school zones close to Milford and Takapuna. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
         "schools": {
           "primary": "Forrest Hill School",
           "intermediate": "Wairau Intermediate",
