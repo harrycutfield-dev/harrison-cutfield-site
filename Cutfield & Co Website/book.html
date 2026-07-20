@@ -72,11 +72,19 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
       <button type="button" class="pill" data-v="9 months +">9 months +</button>
     </div>
 
-    <div class="label">Your name <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></div>
-    <input type="text" id="nm" placeholder="First and last name" autocomplete="name">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div>
+        <div class="label">First name <span class="req">*</span></div>
+        <input type="text" id="fn" placeholder="First name" autocomplete="given-name" required>
+      </div>
+      <div>
+        <div class="label">Last name <span class="req">*</span></div>
+        <input type="text" id="ln" placeholder="Last name" autocomplete="family-name" required>
+      </div>
+    </div>
 
-    <div class="label">Mobile <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></div>
-    <input type="tel" id="ph" placeholder="021 …" autocomplete="tel">
+    <div class="label">Mobile <span class="req">*</span></div>
+    <input type="tel" id="ph" placeholder="021 …" autocomplete="tel" required>
 
     <div class="err" id="err">Please enter your property address and choose a timeframe.</div>
 
@@ -156,7 +164,11 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   document.getElementById('f').addEventListener('submit', function(e){
     e.preventDefault();
     var address = addr.value.trim(), err = document.getElementById('err');
-    if (!address || !tf) { err.style.display = 'block'; return; }
+    var fn = document.getElementById('fn').value.trim(), ln = document.getElementById('ln').value.trim(), ph = document.getElementById('ph').value.trim();
+    if (!address || !tf || !fn || !ln || !ph) {
+      err.textContent = 'Please complete your address, timeframe, name and mobile.';
+      err.style.display = 'block'; return;
+    }
     err.style.display = 'none';
     var go = document.getElementById('go'); go.disabled = true;
     document.getElementById('sp').style.display = 'inline-block';
@@ -168,12 +180,13 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
       setTimeout(function(){ window.location.href = BOOKING_URL; }, 1500);
     }
     var payload = {
-      _subject: 'Appraisal booking: ' + address + ' (' + tf + ')',
+      _subject: 'Appraisal booking: ' + address + ' (' + tf + ') - ' + fn + ' ' + ln,
       _template: 'table', _captcha: 'false',
       'Property address': address,
       'Looking to sell': tf,
-      'Name': document.getElementById('nm').value.trim() || '(not given)',
-      'Mobile': document.getElementById('ph').value.trim() || '(not given)',
+      'First name': fn,
+      'Last name': ln,
+      'Mobile': ph,
       'Address picked from list': chosen ? 'yes' : 'typed manually'
     };
     // Never block the booking: redirect whether or not the notification succeeds.
