@@ -36,8 +36,19 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
 .pill{padding:14px 10px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-family:var(--sans);font-size:14.5px;font-weight:700;letter-spacing:.5px;color:var(--ink-soft);cursor:pointer;transition:all .12s}
 .pill:hover{border-color:var(--rw-yellow-deep)}
 .pill.sel{background:var(--rw-yellow);border-color:var(--rw-yellow);color:var(--ink)}
-.day{margin-bottom:18px}
-.day .dlabel{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;color:var(--ink-soft);margin-bottom:8px}
+.cal{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 14px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding:0 4px}
+.cal-title{font-family:var(--serif);font-size:19px;font-weight:700}
+.cal-nav{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;background:#fff;font-size:17px;line-height:1;cursor:pointer;color:var(--ink-soft)}
+.cal-nav:hover{border-color:var(--rw-yellow-deep)}
+.cal-nav:disabled{opacity:.25;cursor:default;border-color:var(--line)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}
+.cal-dow{font-size:10.5px;letter-spacing:1px;font-weight:900;color:var(--muted);padding:6px 0;text-transform:uppercase}
+.cal-day{aspect-ratio:1/1;border:1.5px solid transparent;background:none;border-radius:50%;font-family:var(--sans);font-size:14.5px;color:#c9c2b2;display:flex;align-items:center;justify-content:center}
+.cal-day.avail{color:var(--ink);font-weight:700;cursor:pointer;border-color:var(--line);background:#fff}
+.cal-day.avail:hover{border-color:var(--rw-yellow-deep)}
+.cal-day.sel{background:var(--rw-yellow);border-color:var(--rw-yellow);color:var(--ink)}
+.tlabel{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;color:var(--ink-soft);margin:22px 0 10px}
 .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .slot{padding:11px 6px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .12s}
 .slot:hover{border-color:var(--rw-yellow-deep)}
@@ -109,7 +120,17 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     <h2 class="step">Pick a <span style="font-style:italic">time.</span></h2>
     <p class="sub" style="margin-bottom:18px">All times are New Zealand time. Appointments run 45 minutes.</p>
     <div class="loading" id="pkLoading">Loading available times…</div>
-    <div id="days"></div>
+    <div id="calWrap" style="display:none">
+      <div class="cal">
+        <div class="cal-head">
+          <button type="button" class="cal-nav" id="calPrev">&#8249;</button>
+          <div class="cal-title" id="calTitle"></div>
+          <button type="button" class="cal-nav" id="calNext">&#8250;</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+      <div id="times"></div>
+    </div>
     <div class="err" id="pkErr"></div>
     <button class="cta" id="book" type="button" disabled><span class="spinner" id="sp2"></span>Confirm booking</button>
     <button class="back" id="backBtn" type="button">Back to your details</button>
@@ -118,7 +139,7 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   <div class="ok" id="ok">
     <h2>You're booked.</h2>
     <div class="when" id="okWhen"></div>
-    <p id="okMsg">A calendar invite is on its way to your email.<br>Harrison will see you then.</p>
+    <p id="okMsg">A confirmation email and calendar invite are on their way to your inbox.<br>Harrison will see you then.</p>
   </div>
 </div>
 
@@ -224,12 +245,72 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     document.getElementById('f').style.display = 'block';
   });
 
-  // --- slot picker ---
-  var selSlot = null;
-  function loadSlots(){
-    var days = document.getElementById('days'), pkErr = document.getElementById('pkErr');
-    days.innerHTML = ''; selSlot = null;
+  // --- calendar slot picker ---
+  var selSlot = null, byDate = {}, months = [], curM = 0, selDateKey = null;
+  var MN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function renderCal(){
+    var mk = months[curM], y = Number(mk.slice(0,4)), m = Number(mk.slice(5,7));
+    document.getElementById('calTitle').textContent = MN[m-1] + ' ' + y;
+    document.getElementById('calPrev').disabled = (curM === 0);
+    document.getElementById('calNext').disabled = (curM === months.length - 1);
+    var grid = document.getElementById('calGrid');
+    grid.innerHTML = '';
+    ['M','T','W','T','F','S','S'].forEach(function(dw){
+      var h = document.createElement('div'); h.className = 'cal-dow'; h.textContent = dw; grid.appendChild(h);
+    });
+    var startCol = (new Date(y, m-1, 1).getDay() + 6) % 7; // Monday-first
+    for (var i = 0; i < startCol; i++) grid.appendChild(document.createElement('div'));
+    var dim = new Date(y, m, 0).getDate();
+    for (var day = 1; day <= dim; day++){
+      var key = mk + '-' + (day < 10 ? '0' : '') + day;
+      if (byDate[key]) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'cal-day avail' + (key === selDateKey ? ' sel' : '');
+        b.textContent = day;
+        b.addEventListener('click', (function(k){ return function(){
+          selDateKey = k; renderCal(); renderTimes();
+        };})(key));
+        grid.appendChild(b);
+      } else {
+        var c = document.createElement('div'); c.className = 'cal-day'; c.textContent = day;
+        grid.appendChild(c);
+      }
+    }
+  }
+
+  function renderTimes(){
+    var box = document.getElementById('times');
+    box.innerHTML = ''; selSlot = null;
     document.getElementById('book').disabled = true;
+    var day = byDate[selDateKey];
+    if (!day) return;
+    var lb = document.createElement('div'); lb.className = 'tlabel';
+    lb.textContent = 'Available times — ' + day.label;
+    var grid = document.createElement('div'); grid.className = 'slots';
+    day.slots.forEach(function(s){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'slot'; b.textContent = s.label;
+      b.addEventListener('click', function(){
+        document.querySelectorAll('.slot').forEach(function(x){ x.classList.remove('sel'); });
+        b.classList.add('sel');
+        selSlot = {start: s.start, label: day.label + ' at ' + s.label};
+        document.getElementById('book').disabled = false;
+      });
+      grid.appendChild(b);
+    });
+    box.appendChild(lb); box.appendChild(grid);
+  }
+
+  document.getElementById('calPrev').addEventListener('click', function(){ if (curM > 0) { curM--; renderCal(); } });
+  document.getElementById('calNext').addEventListener('click', function(){ if (curM < months.length - 1) { curM++; renderCal(); } });
+
+  function loadSlots(){
+    var pkErr = document.getElementById('pkErr');
+    selSlot = null;
+    document.getElementById('book').disabled = true;
+    document.getElementById('calWrap').style.display = 'none';
     pkErr.style.display = 'none';
     document.getElementById('pkLoading').style.display = 'block';
     fetch(API_URL)
@@ -237,23 +318,17 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
       .then(function(d){
         document.getElementById('pkLoading').style.display = 'none';
         if (!d.ok || !d.days || !d.days.length) throw new Error('no slots');
+        byDate = {}; months = [];
         d.days.forEach(function(day){
-          var box = document.createElement('div'); box.className = 'day';
-          var lb = document.createElement('div'); lb.className = 'dlabel'; lb.textContent = day.label;
-          var grid = document.createElement('div'); grid.className = 'slots';
-          day.slots.forEach(function(s){
-            var b = document.createElement('button');
-            b.type = 'button'; b.className = 'slot'; b.textContent = s.label;
-            b.addEventListener('click', function(){
-              document.querySelectorAll('.slot').forEach(function(x){ x.classList.remove('sel'); });
-              b.classList.add('sel');
-              selSlot = {start: s.start, label: day.label + ' at ' + s.label};
-              document.getElementById('book').disabled = false;
-            });
-            grid.appendChild(b);
-          });
-          box.appendChild(lb); box.appendChild(grid); days.appendChild(box);
+          byDate[day.date] = day;
+          var mk = day.date.slice(0,7);
+          if (months.indexOf(mk) < 0) months.push(mk);
         });
+        var stillThere = selDateKey && byDate[selDateKey];
+        selDateKey = stillThere ? selDateKey : d.days[0].date;
+        curM = Math.max(0, months.indexOf(selDateKey.slice(0,7)));
+        document.getElementById('calWrap').style.display = 'block';
+        renderCal(); renderTimes();
       })
       .catch(function(){
         document.getElementById('pkLoading').style.display = 'none';
