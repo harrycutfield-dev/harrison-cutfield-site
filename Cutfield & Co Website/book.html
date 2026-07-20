@@ -20,10 +20,11 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height
 .wrap{width:100%;max-width:560px;padding:34px 20px 60px}
 h1{font-family:var(--serif);font-size:clamp(28px,6vw,38px);line-height:1.15;margin-bottom:10px}
 h1 .it{font-style:italic}
+h2.step{font-family:var(--serif);font-size:24px;margin-bottom:6px}
 .sub{color:var(--muted);font-size:16px;line-height:1.55;margin-bottom:28px}
 .label{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-soft);margin:22px 0 8px}
 .req{color:#b3261e}
-input[type=text],input[type=tel]{width:100%;padding:14px 16px;font-size:16px;font-family:var(--sans);border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+input[type=text],input[type=tel],input[type=email]{width:100%;padding:14px 16px;font-size:16px;font-family:var(--sans);border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
 input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow-deep)}
 .ac{position:relative}
 .ac-list{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 8px 8px;box-shadow:0 10px 24px rgba(20,20,20,.08);z-index:10;max-height:264px;overflow-y:auto;display:none}
@@ -35,15 +36,24 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
 .pill{padding:14px 10px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-family:var(--sans);font-size:14.5px;font-weight:700;letter-spacing:.5px;color:var(--ink-soft);cursor:pointer;transition:all .12s}
 .pill:hover{border-color:var(--rw-yellow-deep)}
 .pill.sel{background:var(--rw-yellow);border-color:var(--rw-yellow);color:var(--ink)}
+.day{margin-bottom:18px}
+.day .dlabel{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;color:var(--ink-soft);margin-bottom:8px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{padding:11px 6px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .12s}
+.slot:hover{border-color:var(--rw-yellow-deep)}
+.slot.sel{background:var(--rw-yellow);border-color:var(--rw-yellow);color:var(--ink)}
 .cta{width:100%;margin-top:30px;padding:17px 20px;border:none;border-radius:999px;background:var(--rw-yellow);color:var(--ink);font-family:var(--sans);font-weight:900;font-size:14.5px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .12s}
 .cta:hover{background:var(--rw-yellow-deep)}
 .cta:disabled{opacity:.55;cursor:default}
+.back{display:inline-block;margin-top:16px;background:none;border:none;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;text-decoration:underline}
 .note{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center;line-height:1.5}
 .err{display:none;background:#fdecec;border-left:4px solid #b3261e;padding:10px 14px;font-size:14px;margin-top:16px;border-radius:0 6px 6px 0}
 .ok{display:none;text-align:center;padding:40px 0}
 .ok h2{font-family:var(--serif);font-size:26px;margin-bottom:10px}
 .ok p{color:var(--muted);font-size:15.5px;line-height:1.6}
+.ok .when{font-family:var(--serif);font-size:20px;color:var(--ink);margin:14px 0}
 .spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(20,20,20,.25);border-top-color:var(--ink);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px;margin-right:8px;display:none}
+.loading{display:none;text-align:center;color:var(--muted);padding:30px 0;font-size:15px}
 @keyframes sp{to{transform:rotate(360deg)}}
 </style>
 </head>
@@ -56,7 +66,7 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
 <div class="wrap">
   <form id="f" novalidate>
     <h1>Book your <span class="it">in-person appraisal.</span></h1>
-    <p class="sub">Two quick details, then pick a time that suits you. Appointments take 30 to 45 minutes and are completely free, with no obligation.</p>
+    <p class="sub">A few quick details, then pick a time that suits you. Appointments take 45 minutes and are completely free, with no obligation.</p>
 
     <div class="label">Property address <span class="req">*</span></div>
     <div class="ac">
@@ -83,24 +93,38 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
       </div>
     </div>
 
+    <div class="label">Email <span class="req">*</span></div>
+    <input type="email" id="em" placeholder="you@example.com" autocomplete="email" required>
+
     <div class="label">Mobile <span class="req">*</span></div>
     <input type="tel" id="ph" placeholder="021 …" autocomplete="tel" required>
 
-    <div class="err" id="err">Please enter your property address and choose a timeframe.</div>
+    <div class="err" id="err">Please complete every field.</div>
 
-    <button class="cta" id="go" type="submit"><span class="spinner" id="sp"></span>Choose your appointment time</button>
-    <p class="note">Next step: you'll pick a day and time on the live calendar.<br>Your details are sent only to Harrison Cutfield, Ray White Mairangi Bay.</p>
+    <button class="cta" id="go" type="submit"><span class="spinner" id="sp"></span>See available times</button>
+    <p class="note">Next step: pick a day and time from Harrison's live availability.<br>Your details are sent only to Harrison Cutfield, Ray White Mairangi Bay.</p>
   </form>
 
+  <div id="picker" style="display:none">
+    <h2 class="step">Pick a <span style="font-style:italic">time.</span></h2>
+    <p class="sub" style="margin-bottom:18px">All times are New Zealand time. Appointments run 45 minutes.</p>
+    <div class="loading" id="pkLoading">Loading available times…</div>
+    <div id="days"></div>
+    <div class="err" id="pkErr"></div>
+    <button class="cta" id="book" type="button" disabled><span class="spinner" id="sp2"></span>Confirm booking</button>
+    <button class="back" id="backBtn" type="button">Back to your details</button>
+  </div>
+
   <div class="ok" id="ok">
-    <h2>Details received.</h2>
-    <p>Taking you to the calendar to pick your time…<br>If nothing happens, <a id="okLink" href="#">tap here</a>.</p>
+    <h2>You're booked.</h2>
+    <div class="when" id="okWhen"></div>
+    <p id="okMsg">A calendar invite is on its way to your email.<br>Harrison will see you then.</p>
   </div>
 </div>
 
 <script>
 (function(){
-  var BOOKING_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3B_quVSf4WwpUtmRrsBFh9H2CiyQ_eB_IFftSv3JHPL53WWHm6sNZuwfD3KXBXG1wnCsmAN8dY';
+  var API_URL = 'https://script.google.com/macros/s/AKfycby04M5LM70_zr0wCh3xz8t8b5YGSNjicSUNC6FCSWCgF_NMpBYZCO8lfrxJCFkXDfcVCQ/exec';
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/harrison.cutfield@raywhite.com';
 
   var addr = document.getElementById('addr'), list = document.getElementById('acList');
@@ -156,44 +180,122 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   var tf = '';
   document.getElementById('pills').addEventListener('click', function(e){
     var b = e.target.closest('.pill'); if (!b) return;
-    document.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('sel'); });
+    document.querySelectorAll('#pills .pill').forEach(function(p){ p.classList.remove('sel'); });
     b.classList.add('sel'); tf = b.dataset.v;
   });
 
-  // --- submit: send details, then redirect to the calendar ---
+  var details = {};
+  function notifyHarrison(extra){
+    var payload = {
+      _subject: 'Appraisal booking: ' + details.address + ' (' + details.timeframe + ') - ' + details.fn + ' ' + details.ln,
+      _template: 'table', _captcha: 'false',
+      'Property address': details.address,
+      'Looking to sell': details.timeframe,
+      'First name': details.fn,
+      'Last name': details.ln,
+      'Email': details.email,
+      'Mobile': details.phone,
+      'Address picked from list': chosen ? 'yes' : 'typed manually'
+    };
+    for (var k in extra) payload[k] = extra[k];
+    return fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload)}).catch(function(){});
+  }
+
+  // --- step 1 -> step 2 ---
   document.getElementById('f').addEventListener('submit', function(e){
     e.preventDefault();
-    var address = addr.value.trim(), err = document.getElementById('err');
-    var fn = document.getElementById('fn').value.trim(), ln = document.getElementById('ln').value.trim(), ph = document.getElementById('ph').value.trim();
-    if (!address || !tf || !fn || !ln || !ph) {
-      err.textContent = 'Please complete your address, timeframe, name and mobile.';
+    var err = document.getElementById('err');
+    var v = function(id){ return document.getElementById(id).value.trim(); };
+    var email = v('em');
+    if (!v('addr') || !tf || !v('fn') || !v('ln') || !v('ph') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      err.textContent = 'Please complete your address, timeframe, name, a valid email and mobile.';
       err.style.display = 'block'; return;
     }
     err.style.display = 'none';
-    var go = document.getElementById('go'); go.disabled = true;
-    document.getElementById('sp').style.display = 'inline-block';
+    details = {address: v('addr'), timeframe: tf, fn: v('fn'), ln: v('ln'),
+               name: v('fn') + ' ' + v('ln'), email: email, phone: v('ph')};
+    document.getElementById('f').style.display = 'none';
+    document.getElementById('picker').style.display = 'block';
+    loadSlots();
+  });
 
-    function done(){
-      document.getElementById('f').style.display = 'none';
-      var ok = document.getElementById('ok'); ok.style.display = 'block';
-      document.getElementById('okLink').href = BOOKING_URL;
-      setTimeout(function(){ window.location.href = BOOKING_URL; }, 1500);
-    }
-    var payload = {
-      _subject: 'Appraisal booking: ' + address + ' (' + tf + ') - ' + fn + ' ' + ln,
-      _template: 'table', _captcha: 'false',
-      'Property address': address,
-      'Looking to sell': tf,
-      'First name': fn,
-      'Last name': ln,
-      'Mobile': ph,
-      'Address picked from list': chosen ? 'yes' : 'typed manually'
-    };
-    // Never block the booking: redirect whether or not the notification succeeds.
-    var t = setTimeout(done, 4000);
-    fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload)})
-      .then(function(){ clearTimeout(t); done(); })
-      .catch(function(){ clearTimeout(t); done(); });
+  document.getElementById('backBtn').addEventListener('click', function(){
+    document.getElementById('picker').style.display = 'none';
+    document.getElementById('f').style.display = 'block';
+  });
+
+  // --- slot picker ---
+  var selSlot = null;
+  function loadSlots(){
+    var days = document.getElementById('days'), pkErr = document.getElementById('pkErr');
+    days.innerHTML = ''; selSlot = null;
+    document.getElementById('book').disabled = true;
+    pkErr.style.display = 'none';
+    document.getElementById('pkLoading').style.display = 'block';
+    fetch(API_URL)
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        document.getElementById('pkLoading').style.display = 'none';
+        if (!d.ok || !d.days || !d.days.length) throw new Error('no slots');
+        d.days.forEach(function(day){
+          var box = document.createElement('div'); box.className = 'day';
+          var lb = document.createElement('div'); lb.className = 'dlabel'; lb.textContent = day.label;
+          var grid = document.createElement('div'); grid.className = 'slots';
+          day.slots.forEach(function(s){
+            var b = document.createElement('button');
+            b.type = 'button'; b.className = 'slot'; b.textContent = s.label;
+            b.addEventListener('click', function(){
+              document.querySelectorAll('.slot').forEach(function(x){ x.classList.remove('sel'); });
+              b.classList.add('sel');
+              selSlot = {start: s.start, label: day.label + ' at ' + s.label};
+              document.getElementById('book').disabled = false;
+            });
+            grid.appendChild(b);
+          });
+          box.appendChild(lb); box.appendChild(grid); days.appendChild(box);
+        });
+      })
+      .catch(function(){
+        document.getElementById('pkLoading').style.display = 'none';
+        // Availability unreachable: capture the lead anyway so nothing is lost.
+        notifyHarrison({'Booked time': 'NONE - slot picker failed, please contact vendor to arrange'});
+        pkErr.textContent = 'Sorry, live times would not load. Your details have been sent to Harrison and he will contact you shortly to arrange a time.';
+        pkErr.style.display = 'block';
+      });
+  }
+
+  // --- confirm booking ---
+  document.getElementById('book').addEventListener('click', function(){
+    if (!selSlot) return;
+    var btn = document.getElementById('book'), pkErr = document.getElementById('pkErr');
+    btn.disabled = true;
+    document.getElementById('sp2').style.display = 'inline-block';
+    pkErr.style.display = 'none';
+    fetch(API_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({start: selSlot.start, name: details.name, email: details.email,
+                            phone: details.phone, address: details.address, timeframe: details.timeframe})})
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        document.getElementById('sp2').style.display = 'none';
+        if (d.ok) {
+          notifyHarrison({'Booked time': d.label});
+          document.getElementById('picker').style.display = 'none';
+          document.getElementById('okWhen').textContent = d.label;
+          document.getElementById('ok').style.display = 'block';
+        } else if (d.error === 'taken' || d.error === 'slot too soon') {
+          pkErr.textContent = 'Sorry, that time was just taken. Please pick another.';
+          pkErr.style.display = 'block';
+          loadSlots();
+        } else { throw new Error(d.error || 'booking failed'); }
+      })
+      .catch(function(){
+        document.getElementById('sp2').style.display = 'none';
+        notifyHarrison({'Booked time': 'FAILED for ' + selSlot.label + ' - please contact vendor to confirm'});
+        document.getElementById('picker').style.display = 'none';
+        document.getElementById('okWhen').textContent = selSlot.label;
+        document.getElementById('okMsg').innerHTML = 'There was a hiccup confirming this time automatically, but your details are with Harrison.<br>He will text you shortly to confirm.';
+        document.getElementById('ok').style.display = 'block';
+      });
   });
 })();
 </script>
