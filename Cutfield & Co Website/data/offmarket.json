@@ -8,7 +8,19 @@
       "beds": 3,
       "baths": 1,
       "cars": 2,
-      "image": "",
+      "image": "images/uploads/listings/8a-becroft-drive/01.jpg",
+      "gallery": [
+        "images/uploads/listings/8a-becroft-drive/01.jpg",
+        "images/uploads/listings/8a-becroft-drive/02.jpg",
+        "images/uploads/listings/8a-becroft-drive/03.jpg",
+        "images/uploads/listings/8a-becroft-drive/04.jpg",
+        "images/uploads/listings/8a-becroft-drive/05.jpg",
+        "images/uploads/listings/8a-becroft-drive/06.jpg",
+        "images/uploads/listings/8a-becroft-drive/07.jpg",
+        "images/uploads/listings/8a-becroft-drive/08.jpg",
+        "images/uploads/listings/8a-becroft-drive/09.jpg",
+        "images/uploads/listings/8a-becroft-drive/10.jpg"
+      ],
       "detail": {
         "description": "A private, off market opportunity in Forrest Hill. Three bedrooms, one bathroom and parking for two, in one of the North Shore's most tightly held school zones close to Milford and Takapuna. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
         "schools": {
