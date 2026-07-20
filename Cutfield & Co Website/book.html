@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Your In-Person Appraisal · Harrison Cutfield · Cutfield &amp; Co</title>
+<meta name="description" content="Book a free in-person property appraisal and strategy session with Harrison Cutfield, Ray White Mairangi Bay.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--rw-yellow:#FFE512;--rw-yellow-deep:#F2D200;--ink:#141414;--ink-soft:#2b2b2b;--paper:#FAF8F2;--line:#e3ddcf;--muted:#5a5446;--serif:'Playfair Display',Georgia,serif;--sans:'Lato',Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.top{width:100%;background:var(--ink);color:#fff;padding:18px 20px;text-align:center}
+.top .kick{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#9a948a}
+.top .brand{font-family:var(--serif);font-size:22px;font-weight:700;margin-top:2px}
+.top .chip{display:inline-block;background:var(--rw-yellow);color:var(--ink);font-weight:900;font-size:11px;padding:3px 10px;margin-left:8px;vertical-align:middle}
+.wrap{width:100%;max-width:560px;padding:34px 20px 60px}
+h1{font-family:var(--serif);font-size:clamp(28px,6vw,38px);line-height:1.15;margin-bottom:10px}
+h1 .it{font-style:italic}
+.sub{color:var(--muted);font-size:16px;line-height:1.55;margin-bottom:28px}
+.label{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--ink-soft);margin:22px 0 8px}
+.req{color:#b3261e}
+input[type=text],input[type=tel]{width:100%;padding:14px 16px;font-size:16px;font-family:var(--sans);border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow-deep)}
+.ac{position:relative}
+.ac-list{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 8px 8px;box-shadow:0 10px 24px rgba(20,20,20,.08);z-index:10;max-height:264px;overflow-y:auto;display:none}
+.ac-item{padding:12px 16px;font-size:15px;cursor:pointer;border-bottom:1px solid #f1ede2}
+.ac-item:last-child{border-bottom:none}
+.ac-item:hover,.ac-item.active{background:#fdf6d8}
+.ac-item small{display:block;color:var(--muted);font-size:12.5px;margin-top:1px}
+.pills{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pill{padding:14px 10px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-family:var(--sans);font-size:14.5px;font-weight:700;letter-spacing:.5px;color:var(--ink-soft);cursor:pointer;transition:all .12s}
+.pill:hover{border-color:var(--rw-yellow-deep)}
+.pill.sel{background:var(--rw-yellow);border-color:var(--rw-yellow);color:var(--ink)}
+.cta{width:100%;margin-top:30px;padding:17px 20px;border:none;border-radius:999px;background:var(--rw-yellow);color:var(--ink);font-family:var(--sans);font-weight:900;font-size:14.5px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .12s}
+.cta:hover{background:var(--rw-yellow-deep)}
+.cta:disabled{opacity:.55;cursor:default}
+.note{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center;line-height:1.5}
+.err{display:none;background:#fdecec;border-left:4px solid #b3261e;padding:10px 14px;font-size:14px;margin-top:16px;border-radius:0 6px 6px 0}
+.ok{display:none;text-align:center;padding:40px 0}
+.ok h2{font-family:var(--serif);font-size:26px;margin-bottom:10px}
+.ok p{color:var(--muted);font-size:15.5px;line-height:1.6}
+.spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(20,20,20,.25);border-top-color:var(--ink);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px;margin-right:8px;display:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="kick">Cutfield &amp; Co · Digital Market Appraisal</div>
+  <div class="brand">Harrison Cutfield<span class="chip">Ray White</span></div>
+</div>
+
+<div class="wrap">
+  <form id="f" novalidate>
+    <h1>Book your <span class="it">in-person appraisal.</span></h1>
+    <p class="sub">Two quick details, then pick a time that suits you. Appointments take 30 to 45 minutes and are completely free, with no obligation.</p>
+
+    <div class="label">Property address <span class="req">*</span></div>
+    <div class="ac">
+      <input type="text" id="addr" placeholder="Start typing your address…" autocomplete="off" required>
+      <div class="ac-list" id="acList"></div>
+    </div>
+
+    <div class="label">When are you looking to sell? <span class="req">*</span></div>
+    <div class="pills" id="pills">
+      <button type="button" class="pill" data-v="0-3 months">0–3 months</button>
+      <button type="button" class="pill" data-v="3-6 months">3–6 months</button>
+      <button type="button" class="pill" data-v="6-9 months">6–9 months</button>
+      <button type="button" class="pill" data-v="9 months +">9 months +</button>
+    </div>
+
+    <div class="label">Your name <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></div>
+    <input type="text" id="nm" placeholder="First and last name" autocomplete="name">
+
+    <div class="label">Mobile <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></div>
+    <input type="tel" id="ph" placeholder="021 …" autocomplete="tel">
+
+    <div class="err" id="err">Please enter your property address and choose a timeframe.</div>
+
+    <button class="cta" id="go" type="submit"><span class="spinner" id="sp"></span>Choose your appointment time</button>
+    <p class="note">Next step: you'll pick a day and time on the live calendar.<br>Your details are sent only to Harrison Cutfield, Ray White Mairangi Bay.</p>
+  </form>
+
+  <div class="ok" id="ok">
+    <h2>Details received.</h2>
+    <p>Taking you to the calendar to pick your time…<br>If nothing happens, <a id="okLink" href="#">tap here</a>.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var BOOKING_URL = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3B_quVSf4WwpUtmRrsBFh9H2CiyQ_eB_IFftSv3JHPL53WWHm6sNZuwfD3KXBXG1wnCsmAN8dY';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/harrison.cutfield@raywhite.com';
+
+  var addr = document.getElementById('addr'), list = document.getElementById('acList');
+  var chosen = '';
+
+  // --- NZ address autocomplete (Photon / OpenStreetMap, no key required) ---
+  var t = null, items = [], idx = -1;
+  function fmt(p){
+    var a = p.properties, line1 = [a.housenumber, a.street || a.name].filter(Boolean).join(' ');
+    if (!a.housenumber && a.name && a.name !== a.street) line1 = a.name;
+    var line2 = [a.district || a.locality, a.city, a.postcode].filter(Boolean).join(', ');
+    return {line1: line1 || a.name || '', line2: line2, full: [line1 || a.name, a.district || a.locality, a.city].filter(Boolean).join(', ')};
+  }
+  function hide(){ list.style.display='none'; items=[]; idx=-1; }
+  function search(q){
+    fetch('https://photon.komoot.io/api/?limit=6&lang=en&bbox=165.8,-47.8,179.5,-33.7&q=' + encodeURIComponent(q))
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        var fs = (d.features || []).filter(function(p){ return (p.properties.countrycode || 'NZ') === 'NZ'; });
+        if (!fs.length) { hide(); return; }
+        list.innerHTML = '';
+        items = fs;
+        fs.forEach(function(p, i){
+          var f = fmt(p), el = document.createElement('div');
+          el.className = 'ac-item';
+          el.innerHTML = '<strong>' + f.line1 + '</strong><small>' + f.line2 + '</small>';
+          el.addEventListener('mousedown', function(e){ e.preventDefault(); pick(i); });
+          list.appendChild(el);
+        });
+        list.style.display = 'block';
+      }).catch(hide);
+  }
+  function pick(i){ var f = fmt(items[i]); addr.value = f.full; chosen = f.full; hide(); }
+  addr.addEventListener('input', function(){
+    chosen = ''; clearTimeout(t);
+    var q = addr.value.trim();
+    if (q.length < 4) { hide(); return; }
+    t = setTimeout(function(){ search(q); }, 250);
+  });
+  addr.addEventListener('keydown', function(e){
+    if (list.style.display !== 'block') return;
+    var els = list.children;
+    if (e.key === 'ArrowDown') { idx = Math.min(idx+1, els.length-1); }
+    else if (e.key === 'ArrowUp') { idx = Math.max(idx-1, 0); }
+    else if (e.key === 'Enter') { if (idx >= 0) { e.preventDefault(); pick(idx); } return; }
+    else return;
+    e.preventDefault();
+    for (var i=0;i<els.length;i++) els[i].classList.toggle('active', i===idx);
+  });
+  document.addEventListener('click', function(e){ if (!e.target.closest('.ac')) hide(); });
+
+  // --- timeframe pills ---
+  var tf = '';
+  document.getElementById('pills').addEventListener('click', function(e){
+    var b = e.target.closest('.pill'); if (!b) return;
+    document.querySelectorAll('.pill').forEach(function(p){ p.classList.remove('sel'); });
+    b.classList.add('sel'); tf = b.dataset.v;
+  });
+
+  // --- submit: send details, then redirect to the calendar ---
+  document.getElementById('f').addEventListener('submit', function(e){
+    e.preventDefault();
+    var address = addr.value.trim(), err = document.getElementById('err');
+    if (!address || !tf) { err.style.display = 'block'; return; }
+    err.style.display = 'none';
+    var go = document.getElementById('go'); go.disabled = true;
+    document.getElementById('sp').style.display = 'inline-block';
+
+    function done(){
+      document.getElementById('f').style.display = 'none';
+      var ok = document.getElementById('ok'); ok.style.display = 'block';
+      document.getElementById('okLink').href = BOOKING_URL;
+      setTimeout(function(){ window.location.href = BOOKING_URL; }, 1500);
+    }
+    var payload = {
+      _subject: 'Appraisal booking: ' + address + ' (' + tf + ')',
+      _template: 'table', _captcha: 'false',
+      'Property address': address,
+      'Looking to sell': tf,
+      'Name': document.getElementById('nm').value.trim() || '(not given)',
+      'Mobile': document.getElementById('ph').value.trim() || '(not given)',
+      'Address picked from list': chosen ? 'yes' : 'typed manually'
+    };
+    // Never block the booking: redirect whether or not the notification succeeds.
+    var t = setTimeout(done, 4000);
+    fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload)})
+      .then(function(){ clearTimeout(t); done(); })
+      .catch(function(){ clearTimeout(t); done(); });
+  });
+})();
+</script>
+</body>
+</html>
