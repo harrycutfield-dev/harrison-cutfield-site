@@ -63,6 +63,19 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
 .ok h2{font-family:var(--serif);font-size:26px;margin-bottom:10px}
 .ok p{color:var(--muted);font-size:15.5px;line-height:1.6}
 .ok .when{font-family:var(--serif);font-size:20px;color:var(--ink);margin:14px 0}
+.ok .fp-badge{width:56px;height:56px;border-radius:50%;background:var(--rw-yellow);display:inline-flex;align-items:center;justify-content:center;margin-bottom:6px}
+.ok .fp-badge svg{width:30px;height:30px;stroke:var(--ink);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ok .fp-lead{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--ink-soft);margin:26px 0 16px}
+.fp-steps{text-align:left;max-width:430px;margin:0 auto}
+.fp-step{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.fp-ic{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center}
+.fp-ic svg{width:20px;height:20px;stroke:var(--ink);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fp-txt{display:flex;flex-direction:column}
+.fp-txt strong{font-size:15.5px;color:var(--ink);font-weight:700}
+.fp-txt span{font-size:14px;color:var(--muted);line-height:1.5;margin-top:2px}
+.fp-warn{text-align:left;max-width:430px;margin:22px auto 0;background:#fdf6d8;border:1px solid var(--rw-yellow);border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.fp-warn strong{display:block;color:var(--ink);font-weight:900;margin-bottom:4px;letter-spacing:.3px}
+.ok .fp-foot{margin-top:22px;color:var(--muted);font-size:15px}
 .spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(20,20,20,.25);border-top-color:var(--ink);border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px;margin-right:8px;display:none}
 .loading{display:none;text-align:center;color:var(--muted);padding:30px 0;font-size:15px}
 @keyframes sp{to{transform:rotate(360deg)}}
@@ -137,9 +150,29 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   </div>
 
   <div class="ok" id="ok">
-    <h2>You're booked.</h2>
+    <div class="fp-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+    <h2>You're booked in.</h2>
     <div class="when" id="okWhen"></div>
-    <p id="okMsg">A confirmation email and calendar invite are on their way to your inbox.<br>Harrison will see you then.</p>
+    <div class="fp-lead">What happens next</div>
+    <div class="fp-steps">
+      <div class="fp-step">
+        <div class="fp-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <div class="fp-txt"><strong>Confirmation email</strong><span>On its way to your inbox now with all the details.</span></div>
+      </div>
+      <div class="fp-step">
+        <div class="fp-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div>
+        <div class="fp-txt"><strong>Calendar invitation</strong><span>Arriving separately. Please accept it to confirm the appointment in your own calendar.</span></div>
+      </div>
+      <div class="fp-step">
+        <div class="fp-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <div class="fp-txt"><strong>Harrison arrives</strong><span>He'll meet you at your property at the booked time.</span></div>
+      </div>
+    </div>
+    <div class="fp-warn">
+      <strong>Please accept the calendar invitation.</strong>
+      Your appointment is only confirmed once you accept the calendar invitation. If it is not accepted, we will take it that the time no longer suits and the slot may be released to someone else.
+    </div>
+    <p class="fp-foot">Harrison looks forward to meeting you.</p>
   </div>
 </div>
 
@@ -367,9 +400,9 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
         document.getElementById('sp2').style.display = 'none';
         notifyHarrison({'Booked time': 'FAILED for ' + selSlot.label + ' - please contact vendor to confirm'});
         document.getElementById('picker').style.display = 'none';
-        document.getElementById('okWhen').textContent = selSlot.label;
-        document.getElementById('okMsg').innerHTML = 'There was a hiccup confirming this time automatically, but your details are with Harrison.<br>He will text you shortly to confirm.';
-        document.getElementById('ok').style.display = 'block';
+        var okEl = document.getElementById('ok');
+        okEl.innerHTML = '<h2>Thanks, we have your details.</h2><div class="when">' + selSlot.label + '</div><p class="fp-foot" style="max-width:430px;margin:16px auto 0">There was a hiccup confirming this time automatically, but your details are with Harrison.<br>He will text you shortly to confirm.</p>';
+        okEl.style.display = 'block';
       });
   });
 })();
