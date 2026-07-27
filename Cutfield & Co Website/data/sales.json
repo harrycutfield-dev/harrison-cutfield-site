@@ -1,6 +1,58 @@
 {
   "items": [
     {
+      "address": "26 Baltimore Place",
+      "suburb": "Forrest Hill, North Shore",
+      "soldDate": "July 2026 · $1,350,000",
+      "tag": "",
+      "image": "images/uploads/listings/26-baltimore-place/01.jpg",
+      "detail": {
+        "soldPrice": "$1,350,000",
+        "description": "Sold by Harrison in July 2026 for $1,350,000. A substantial four bedroom home on a quiet cul de sac in Forrest Hill, one of the North Shore's most tightly held pockets, close to Milford and Takapuna beaches, the motorway and some of Auckland's strongest schools. Thinking of selling in Forrest Hill? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      },
+      "gallery": [
+        "images/uploads/listings/26-baltimore-place/01.jpg",
+        "images/uploads/listings/26-baltimore-place/02.jpg",
+        "images/uploads/listings/26-baltimore-place/03.jpg",
+        "images/uploads/listings/26-baltimore-place/04.jpg",
+        "images/uploads/listings/26-baltimore-place/05.jpg",
+        "images/uploads/listings/26-baltimore-place/06.jpg",
+        "images/uploads/listings/26-baltimore-place/07.jpg",
+        "images/uploads/listings/26-baltimore-place/08.jpg",
+        "images/uploads/listings/26-baltimore-place/09.jpg",
+        "images/uploads/listings/26-baltimore-place/10.jpg",
+        "images/uploads/listings/26-baltimore-place/11.jpg",
+        "images/uploads/listings/26-baltimore-place/12.jpg",
+        "images/uploads/listings/26-baltimore-place/13.jpg",
+        "images/uploads/listings/26-baltimore-place/14.jpg",
+        "images/uploads/listings/26-baltimore-place/15.jpg",
+        "images/uploads/listings/26-baltimore-place/16.jpg",
+        "images/uploads/listings/26-baltimore-place/17.jpg",
+        "images/uploads/listings/26-baltimore-place/18.jpg",
+        "images/uploads/listings/26-baltimore-place/19.jpg",
+        "images/uploads/listings/26-baltimore-place/20.jpg",
+        "images/uploads/listings/26-baltimore-place/21.jpg",
+        "images/uploads/listings/26-baltimore-place/22.jpg",
+        "images/uploads/listings/26-baltimore-place/23.jpg",
+        "images/uploads/listings/26-baltimore-place/24.jpg",
+        "images/uploads/listings/26-baltimore-place/25.jpg",
+        "images/uploads/listings/26-baltimore-place/26.jpg",
+        "images/uploads/listings/26-baltimore-place/27.jpg",
+        "images/uploads/listings/26-baltimore-place/28.jpg",
+        "images/uploads/listings/26-baltimore-place/29.jpg",
+        "images/uploads/listings/26-baltimore-place/30.jpg",
+        "images/uploads/listings/26-baltimore-place/31.jpg",
+        "images/uploads/listings/26-baltimore-place/32.jpg",
+        "images/uploads/listings/26-baltimore-place/33.jpg",
+        "images/uploads/listings/26-baltimore-place/34.jpg"
+      ]
+    },
+    {
       "address": "45a Seine Road",
       "suburb": "Forrest Hill, North Shore",
       "soldDate": "June 2026",
