@@ -1,6 +1,21 @@
 {
   "items": [
     {
+      "address": "1/102 Forrest Hill Road",
+      "suburb": "Forrest Hill, North Shore",
+      "soldDate": "",
+      "tag": "Off-Market Sale",
+      "image": "",
+      "detail": {
+        "description": "Sold by Harrison off-market in Forrest Hill, one of the North Shore's most tightly held suburbs, close to Milford and Takapuna and zoned for sought after schools. The sale price is available on request. Thinking of selling in Forrest Hill? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Forrest Hill School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      }
+    },
+    {
       "address": "26 Baltimore Place",
       "suburb": "Forrest Hill, North Shore",
       "soldDate": "July 2026 · $1,350,000",
