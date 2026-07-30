@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Book Your In-Person Appraisal · Harrison Cutfield · Cutfield &amp; Co</title>
+<title>Book Your In-Person Appraisal · Harrison Cutfield</title>
 <meta name="description" content="Book a free in-person property appraisal and strategy session with Harrison Cutfield, Ray White Mairangi Bay.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="favicon-32.png" sizes="32x32">
@@ -83,7 +83,7 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
 </head>
 <body>
 <div class="top">
-  <div class="kick">Cutfield &amp; Co · Digital Market Appraisal</div>
+  <div class="kick">Digital Market Appraisal</div>
   <div class="brand">Harrison Cutfield<span class="chip">Ray White</span></div>
 </div>
 
@@ -184,6 +184,49 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   var addr = document.getElementById('addr'), list = document.getElementById('acList');
   var chosen = '';
 
+  // ---- INTENT: appraisal (default) or viewing (?intent=viewing) --------------
+  // Added 30 Jul 2026 for the weekly suburb-update emails, where a homeowner can ask
+  // to view another agency's listing. With NO params, or intent=appraisal, every line
+  // below is skipped and this page behaves exactly as it always has, so the ADA emails
+  // and the existing site CTAs are completely unaffected.
+  var Q = new URLSearchParams(location.search);
+  var VIEWING = (Q.get('intent') || '').toLowerCase() === 'viewing';
+  var LISTING_ID = Q.get('l') || '';
+  var LISTING_ADDR = (Q.get('addr') || '').trim();
+  var LEAD_SRC = Q.get('src') || '';
+  var LEAD_SUB = Q.get('s') || '';
+
+  function applyViewingMode(){
+    document.title = 'Arrange a Viewing · Harrison Cutfield';
+    var kick = document.querySelector('.kick');
+    if (kick) kick.textContent = 'Property Viewing';
+    var h1 = document.querySelector('#f h1');
+    if (h1) h1.innerHTML = 'Arrange a <span class="it">viewing.</span>';
+    var sub = document.querySelector('#f p.sub');
+    if (sub) sub.textContent = LISTING_ADDR
+      ? 'Tell me how to reach you and pick a time that suits. I will confirm access with the listing agent and meet you at the property.'
+      : 'Tell me which property you would like to see and pick a time that suits. I will confirm access with the listing agent.';
+    var labels = document.querySelectorAll('#f .label');
+    if (labels[0]) labels[0].innerHTML = 'Property you would like to view <span class="req">*</span>';
+    // prefill and lock the address when the email passed one
+    if (LISTING_ADDR) {
+      addr.value = LISTING_ADDR;
+      chosen = LISTING_ADDR;
+      addr.setAttribute('readonly', 'readonly');
+      addr.style.background = '#f4f4f2';
+    }
+    // "When are you looking to sell?" does not apply to a buyer - hide label + pills
+    if (labels[1]) labels[1].style.display = 'none';
+    var pills = document.getElementById('pills');
+    if (pills) pills.style.display = 'none';
+    // flight plan step 3: he meets them AT THE LISTING, not at their own home
+    var steps = document.querySelectorAll('#ok .fp-step .fp-txt');
+    if (steps[2]) steps[2].innerHTML = '<strong>Harrison meets you there</strong>'
+      + '<span>He will meet you at the property at the booked time.</span>';
+  }
+  if (VIEWING) applyViewingMode();
+
+
   // --- NZ address autocomplete (Photon / OpenStreetMap, no key required) ---
   var t = null, items = [], idx = -1;
   function fmt(p){
@@ -231,7 +274,8 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   document.addEventListener('click', function(e){ if (!e.target.closest('.ac')) hide(); });
 
   // --- timeframe pills ---
-  var tf = '';
+  // viewing mode has no sell-timeframe question, so preset it to keep validation happy
+  var tf = VIEWING ? 'Viewing enquiry' : '';
   document.getElementById('pills').addEventListener('click', function(e){
     var b = e.target.closest('.pill'); if (!b) return;
     document.querySelectorAll('#pills .pill').forEach(function(p){ p.classList.remove('sel'); });
@@ -241,7 +285,8 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   var details = {};
   function notifyHarrison(extra){
     var payload = {
-      _subject: 'Appraisal booking: ' + details.address + ' (' + details.timeframe + ') - ' + details.fn + ' ' + details.ln,
+      _subject: (VIEWING ? 'Viewing enquiry: ' : 'Appraisal booking: ') + details.address
+                + (VIEWING ? '' : ' (' + details.timeframe + ')') + ' - ' + details.fn + ' ' + details.ln,
       _template: 'table', _captcha: 'false',
       'Property address': details.address,
       'Looking to sell': details.timeframe,
@@ -251,6 +296,13 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
       'Mobile': details.phone,
       'Address picked from list': chosen ? 'yes' : 'typed manually'
     };
+    if (VIEWING) {
+      delete payload['Looking to sell'];
+      payload['Enquiry type'] = 'Viewing request - other agency listing';
+      if (LISTING_ID) payload['Trade Me listing'] = 'https://www.trademe.co.nz/a/property/listing/' + LISTING_ID;
+      if (LEAD_SUB) payload['Suburb'] = LEAD_SUB;
+      if (LEAD_SRC) payload['Source'] = LEAD_SRC;
+    }
     for (var k in extra) payload[k] = extra[k];
     return fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(payload)}).catch(function(){});
   }
@@ -262,6 +314,10 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     var v = function(id){ return document.getElementById(id).value.trim(); };
     var email = v('em');
     if (!v('addr') || !tf || !v('fn') || !v('ln') || !v('ph') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (VIEWING) {
+        err.textContent = 'Please complete your name, a valid email and mobile.';
+        err.style.display = 'block'; return;
+      }
       err.textContent = 'Please complete your address, timeframe, name, a valid email and mobile.';
       err.style.display = 'block'; return;
     }
@@ -381,7 +437,9 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     pkErr.style.display = 'none';
     fetch(API_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'},
       body: JSON.stringify({start: selSlot.start, name: details.name, email: details.email,
-                            phone: details.phone, address: details.address, timeframe: details.timeframe})})
+                            phone: details.phone, address: details.address, timeframe: details.timeframe,
+                            intent: VIEWING ? 'viewing' : 'appraisal',
+                            listingId: LISTING_ID, source: LEAD_SRC, suburb: LEAD_SUB})})
       .then(function(r){ return r.json(); })
       .then(function(d){
         document.getElementById('sp2').style.display = 'none';
