@@ -286,6 +286,10 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .carousel-arrow:hover{background:rgba(20,20,20,.62)}
 .carousel-arrow.prev{left:8px}.carousel-arrow.next{right:8px}
 @media(max-width:680px){.carousel-track .card{flex:0 0 300px}.carousel-arrow{width:44px;height:44px;font-size:24px}}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;padding:24px 2px}
+.cards-grid .card{position:relative;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.cards-grid .card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(0,0,0,.42);z-index:2}
+@media(max-width:680px){.cards-grid{grid-template-columns:1fr;gap:22px}}
 /* TradeMe-style filter bar */
 .filter-bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:40px}
 .filter-bar select{padding:13px 16px;border:1px solid var(--line);background:#fff;font-family:var(--sans);font-size:12px;letter-spacing:.6px;min-width:150px;cursor:pointer}
@@ -437,6 +441,14 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .reels-carousel .reel img,.reels-carousel .reel video{pointer-events:none}
 .reels-carousel .carousel-arrow{background:rgba(255,255,255,.16)}
 .reels-carousel .carousel-arrow:hover{background:rgba(255,255,255,.32)}
+.reelmodal{position:fixed;inset:0;z-index:130;background:rgba(8,8,8,.9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:26px}
+.reelmodal.open{display:flex}
+.rm-inner{position:relative;display:flex;flex-direction:column;align-items:center;max-width:92vw}
+.rm-stage{position:relative;height:min(84vh,760px);aspect-ratio:9/16;max-width:92vw;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)}
+.rm-stage video,.rm-stage iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:0;background:#000}
+.rm-close{position:absolute;top:-46px;right:0;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.rm-close:hover{background:rgba(255,255,255,.32)}
+.rm-cap{color:#fff;text-align:center;margin-top:16px;font-family:var(--serif);font-size:18px}
 
 /* ---------- VALUATION ---------- */
 .valuation{padding:72px 0;text-align:center;color:#fff;position:relative;overflow:hidden;background-attachment:fixed;background-size:cover;background-position:center;background-image:linear-gradient(120deg,#222,#3a3a34)}
@@ -657,7 +669,6 @@ footer .brand .mark svg text{fill:#141414}
  <a href="#sales">Recent Sales</a>
  <a href="#showcase">Showcase</a>
  <a href="#method">The Method</a>
- <a href="#areas">Areas</a>
  <a href="/insights.html">Insights</a>
  <a href="#team">Team</a>
  <a href="#compare" class="cta">What's My Home Worth?</a>
@@ -831,11 +842,9 @@ footer .brand .mark svg text{fill:#141414}
  <select id="lMax"><option value="">Max Price</option></select>
  <div class="filter-count" id="lCount"></div>
  </div>
- <div class="carousel reveal" id="listingsCarousel">
- <button class="carousel-arrow prev" data-dir="-1" aria-label="Previous">&#8249;</button>
- <div class="carousel-track" id="listingsGrid"></div>
- <button class="carousel-arrow next" data-dir="1" aria-label="Next">&#8250;</button>
- </div>
+      <div class="carousel reveal" id="listingsCarousel">
+        <div class="cards-grid" id="listingsGrid"></div>
+      </div>
  <div class="center-cta reveal"><a href="listings.html" class="btn">View All Listings</a></div>
  </div>
 </section>
@@ -847,11 +856,9 @@ footer .brand .mark svg text{fill:#141414}
  <span class="eyebrow gold">Track Record</span>
  <h2>Recent Sales</h2>
  </div>
- <div class="carousel reveal" id="salesCarousel">
- <button class="carousel-arrow prev" data-dir="-1" aria-label="Previous">&#8249;</button>
- <div class="carousel-track" id="salesGrid"></div>
- <button class="carousel-arrow next" data-dir="1" aria-label="Next">&#8250;</button>
- </div>
+      <div class="carousel reveal" id="salesCarousel">
+        <div class="cards-grid" id="salesGrid"></div>
+      </div>
  <div class="center-cta reveal"><a href="sales.html" class="btn">View All Sales</a></div>
  </div>
 </section>
@@ -863,11 +870,21 @@ footer .brand .mark svg text{fill:#141414}
  <span class="eyebrow gold">Property Reels</span>
  <h2>Property Video Showcase</h2>
  </div>
+      <p class="sec-sub reveal" style="max-width:660px;margin:6px auto 0;color:rgba(255,255,255,.72);">Every home is filmed and cut for social first, then rolled out across Instagram, Facebook and TikTok as part of a deliberate content strategy that puts your property in front of thousands of local buyers. <a href="#getsocial" style="color:var(--rw-yellow-deep);font-weight:600;text-decoration:none;">See how I show up on social.</a></p>
  </div>
  <div class="wrap"><div class="carousel reels-carousel reveal" id="reelsCarousel">
  <div class="reel-row" id="reelRow"></div>
  </div></div>
 </section>
+
+<!-- ===================== REEL VIDEO POPUP ===================== -->
+<div class="reelmodal" id="reelModal" aria-hidden="true">
+  <div class="rm-inner">
+    <button class="rm-close" id="rmClose" aria-label="Close video">&times;</button>
+    <div class="rm-stage" id="rmStage"></div>
+    <div class="rm-cap" id="rmCap"></div>
+  </div>
+</div>
 
 <!-- ===================== LUXURY SHOWCASE ===================== -->
 <section class="showcase" id="showcase">
@@ -961,21 +978,6 @@ footer .brand .mark svg text{fill:#141414}
 .faq .fa-body{padding:0 4px 24px;font-size:16px;line-height:1.75;color:var(--ink-soft);max-width:780px}
 @media(max-width:600px){.faq summary{font-size:17px}}
 </style>
-<!-- ===================== AREAS ===================== -->
-<section class="areas reveal" id="areas" style="padding:74px 0;border-top:1px solid var(--line);">
- <div class="wrap">
- <div class="sec-head reveal" style="text-align:center;margin-bottom:8px;"><span class="eyebrow gold">North Shore Auckland</span><h2>Areas Harrison covers</h2></div>
- <p style="text-align:center;max-width:680px;margin:0 auto 34px;color:var(--muted);">Harrison sells right across the North Shore. Explore the suburbs he knows best, each with local market notes and school zones, or call him about any address on the Shore.</p>
- <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
- <a href="/milford.html" style="text-decoration:none;border:1px solid var(--line);background:#fff;padding:14px 26px;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);transition:.3s;" onmouseover="this.style.background='#141414';this.style.color='#fff';this.style.borderColor='#141414'" onmouseout="this.style.background='#fff';this.style.color='#141414';this.style.borderColor='var(--line)'">Milford</a>
- <a href="/takapuna.html" style="text-decoration:none;border:1px solid var(--line);background:#fff;padding:14px 26px;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);transition:.3s;" onmouseover="this.style.background='#141414';this.style.color='#fff';this.style.borderColor='#141414'" onmouseout="this.style.background='#fff';this.style.color='#141414';this.style.borderColor='var(--line)'">Takapuna</a>
- <a href="/mairangi-bay.html" style="text-decoration:none;border:1px solid var(--line);background:#fff;padding:14px 26px;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);transition:.3s;" onmouseover="this.style.background='#141414';this.style.color='#fff';this.style.borderColor='#141414'" onmouseout="this.style.background='#fff';this.style.color='#141414';this.style.borderColor='var(--line)'">Mairangi Bay</a>
- <a href="/campbells-bay.html" style="text-decoration:none;border:1px solid var(--line);background:#fff;padding:14px 26px;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);transition:.3s;" onmouseover="this.style.background='#141414';this.style.color='#fff';this.style.borderColor='#141414'" onmouseout="this.style.background='#fff';this.style.color='#141414';this.style.borderColor='var(--line)'">Campbells Bay</a>
- <a href="/browns-bay.html" style="text-decoration:none;border:1px solid var(--line);background:#fff;padding:14px 26px;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);transition:.3s;" onmouseover="this.style.background='#141414';this.style.color='#fff';this.style.borderColor='#141414'" onmouseout="this.style.background='#fff';this.style.color='#141414';this.style.borderColor='var(--line)'">Browns Bay</a>
- <a href="/forrest-hill.html" style="text-decoration:none;border:1px solid var(--line);background:#fff;padding:14px 26px;font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);transition:.3s;" onmouseover="this.style.background='#141414';this.style.color='#fff';this.style.borderColor='#141414'" onmouseout="this.style.background='#fff';this.style.color='#141414';this.style.borderColor='var(--line)'">Forrest Hill</a>
- </div>
- </div>
-</section>
 
 <section class="faq" id="faq">
  <div class="wrap">
@@ -1121,7 +1123,6 @@ footer .brand .mark svg text{fill:#141414}
  <li><a href="#sales">Recent Sales</a></li>
  <li><a href="#showcase">Luxury Showcase</a></li>
  <li><a href="#method">The Method</a></li>
- <li><a href="#areas">North Shore Areas</a></li>
  <li><a href="/insights.html">Insights</a></li>
  </ul>
  </div>
@@ -1266,7 +1267,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  <div class="body"><h3>${esc(l.address)}</h3><div class="meta">${esc(l.suburb)}</div>
  <div class="feats"><span>${esc(l.beds)} Bed</span><span>${esc(l.baths)} Bath</span><span>${esc(l.cars)} Car</span></div><div class="card-actions"><button class="enq-link" data-kind="listing" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}">Enquire</button><button class="view-link" data-ref="${esc(l.address||'')}${l.suburb?', '+esc(l.suburb):''}">Book a viewing</button></div></div>
  </article>`;
- if(lg){const lset=listings.map(listingCard).join('');lg.innerHTML=lset+lset;}
+      if(lg){const lset=listings.map(listingCard).join('');lg.innerHTML=lset;}
  // Featured listings filters (TradeMe-style)
  const lLoc=document.getElementById('lLoc');
  if(lg&&lLoc){
@@ -1282,7 +1283,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  [...lg.querySelectorAll('.card')].forEach(c=>{const p=+c.dataset.price,priceOk=p===0?true:(p>=mn&&p<=mx);
  const ok=(!loc||c.dataset.suburb===loc)&&priceOk&&(+c.dataset.beds>=bd)&&(+c.dataset.baths>=ba);
  c.style.display=ok?'':'none';if(ok)n++;});
- n=Math.round(n/2);if(lCount)lCount.textContent=n+(n===1?' listing':' listings');
+      if(lCount)lCount.textContent=n+(n===1?' listing':' listings');
  }
  ['lLoc','lMin','lMax','lBeds','lBaths'].forEach(id=>document.getElementById(id).addEventListener('change',applyListFilters));
  applyListFilters();
@@ -1299,7 +1300,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  return `<article class="card sale-card" data-i="${i}">${cell}
  <div class="body"><h3>${esc(s.address)}</h3><div class="meta">${meta}</div><button class="enq-link" data-kind="sale" data-ref="${esc(s.address||'')}${s.suburb?', '+esc(s.suburb):''}">Ask about this sale</button></div>
  </article>`;
- }).join('');sgr.innerHTML=scards+scards;}
+      }).join('');sgr.innerHTML=scards;}
  initFlowCarousel(document.getElementById('salesCarousel'));
 
  // ---------- Property detail panel ----------
@@ -1397,6 +1398,12 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft'&&gal.length>1)lbPrev.click();else if(e.key==='ArrowRight'&&gal.length>1)lbNext.click();});
  }
 
+      // ----- Property video showcase popup -----
+      const reelModal=document.getElementById('reelModal');
+      const rmStage=document.getElementById('rmStage'),rmCap=document.getElementById('rmCap');
+      function openReel(video,title){if(!reelModal)return;rmStage.innerHTML='<video src="'+esc(video)+'" controls autoplay playsinline></video>';rmCap.textContent=title||'';reelModal.classList.add('open');reelModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+      function closeReel(){if(!reelModal)return;reelModal.classList.remove('open');reelModal.setAttribute('aria-hidden','true');rmStage.innerHTML='';document.body.style.overflow='';}
+      if(reelModal){document.getElementById('rmClose').addEventListener('click',closeReel);reelModal.addEventListener('click',e=>{if(e.target===reelModal)closeReel();});document.addEventListener('keydown',e=>{if(reelModal.classList.contains('open')&&e.key==='Escape')closeReel();});}
  // ----- Reels (IG 9:16): uploaded MP4 or YouTube/Vimeo link -----
  const ytId=u=>{const m=String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);return m?m[1]:null;};
  const vimeoId=u=>{const m=String(u).match(/vimeo\.com\/(?:video\/)?(\d+)/);return m?m[1]:null;};
@@ -1405,8 +1412,9 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  const cap=`<div class="cap"><h3>${esc(r.title||'')}</h3><div class="meta">${esc(r.suburb||'')}</div></div>`;
  const poster=r.poster?`<img src="${esc(r.poster)}" alt="" loading="lazy">`:`<div class="ph">Reel ${i+1}<br>(9:16 video)</div>`;
  if(r.videoFile){ // uploaded MP4, autoplays muted/loop when in view (IG style)
- return `<div class="reel reveal d${(i%4)+1}"><div class="frame">
- <video src="${esc(r.videoFile)}" muted loop playsinline preload="metadata" ${r.poster?`poster="${esc(r.poster)}"`:''} data-autoplay></video></div>${cap}</div>`;
+        return `<div class="reel reveal d${(i%4)+1}" data-video="${esc(r.videoFile)}" data-title="${esc((r.title||'')+(r.suburb?' · '+r.suburb:''))}"><div class="frame">
+          <video src="${esc(r.videoFile)}" muted loop playsinline preload="metadata" ${r.poster?`poster="${esc(r.poster)}"`:''} data-autoplay></video>
+          <div class="play"><span class="btn-play"></span></div></div>${cap}</div>`;
  }
  const yt=ytId(r.videoUrl),vm=vimeoId(r.videoUrl);
  if(yt||vm){ // link, click to play
@@ -1434,11 +1442,12 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
  const stepR=()=>{const c=rr.querySelector('.reel');return c?c.getBoundingClientRect().width+34:300;};
  rr.addEventListener('scroll',()=>requestAnimationFrame(focus),{passive:true});
  reelsCar.querySelectorAll('.carousel-arrow').forEach(b=>b.addEventListener('click',()=>{pauseR();rr.scrollBy({left:(+b.dataset.dir)*stepR(),behavior:'smooth'});}));
- let down=false,sx=0,sl=0;
- rr.addEventListener('pointerdown',e=>{down=true;sx=e.clientX;sl=rr.scrollLeft;rr.classList.add('grabbing');try{rr.setPointerCapture(e.pointerId);}catch(_){}pauseR();});
- rr.addEventListener('pointermove',e=>{if(down)rr.scrollLeft=sl-(e.clientX-sx);});
+      let down=false,sx=0,sl=0,moved=false;
+      rr.addEventListener('pointerdown',e=>{down=true;moved=false;sx=e.clientX;sl=rr.scrollLeft;rr.classList.add('grabbing');try{rr.setPointerCapture(e.pointerId);}catch(_){}pauseR();});
+      rr.addEventListener('pointermove',e=>{if(down){if(Math.abs(e.clientX-sx)>6)moved=true;rr.scrollLeft=sl-(e.clientX-sx);}});
  const endR=()=>{down=false;rr.classList.remove('grabbing');};
  rr.addEventListener('pointerup',endR);rr.addEventListener('pointercancel',endR);
+      reelEls().forEach(el=>el.addEventListener('click',()=>{if(moved){moved=false;return;}const v=el.dataset.video;if(v)openReel(v,el.dataset.title||'');}));
  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
  let t=null,resumeT=null;
  const tween=(to,dur)=>{const from=rr.scrollLeft,d=to-from,t0=performance.now();(function st(now){const p=Math.min(1,(now-t0)/dur);const e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;rr.scrollLeft=from+d*e;focus();if(p<1)requestAnimationFrame(st);})(performance.now());};
