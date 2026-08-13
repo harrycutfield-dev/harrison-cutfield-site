@@ -197,7 +197,7 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .bio p{color:var(--ink-soft);margin-bottom:18px;font-size:16px}
 .bio .actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap}
 .bio-photo{aspect-ratio:4/5;background:var(--paper-2);position:relative;overflow:hidden}
-.bio-photo img{width:100%;height:100%;object-fit:cover}
+.bio-photo img{width:100%;height:100%;object-fit:cover;-webkit-mask-image:linear-gradient(to bottom,#000 60%,rgba(0,0,0,.4) 84%,transparent);mask-image:linear-gradient(to bottom,#000 60%,rgba(0,0,0,.4) 84%,transparent)}
 .bio-photo .tag{position:absolute;left:0;bottom:0;background:var(--rw-yellow);padding:18px 26px;font-family:var(--serif);font-size:22px;font-weight:600;z-index:2}
 
 .ph{background:repeating-linear-gradient(45deg,#ececec,#ececec 14px,#e4e4e4 14px,#e4e4e4 28px);display:grid;place-items:center;color:#9a9a9a;font-family:var(--sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:20px}
@@ -443,12 +443,16 @@ header.nav.scrolled .menu-toggle span{background:#fff}
 .reels-carousel .carousel-arrow:hover{background:rgba(255,255,255,.32)}
 .reelmodal{position:fixed;inset:0;z-index:130;background:rgba(8,8,8,.9);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:26px}
 .reelmodal.open{display:flex}
-.rm-inner{position:relative;display:flex;flex-direction:column;align-items:center;max-width:92vw}
-.rm-stage{position:relative;height:min(84vh,760px);aspect-ratio:9/16;max-width:92vw;background:#000;border-radius:8px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)}
+.rm-inner{position:relative;display:flex;flex-direction:row;align-items:stretch;gap:26px;max-width:min(1120px,94vw);width:100%}
+.rm-stage{position:relative;height:min(86vh,860px);aspect-ratio:9/16;background:#000;border-radius:8px;overflow:hidden;flex:0 0 auto;box-shadow:0 40px 90px -30px rgba(0,0,0,.7)}
 .rm-stage video,.rm-stage iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border:0;background:#000}
 .rm-close{position:absolute;top:-46px;right:0;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 .rm-close:hover{background:rgba(255,255,255,.32)}
-.rm-cap{color:#fff;text-align:center;margin-top:16px;font-family:var(--serif);font-size:18px}
+.rm-info{flex:1 1 300px;min-width:0;color:#fff;align-self:center;padding:8px 4px}
+.rm-info h3{font-family:var(--serif);font-size:clamp(24px,3vw,34px);font-weight:600;margin-bottom:8px}
+.rm-info .rm-meta{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rw-yellow-deep);margin-bottom:18px}
+.rm-info p{color:rgba(255,255,255,.82);font-size:16px;line-height:1.75}
+@media(max-width:760px){.rm-inner{flex-direction:column;align-items:center;overflow:auto;max-height:94vh}.rm-stage{height:64vh}.rm-info{align-self:stretch;text-align:center}}
 
 /* ---------- VALUATION ---------- */
 .valuation{padding:72px 0;text-align:center;color:#fff;position:relative;overflow:hidden;background-attachment:fixed;background-size:cover;background-position:center;background-image:linear-gradient(120deg,#222,#3a3a34)}
@@ -761,23 +765,39 @@ footer .brand .mark svg text{fill:#141414}
  </div>
 </section>
 
-<!-- ===================== COMPARE (CR GROUP) ===================== -->
-<section class="compare" id="compare">
+<!-- ===================== FEATURED LISTINGS ===================== -->
+<section class="listings" id="listings">
  <div class="wrap">
  <div class="sec-head reveal">
- <span class="eyebrow gold">Your Home, Compared</span>
- <h2>See what your home compares to.</h2>
- <p class="sec-sub">Load your home and instantly see comparable recent sales and current listings from across the Ray White CR Group on the North Shore.</p>
+ <span class="eyebrow gold">For Sale</span>
+ <h2>Featured Listings</h2>
  </div>
- <form id="cmpForm" class="cmp-form reveal">
- <select id="cmpSuburb"><option value="">Your suburb</option></select>
- <select id="cmpBeds"><option value="0">Bedrooms</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
- <select id="cmpBaths"><option value="0">Bathrooms</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
- <button class="btn btn-solid" type="submit">Show Comparables</button>
- </form>
- <div class="cmp-results" id="cmpResults"></div>
- <p class="cmp-disclaimer reveal">Comparables shown are Ray White CR Group listings and recent sales only. For a complete comparable market analysis tailored to your home, book an appraisal.</p>
- <div class="cmp-cta reveal"><a href="#contact" class="btn">Request a Full Appraisal</a></div>
+ <div class="filter-bar reveal">
+ <select id="lLoc"><option value="">All Locations</option></select>
+ <select id="lBeds"><option value="0">Beds: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
+ <select id="lBaths"><option value="0">Baths: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
+ <select id="lMin"><option value="">Min Price</option></select>
+ <select id="lMax"><option value="">Max Price</option></select>
+ <div class="filter-count" id="lCount"></div>
+ </div>
+      <div class="carousel reveal" id="listingsCarousel">
+        <div class="cards-grid" id="listingsGrid"></div>
+      </div>
+ <div class="center-cta reveal"><a href="listings.html" class="btn">View All Listings</a></div>
+ </div>
+</section>
+
+<!-- ===================== RECENT SALES ===================== -->
+<section class="listings" id="sales" style="background:var(--paper-2);">
+ <div class="wrap">
+ <div class="sec-head reveal">
+ <span class="eyebrow gold">Track Record</span>
+ <h2>Recent Sales</h2>
+ </div>
+      <div class="carousel reveal" id="salesCarousel">
+        <div class="cards-grid" id="salesGrid"></div>
+      </div>
+ <div class="center-cta reveal"><a href="sales.html" class="btn">View All Sales</a></div>
  </div>
 </section>
 
@@ -787,7 +807,7 @@ footer .brand .mark svg text{fill:#141414}
  <div class="sec-head reveal">
  <span class="eyebrow gold">Exclusive Access</span>
  <h2>Off-Market Listings</h2>
- <p class="sec-sub">Off-market homes are sold privately and are never advertised on TradeMe, realestate.co.nz or any other property marketplace. They are presented quietly to a select group of qualified buyers before they ever reach the open market, which means less competition, complete discretion and first access to some of the North Shore's most sought after homes. Enter your details below to unlock what is currently available.</p>
+ <p class="sec-sub">An off-market listing is a home that is for sale but never publicly advertised, not on TradeMe, realestate.co.nz or any other portal, and with no sign at the gate. Instead it is offered quietly and directly to a small group of qualified, ready buyers before it ever reaches the open market. For buyers that means less competition, complete privacy and first look at some of the North Shore's most sought after homes. For owners it means testing the market discreetly on their own terms. Enter your details below to unlock what is currently available.</p>
  </div>
  <div class="off-wrap">
  <div class="off-bar" id="offBar">
@@ -827,39 +847,23 @@ footer .brand .mark svg text{fill:#141414}
  </div>
 </section>
 
-<!-- ===================== FEATURED LISTINGS ===================== -->
-<section class="listings" id="listings">
+<!-- ===================== COMPARE (CR GROUP) ===================== -->
+<section class="compare" id="compare">
  <div class="wrap">
  <div class="sec-head reveal">
- <span class="eyebrow gold">For Sale</span>
- <h2>Featured Listings</h2>
+ <span class="eyebrow gold">Your Home, Compared</span>
+ <h2>See what your home compares to.</h2>
+ <p class="sec-sub">Load your home and instantly see comparable recent sales and current listings from across the Ray White CR Group on the North Shore.</p>
  </div>
- <div class="filter-bar reveal">
- <select id="lLoc"><option value="">All Locations</option></select>
- <select id="lBeds"><option value="0">Beds: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
- <select id="lBaths"><option value="0">Baths: Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select>
- <select id="lMin"><option value="">Min Price</option></select>
- <select id="lMax"><option value="">Max Price</option></select>
- <div class="filter-count" id="lCount"></div>
- </div>
-      <div class="carousel reveal" id="listingsCarousel">
-        <div class="cards-grid" id="listingsGrid"></div>
-      </div>
- <div class="center-cta reveal"><a href="listings.html" class="btn">View All Listings</a></div>
- </div>
-</section>
-
-<!-- ===================== RECENT SALES ===================== -->
-<section class="listings" id="sales" style="background:var(--paper-2);">
- <div class="wrap">
- <div class="sec-head reveal">
- <span class="eyebrow gold">Track Record</span>
- <h2>Recent Sales</h2>
- </div>
-      <div class="carousel reveal" id="salesCarousel">
-        <div class="cards-grid" id="salesGrid"></div>
-      </div>
- <div class="center-cta reveal"><a href="sales.html" class="btn">View All Sales</a></div>
+ <form id="cmpForm" class="cmp-form reveal">
+ <select id="cmpSuburb"><option value="">Your suburb</option></select>
+ <select id="cmpBeds"><option value="0">Bedrooms</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+ <select id="cmpBaths"><option value="0">Bathrooms</option><option>1</option><option>2</option><option>3</option><option>4</option></select>
+ <button class="btn btn-solid" type="submit">Show Comparables</button>
+ </form>
+ <div class="cmp-results" id="cmpResults"></div>
+ <p class="cmp-disclaimer reveal">Comparables shown are Ray White CR Group listings and recent sales only. For a complete comparable market analysis tailored to your home, book an appraisal.</p>
+ <div class="cmp-cta reveal"><a href="#contact" class="btn">Request a Full Appraisal</a></div>
  </div>
 </section>
 
@@ -882,7 +886,7 @@ footer .brand .mark svg text{fill:#141414}
   <div class="rm-inner">
     <button class="rm-close" id="rmClose" aria-label="Close video">&times;</button>
     <div class="rm-stage" id="rmStage"></div>
-    <div class="rm-cap" id="rmCap"></div>
+    <div class="rm-info"><h3 id="rmTitle"></h3><div class="rm-meta" id="rmMeta"></div><p id="rmBlurb"></p></div>
   </div>
 </div>
 
@@ -1400,19 +1404,21 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
 
       // ----- Property video showcase popup -----
       const reelModal=document.getElementById('reelModal');
-      const rmStage=document.getElementById('rmStage'),rmCap=document.getElementById('rmCap');
-      function openReel(video,title){if(!reelModal)return;rmStage.innerHTML='<video src="'+esc(video)+'" controls autoplay playsinline></video>';rmCap.textContent=title||'';reelModal.classList.add('open');reelModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+      const rmStage=document.getElementById('rmStage');
+      function openReel(video,title,meta,blurb){if(!reelModal)return;rmStage.innerHTML='<video src="'+esc(video)+'" controls autoplay playsinline></video>';var t=document.getElementById('rmTitle');if(t)t.textContent=title||'';var m=document.getElementById('rmMeta');if(m)m.textContent=meta||'';var b=document.getElementById('rmBlurb');if(b)b.textContent=blurb||'';reelModal.classList.add('open');reelModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
       function closeReel(){if(!reelModal)return;reelModal.classList.remove('open');reelModal.setAttribute('aria-hidden','true');rmStage.innerHTML='';document.body.style.overflow='';}
       if(reelModal){document.getElementById('rmClose').addEventListener('click',closeReel);reelModal.addEventListener('click',e=>{if(e.target===reelModal)closeReel();});document.addEventListener('keydown',e=>{if(reelModal.classList.contains('open')&&e.key==='Escape')closeReel();});}
  // ----- Reels (IG 9:16): uploaded MP4 or YouTube/Vimeo link -----
  const ytId=u=>{const m=String(u).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);return m?m[1]:null;};
  const vimeoId=u=>{const m=String(u).match(/vimeo\.com\/(?:video\/)?(\d+)/);return m?m[1]:null;};
+ const propDesc={};[...sales,...listings].forEach(p=>{const k=String(p.address||'').toLowerCase().replace(/[^a-z0-9]/g,'');if(k&&p.detail&&p.detail.description)propDesc[k]=p.detail.description;});
+ const reelBlurb=r=>{const k=String(r.title||'').toLowerCase().replace(/[^a-z0-9]/g,'');return propDesc[k]||r.blurb||('A video showcase of '+(r.title||'this home')+(r.suburb?' in '+r.suburb:'')+'.');};
  const rr=document.getElementById('reelRow');
  if(rr)rr.innerHTML=reels.map((r,i)=>{
  const cap=`<div class="cap"><h3>${esc(r.title||'')}</h3><div class="meta">${esc(r.suburb||'')}</div></div>`;
  const poster=r.poster?`<img src="${esc(r.poster)}" alt="" loading="lazy">`:`<div class="ph">Reel ${i+1}<br>(9:16 video)</div>`;
  if(r.videoFile){ // uploaded MP4, autoplays muted/loop when in view (IG style)
-        return `<div class="reel reveal d${(i%4)+1}" data-video="${esc(r.videoFile)}" data-title="${esc((r.title||'')+(r.suburb?' · '+r.suburb:''))}"><div class="frame">
+        return `<div class="reel reveal d${(i%4)+1}" data-video="${esc(r.videoFile)}" data-title="${esc(r.title||'')}" data-meta="${esc(r.suburb||'')}" data-blurb="${esc(reelBlurb(r))}"><div class="frame">
           <video src="${esc(r.videoFile)}" muted loop playsinline preload="metadata" ${r.poster?`poster="${esc(r.poster)}"`:''} data-autoplay></video>
           <div class="play"><span class="btn-play"></span></div></div>${cap}</div>`;
  }
@@ -1447,7 +1453,7 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
       rr.addEventListener('pointermove',e=>{if(down){if(Math.abs(e.clientX-sx)>6)moved=true;rr.scrollLeft=sl-(e.clientX-sx);}});
  const endR=()=>{down=false;rr.classList.remove('grabbing');};
  rr.addEventListener('pointerup',endR);rr.addEventListener('pointercancel',endR);
-      reelEls().forEach(el=>el.addEventListener('click',()=>{if(moved){moved=false;return;}const v=el.dataset.video;if(v)openReel(v,el.dataset.title||'');}));
+      reelEls().forEach(el=>el.addEventListener('click',()=>{if(moved){moved=false;return;}const v=el.dataset.video;if(v)openReel(v,el.dataset.title||'',el.dataset.meta||'',el.dataset.blurb||'');}));
  const reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
  let t=null,resumeT=null;
  const tween=(to,dur)=>{const from=rr.scrollLeft,d=to-from,t0=performance.now();(function st(now){const p=Math.min(1,(now-t0)/dur);const e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;rr.scrollLeft=from+d*e;focus();if(p<1)requestAnimationFrame(st);})(performance.now());};
