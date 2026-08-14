@@ -73,10 +73,16 @@ body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--p
 .addr-suggest div{padding:10px 14px;font-size:13px;line-height:1.35;cursor:pointer;color:var(--ink);border-bottom:1px solid #f1eee5}
 .addr-suggest div:last-child{border-bottom:0}
 .addr-suggest div:hover,.addr-suggest div.active{background:var(--rw-yellow)}
+
+/* Ray White brand mark - LOCKED 15 Aug: yellow box, top right, identical on every landing page */
+.rw-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--rw-yellow,#FFE512);color:#111;font-family:var(--serif,Georgia,'Playfair Display',serif);font-weight:700;font-size:13px;line-height:1;padding:9px 15px;letter-spacing:.2px;white-space:nowrap;text-decoration:none;flex:0 0 auto}
+@media(max-width:560px){.rw-badge{font-size:11px;padding:7px 11px}}
+.topbar .wrap .back{margin-left:auto}
+.topbar .wrap .rw-badge{margin-left:14px}
 </style>
 </head>
 <body>
-<header class="topbar"><div class="wrap"><a class="brand" href="index.html">Harrison Cutfield</a><a class="back" href="index.html">&#8249; Back to home</a></div></header>
+<header class="topbar"><div class="wrap"><a class="brand" href="index.html">Harrison Cutfield</a><a class="back" href="index.html">&#8249; Back to home</a><span class="rw-badge">Ray White</span></div></header>
 <div class="wrap">
  <div class="head"><span class="eyebrow">Exclusive Access</span><h1>Off-Market Listings</h1>
  <p>Off-market homes are sold privately and are never advertised on TradeMe, realestate.co.nz or any other property marketplace. Enter your details below to view what is currently available.</p></div>
