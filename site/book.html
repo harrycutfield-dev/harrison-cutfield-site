@@ -135,7 +135,7 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     <div class="err" id="err">Please complete every field.</div>
 
     <button class="cta" id="go" type="submit"><span class="spinner" id="sp"></span>See available times</button>
-    <p class="note">Next step: pick a day and time from Harrison's live availability.<br>Your details are sent only to Harrison Cutfield, Ray White Mairangi Bay.</p>
+    <p class="note"><span id="nextStepNote">Next step: pick a day and time from Harrison's live availability.</span><br>Your details are sent only to Harrison Cutfield, Ray White Mairangi Bay.</p>
   </form>
 
   <div id="picker" style="display:none">
@@ -200,10 +200,66 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   // and the existing site CTAs are completely unaffected.
   var Q = new URLSearchParams(location.search);
   var VIEWING = (Q.get('intent') || '').toLowerCase() === 'viewing';
+  // INFO (?intent=info), added 17 Aug 2026 for The Signature Collection luxury email.
+  // A reader asks for information about a Ray White home that is NOT Harrison's listing.
+  // This is an enquiry, not a booking: no slot picker, no calendar event, no Apps Script
+  // call at all. It notifies Harrison through the same form endpoint the other modes use,
+  // so nothing the appraisal or viewing flows depend on is touched.
+  var INFO = (Q.get('intent') || '').toLowerCase() === 'info';
   var LISTING_ID = Q.get('l') || '';
   var LISTING_ADDR = (Q.get('addr') || '').trim();
   var LEAD_SRC = Q.get('src') || '';
   var LEAD_SUB = Q.get('s') || '';
+
+  function applyInfoMode(){
+    document.title = 'Request Information · Harrison Cutfield';
+    var kick = document.querySelector('.kick');
+    if (kick) kick.textContent = 'Property Enquiry';
+    var h1 = document.querySelector('#f h1');
+    if (h1) h1.innerHTML = 'Request more <span class="it">information.</span>';
+    var sub = document.querySelector('#f p.sub');
+    if (sub) sub.textContent = LISTING_ADDR
+      ? 'Leave your details and I will be in contact about this property.'
+      : 'Tell me which property you are interested in and I will be in contact.';
+    var labels = document.querySelectorAll('#f .label');
+    if (labels[0]) labels[0].innerHTML = 'Property you are interested in <span class="req">*</span>';
+    if (LISTING_ADDR) {
+      addr.value = LISTING_ADDR;
+      chosen = LISTING_ADDR;
+      addr.setAttribute('readonly', 'readonly');
+      addr.style.background = '#f4f4f2';
+    }
+    // an enquiry about someone else's listing has no "when are you looking to sell"
+    if (labels[1]) labels[1].style.display = 'none';
+    var pills = document.getElementById('pills');
+    if (pills) pills.style.display = 'none';
+    var go = document.getElementById('go');
+    if (go && go.lastChild) go.lastChild.nodeValue = 'Request more information';
+    // the confirmation panel is about a booking; rewrite it for an enquiry
+    var okH = document.querySelector('#ok h2');
+    if (okH) okH.textContent = 'I will be in contact.';
+    var okWhen = document.getElementById('okWhen');
+    if (okWhen) okWhen.textContent = LISTING_ADDR;
+    var steps = document.querySelectorAll('#ok .fp-step');
+    if (steps[1]) steps[1].style.display = 'none';   // no calendar invitation
+    if (steps[0]) {
+      var t = steps[0].querySelector('.fp-txt');
+      if (t) t.innerHTML = '<strong>Your enquiry is with me</strong>'
+        + '<span>I have the property and your details.</span>';
+    }
+    if (steps[2]) {
+      var t3 = steps[2].querySelector('.fp-txt');
+      if (t3) t3.innerHTML = '<strong>I will be in contact</strong>'
+        + '<span>Usually the same day, with everything I can tell you about this home.</span>';
+    }
+    var warn = document.querySelector('#ok .fp-warn');
+    if (warn) warn.style.display = 'none';           // accept-the-invite does not apply
+    var foot = document.querySelector('#ok .fp-foot');
+    if (foot) foot.textContent = 'Thank you for your interest.';
+    // there is no next step in an enquiry: nothing is booked
+    var note = document.getElementById('nextStepNote');
+    if (note) note.textContent = 'I will be in contact about this property, usually the same day.';
+  }
 
   function applyViewingMode(){
     document.title = 'Arrange a Viewing · Harrison Cutfield';
@@ -234,6 +290,7 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
       + '<span>He will meet you at the property at the booked time.</span>';
   }
   if (VIEWING) applyViewingMode();
+  if (INFO) applyInfoMode();
 
 
   // --- NZ address autocomplete (Photon / OpenStreetMap, no key required) ---
@@ -294,8 +351,10 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
   var details = {};
   function notifyHarrison(extra){
     var payload = {
-      _subject: (VIEWING ? 'Viewing enquiry: ' : 'Appraisal booking: ') + details.address
-                + (VIEWING ? '' : ' (' + details.timeframe + ')') + ' - ' + details.fn + ' ' + details.ln,
+      _subject: (INFO ? 'Signature Collection enquiry: '
+                      : VIEWING ? 'Viewing enquiry: ' : 'Appraisal booking: ') + details.address
+                + ((VIEWING || INFO) ? '' : ' (' + details.timeframe + ')')
+                + ' - ' + details.fn + ' ' + details.ln,
       _template: 'table', _captcha: 'false',
       'Property address': details.address,
       'Looking to sell': details.timeframe,
@@ -305,6 +364,15 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
       'Mobile': details.phone,
       'Address picked from list': chosen ? 'yes' : 'typed manually'
     };
+    if (INFO) {
+      delete payload['Looking to sell'];
+      payload['Enquiry type'] = 'Information request - Ray White listing, not ours';
+      payload['Property'] = details.address;
+      if (LISTING_ID) payload['Ray White listing'] = 'https://www.raywhite.co.nz' + LISTING_ID;
+      if (LEAD_SUB) payload['Suburb'] = LEAD_SUB;
+      if (LEAD_SRC) payload['Source'] = LEAD_SRC;
+      payload['Action'] = 'They are expecting you to make contact. No booking was made.';
+    }
     if (VIEWING) {
       delete payload['Looking to sell'];
       payload['Enquiry type'] = 'Viewing request - other agency listing';
@@ -322,8 +390,9 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     var err = document.getElementById('err');
     var v = function(id){ return document.getElementById(id).value.trim(); };
     var email = v('em');
-    if (!v('addr') || !tf || !v('fn') || !v('ln') || !v('ph') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      if (VIEWING) {
+    var needTf = !(VIEWING || INFO);
+    if (!v('addr') || (needTf && !tf) || !v('fn') || !v('ln') || !v('ph') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (VIEWING || INFO) {
         err.textContent = 'Please complete your name, a valid email and mobile.';
         err.style.display = 'block'; return;
       }
@@ -333,6 +402,20 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     err.style.display = 'none';
     details = {address: v('addr'), timeframe: tf, fn: v('fn'), ln: v('ln'),
                name: v('fn') + ' ' + v('ln'), email: email, phone: v('ph')};
+    // INFO is an enquiry, not a booking: notify Harrison and confirm. No slots, no
+    // calendar, no Apps Script call.
+    if (INFO) {
+      var goBtn = document.getElementById('go');
+      if (goBtn) goBtn.disabled = true;
+      var spEl = document.getElementById('sp');
+      if (spEl) spEl.style.display = 'inline-block';
+      notifyHarrison({}).then(function(){
+        if (spEl) spEl.style.display = 'none';
+        document.getElementById('f').style.display = 'none';
+        document.getElementById('ok').style.display = 'block';
+      });
+      return;
+    }
     document.getElementById('f').style.display = 'none';
     document.getElementById('picker').style.display = 'block';
     loadSlots();
