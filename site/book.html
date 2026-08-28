@@ -268,9 +268,9 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     var h1 = document.querySelector('#f h1');
     if (h1) h1.innerHTML = 'Arrange a <span class="it">viewing.</span>';
     var sub = document.querySelector('#f p.sub');
-    if (sub) sub.textContent = LISTING_ADDR
-      ? 'Tell me how to reach you and pick a time that suits. I will confirm access with the listing agent and meet you at the property.'
-      : 'Tell me which property you would like to see and pick a time that suits. I will confirm access with the listing agent.';
+      if (sub) sub.textContent = LISTING_ADDR
+        ? 'Leave your details and I will be in contact to arrange a viewing time that suits you.'
+        : 'Tell me which property you would like to see, leave your details, and I will be in contact to arrange a time.';
     var labels = document.querySelectorAll('#f .label');
     if (labels[0]) labels[0].innerHTML = 'Property you would like to view <span class="req">*</span>';
     // prefill and lock the address when the email passed one
@@ -284,10 +284,24 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     if (labels[1]) labels[1].style.display = 'none';
     var pills = document.getElementById('pills');
     if (pills) pills.style.display = 'none';
-    // flight plan step 3: he meets them AT THE LISTING, not at their own home
-    var steps = document.querySelectorAll('#ok .fp-step .fp-txt');
-    if (steps[2]) steps[2].innerHTML = '<strong>Harrison meets you there</strong>'
-      + '<span>He will meet you at the property at the booked time.</span>';
+    // No booking happens here any more (28 Aug 2026): Harrison arranges the time
+      // himself. Rewrite the confirmation the same way info mode does.
+      var okH = document.querySelector('#ok h2');
+      if (okH) okH.textContent = 'I will be in contact.';
+      var okWhen = document.getElementById('okWhen');
+      if (okWhen) okWhen.textContent = LISTING_ADDR;
+      var steps = document.querySelectorAll('#ok .fp-step');
+      if (steps[1]) steps[1].style.display = 'none';   // no calendar invitation
+      if (steps[0]) { var t0 = steps[0].querySelector('.fp-txt');
+        if (t0) t0.innerHTML = '<strong>Your viewing request is with me</strong>'
+          + '<span>I have the property and your details.</span>'; }
+      if (steps[2]) { var t3 = steps[2].querySelector('.fp-txt');
+        if (t3) t3.innerHTML = '<strong>I will be in contact</strong>'
+          + '<span>Usually the same day, to arrange a viewing time that suits you.</span>'; }
+      var warn = document.querySelector('#ok .fp-warn');
+      if (warn) warn.style.display = 'none';
+      var go = document.getElementById('go');
+      if (go && go.lastChild) go.lastChild.nodeValue = 'Request a viewing';
   }
   if (VIEWING) applyViewingMode();
   if (INFO) applyInfoMode();
@@ -402,9 +416,10 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     err.style.display = 'none';
     details = {address: v('addr'), timeframe: tf, fn: v('fn'), ln: v('ln'),
                name: v('fn') + ' ' + v('ln'), email: email, phone: v('ph')};
-    // INFO is an enquiry, not a booking: notify Harrison and confirm. No slots, no
-    // calendar, no Apps Script call.
-    if (INFO) {
+// INFO and VIEWING are enquiries, not bookings: notify Harrison and confirm.
+      // No slots, no calendar, no Apps Script call. VIEWING joined 28 Aug 2026:
+      // Harrison reaches out himself to arrange the time, so the picker never shows.
+      if (INFO || VIEWING) {
       var goBtn = document.getElementById('go');
       if (goBtn) goBtn.disabled = true;
       var spEl = document.getElementById('sp');
