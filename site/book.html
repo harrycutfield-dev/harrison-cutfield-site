@@ -50,6 +50,12 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
 .cal-day.sel{background:var(--rw-yellow);border-color:var(--rw-yellow);color:var(--ink)}
 .tlabel{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:900;color:var(--ink-soft);margin:22px 0 10px}
 .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pref{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.pref-open{width:100%;background:none;border:1.5px dashed var(--line);border-radius:12px;padding:13px 12px;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink-soft);cursor:pointer}
+.pref-open:hover{border-color:var(--rw-yellow-deep);color:var(--ink)}
+.pref-body{display:none;margin-top:14px}
+.pref-body.open{display:block}
+.pref-lead{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink-soft);margin:0 0 14px}
 .slot{padding:11px 6px;border:1.5px solid var(--line);border-radius:999px;background:#fff;font-family:var(--sans);font-size:14px;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .12s}
 .slot:hover{border-color:var(--rw-yellow-deep)}
 .slot.sel{background:var(--rw-yellow);border-color:var(--rw-yellow);color:var(--ink)}
@@ -155,6 +161,21 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     </div>
     <div class="err" id="pkErr"></div>
     <button class="cta" id="book" type="button" disabled><span class="spinner" id="sp2"></span>Confirm booking</button>
+
+    <!-- PREFERRED TIME (4 Sep 2026): nobody leaves without being able to say when suits. -->
+    <div class="pref">
+      <button class="pref-open" id="prefOpen" type="button">None of these times work? Tell me when suits you</button>
+      <div class="pref-body" id="prefBody">
+        <p class="pref-lead">Let me know the day and rough time that works best and I will do my best to make it happen, even if it is outside the times listed above.</p>
+        <div class="label">Day that suits</div>
+        <input type="text" id="prefDay" placeholder="e.g. Saturday 13th, or weekday evenings">
+        <div class="label">Rough time</div>
+        <input type="text" id="prefTime" placeholder="e.g. after 5pm, or Saturday morning">
+        <div class="err" id="prefErr">Please tell me a day and a rough time.</div>
+        <button class="cta" id="prefSend" type="button"><span class="spinner" id="sp3"></span>Send my preferred time</button>
+      </div>
+    </div>
+
     <button class="back" id="backBtn" type="button">Back to your details</button>
   </div>
 
@@ -188,6 +209,19 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
 <script>
 (function(){
   var API_URL = 'https://script.google.com/macros/s/AKfycby04M5LM70_zr0wCh3xz8t8b5YGSNjicSUNC6FCSWCgF_NMpBYZCO8lfrxJCFkXDfcVCQ/exec';
+  // PREFETCH (4 Sep 2026): availability starts loading as soon as the page opens, in parallel
+  // with the visitor filling in their details, so the time picker renders instantly instead of
+  // showing "Loading available times..." after they submit. Refreshed if it goes stale.
+  var slotsPromise = null, slotsAt = 0;
+  function getSlots(force){
+    var now = Date.now();
+    if (force || !slotsPromise || (now - slotsAt) > 120000) {
+      slotsAt = now;
+      slotsPromise = fetch(API_URL).then(function(r){ return r.json(); });
+    }
+    return slotsPromise;
+  }
+  try { getSlots(false); } catch(e) {}
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/harrison.cutfield@raywhite.com';
 
   var addr = document.getElementById('addr'), list = document.getElementById('acList');
@@ -499,6 +533,55 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     box.appendChild(lb); box.appendChild(grid);
   }
 
+  // --- PREFERRED TIME fallback (4 Sep 2026) ---
+  // If no listed slot suits, capture the visitor's preferred day/time rather than losing them.
+  // Uses the same notifyHarrison path as every other lead on this page. No calendar event is
+  // created: Harrison confirms manually, which is exactly what the confirmation text promises.
+  (function(){
+    var openBtn = document.getElementById('prefOpen'), body = document.getElementById('prefBody');
+    if (!openBtn) return;
+    openBtn.addEventListener('click', function(){
+      var isOpen = body.classList.toggle('open');
+      openBtn.textContent = isOpen ? 'Hide preferred time' : 'None of these times work? Tell me when suits you';
+    });
+    document.getElementById('prefSend').addEventListener('click', function(){
+      var day = document.getElementById('prefDay').value.trim();
+      var time = document.getElementById('prefTime').value.trim();
+      var err = document.getElementById('prefErr');
+      if (!day || !time) { err.style.display = 'block'; return; }
+      err.style.display = 'none';
+      var btn = this;
+      btn.disabled = true;
+      document.getElementById('sp3').style.display = 'inline-block';
+      notifyHarrison({
+        'Booked time': 'PREFERRED TIME REQUEST - not booked, please contact to confirm',
+        'Preferred day': day,
+        'Preferred time': time
+      });
+      setTimeout(function(){
+        document.getElementById('sp3').style.display = 'none';
+        document.getElementById('picker').style.display = 'none';
+        var okWhen = document.getElementById('okWhen');
+        okWhen.textContent = day + ', ' + time;
+        var h = document.querySelector('#ok h2');
+        if (h) h.textContent = 'Your preferred time is with me.';
+        var steps = document.querySelectorAll('#ok .fp-step');
+        if (steps[1]) steps[1].style.display = 'none';   // no calendar invite yet
+        if (steps[0]) {
+          var t = steps[0].querySelector('.fp-txt');
+          if (t) t.innerHTML = '<strong>I will be in touch</strong><span>Usually the same day, to confirm a time that works around you.</span>';
+        }
+        if (steps[2]) {
+          var t2 = steps[2].querySelector('.fp-txt');
+          if (t2) t2.innerHTML = '<strong>Then I come to you</strong><span>The appraisal runs about 45 minutes at your property.</span>';
+        }
+        var warn = document.querySelector('#ok .fp-warn');
+        if (warn) warn.innerHTML = '<strong>Nothing is locked in yet.</strong> I will do my best to meet the time you have asked for, and I will confirm by email or phone before anything is set.';
+        document.getElementById('ok').style.display = 'block';
+      }, 600);
+    });
+  })();
+
   document.getElementById('calPrev').addEventListener('click', function(){ if (curM > 0) { curM--; renderCal(); } });
   document.getElementById('calNext').addEventListener('click', function(){ if (curM < months.length - 1) { curM++; renderCal(); } });
 
@@ -509,8 +592,7 @@ input:focus{outline:2px solid var(--rw-yellow-deep);border-color:var(--rw-yellow
     document.getElementById('calWrap').style.display = 'none';
     pkErr.style.display = 'none';
     document.getElementById('pkLoading').style.display = 'block';
-    fetch(API_URL)
-      .then(function(r){ return r.json(); })
+    getSlots(false)
       .then(function(d){
         document.getElementById('pkLoading').style.display = 'none';
         if (!d.ok || !d.days || !d.days.length) throw new Error('no slots');
