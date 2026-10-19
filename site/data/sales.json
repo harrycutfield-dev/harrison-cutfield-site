@@ -1,6 +1,59 @@
 {
   "items": [
     {
+      "address": "6 The Esplanade",
+      "suburb": "Campbells Bay, North Shore",
+      "soldDate": "October 2026",
+      "tag": "",
+      "image": "images/uploads/listings/6-the-esplanade/01.jpg",
+      "detail": {
+        "description": "Sold by Harrison on The Esplanade, one of Campbells Bay's most tightly held beachfront streets, with Campbells Bay Beach at the end of the road. A substantial four bedroom home with a heated north west facing pool, excellent indoor outdoor flow and room for the boat, sitting in a dual college zone and only minutes from Milford and Takapuna. The sale price is available on request. Thinking of selling in Campbells Bay? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Campbells Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College and Westlake Boys' and Westlake Girls' High Schools"
+        }
+      },
+      "gallery": [
+        "images/uploads/listings/6-the-esplanade/01.jpg",
+        "images/uploads/listings/6-the-esplanade/02.jpg",
+        "images/uploads/listings/6-the-esplanade/03.jpg",
+        "images/uploads/listings/6-the-esplanade/04.jpg",
+        "images/uploads/listings/6-the-esplanade/05.jpg",
+        "images/uploads/listings/6-the-esplanade/06.jpg",
+        "images/uploads/listings/6-the-esplanade/07.jpg",
+        "images/uploads/listings/6-the-esplanade/08.jpg",
+        "images/uploads/listings/6-the-esplanade/09.jpg",
+        "images/uploads/listings/6-the-esplanade/10.jpg",
+        "images/uploads/listings/6-the-esplanade/11.jpg",
+        "images/uploads/listings/6-the-esplanade/12.jpg",
+        "images/uploads/listings/6-the-esplanade/13.jpg",
+        "images/uploads/listings/6-the-esplanade/14.jpg"
+      ]
+    },
+    {
+      "address": "2/112 Sycamore Drive",
+      "suburb": "Sunnynook, North Shore",
+      "soldDate": "October 2026",
+      "tag": "",
+      "image": "images/uploads/listings/2-112-sycamore-drive/01.jpg",
+      "detail": {
+        "description": "Sold by Harrison in Sunnynook, a renovation project on a private cross lease site moments from Becroft Park and the motorway. A two bedroom home with real scope to renovate and add value, hold as an investment or make your own, in a tightly held North Shore pocket close to sought after schools. The sale price is available on request. Thinking of selling in Sunnynook? Contact Harrison for a free, no obligation appraisal.",
+        "schools": {
+          "primary": "Sunnynook School",
+          "intermediate": "Wairau Intermediate",
+          "secondary": "Westlake Boys' and Westlake Girls' High School"
+        }
+      },
+      "gallery": [
+        "images/uploads/listings/2-112-sycamore-drive/01.jpg",
+        "images/uploads/listings/2-112-sycamore-drive/02.jpg",
+        "images/uploads/listings/2-112-sycamore-drive/03.jpg",
+        "images/uploads/listings/2-112-sycamore-drive/04.jpg",
+        "images/uploads/listings/2-112-sycamore-drive/05.jpg"
+      ]
+    },
+    {
       "address": "1/102 Forrest Hill Road",
       "suburb": "Forrest Hill, North Shore",
       "soldDate": "",
