@@ -193,6 +193,18 @@
     else { msg.style.color = '#b00020'; msg.innerHTML = 'Could not send, please email <a href="mailto:' + ENQUIRY_TO + '">' + ENQUIRY_TO + '</a>.'; btn.disabled = false; btn.textContent = 'Send Viewing Request'; }
   });
 
+  /* deep link: ?enquire=<address> opens the enquiry modal with that property pre set,
+     ?view=<address> opens the viewing request. Used by the Monday buyers email. */
+  (function () {
+    try {
+      var q = new URLSearchParams(location.search);
+      var en = (q.get('enquire') || '').trim(), vw = (q.get('view') || '').trim();
+      if (!en && !vw) return;
+      var go = function () { if (vw) openView(vw); else openEnq(en, 'listing'); };
+      if (document.readyState === 'complete') setTimeout(go, 150); else window.addEventListener('load', function () { setTimeout(go, 150); });
+    } catch (e) { }
+  })();
+
   /* address autocomplete (Photon, NZ biased) */
   (function () {
     var label = function (p) { var out = []; if (p.name && !p.street) out.push(p.name); var l1 = [p.housenumber, p.street].filter(Boolean).join(' '); if (l1) out.push(l1); var l2 = [p.suburb || p.district, p.city, p.postcode].filter(Boolean).join(', '); if (l2) out.push(l2); return out.join(', '); };

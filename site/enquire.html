@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enquire on a Home | Harrison Cutfield</title>
+<meta name="description" content="Enquire on any current Ray White CR Group listing on Auckland's North Shore. Pick the home, send your details, and Harrison comes back to you the same day.">
+<meta name="theme-color" content="#FFE512">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://harrisoncutfield.co.nz/enquire">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Harrison Cutfield, Ray White">
+<meta property="og:title" content="Enquire on a Home | Harrison Cutfield">
+<meta property="og:description" content="Pick the home, send your details, Harrison comes back to you the same day.">
+<meta property="og:url" content="https://harrisoncutfield.co.nz/enquire">
+<meta property="og:image" content="https://harrisoncutfield.co.nz/images/uploads/og-card.jpg">
+<meta property="og:locale" content="en_NZ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{--rw-yellow:#FFE512;--rw-yellow-deep:#F2D200;--ink:#141414;--ink-soft:#2b2b2b;--paper:#FAF8F2;--line:#e4e0d6;--muted:#5a5446;--maxw:1100px;--serif:'Playfair Display',Georgia,serif;--sans:'Lato',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--paper);line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(18,18,18,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:1240px}
+.brand{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--rw-yellow);text-decoration:none;letter-spacing:.5px}
+.back{display:inline-block;color:#fff;text-decoration:none;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:600;border:1px solid rgba(255,255,255,.4);padding:13px 24px;transition:.3s}
+.back:hover{background:var(--rw-yellow);color:var(--ink);border-color:var(--rw-yellow)}
+.crumbs{font-size:12px;letter-spacing:1px;color:var(--muted);text-align:center;padding:18px 0 0}
+.crumbs a{text-decoration:none;color:var(--muted)}.crumbs a:hover{color:var(--ink)}
+.hero{padding:60px 0 20px;text-align:center}
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hero h1{font-family:var(--serif);font-size:clamp(32px,5.4vw,52px);font-weight:500;margin-top:10px;line-height:1.1}
+.hero .sub{max-width:640px;margin:16px auto 0;color:var(--ink-soft);font-size:17px}
+.main{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;padding:30px 0 70px}
+form{background:#fff;color:var(--ink);padding:30px 28px 26px;border-top:6px solid var(--rw-yellow);box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.f{position:relative;margin-bottom:16px;text-align:left}
+.f label{display:block;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+.f input,.f select,.f textarea{width:100%;font-family:var(--sans);font-size:15.5px;padding:13px 14px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:0;-webkit-appearance:none;appearance:none}
+.f textarea{resize:vertical;min-height:90px}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--ink)}
+.f select{background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pick{border:1px solid var(--line);background:#fffdf5;padding:18px 18px 6px;margin-bottom:18px}
+.pick .hint{font-size:13px;color:var(--muted);margin:-4px 0 12px}
+.suggest{position:absolute;left:0;right:0;top:100%;z-index:20;background:#fff;border:1px solid var(--line);border-top:0;max-height:260px;overflow:auto;box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.suggest div{padding:10px 14px;font-size:14px;cursor:pointer;line-height:1.4}
+.suggest div small{display:block;color:var(--muted);font-size:12px}
+.suggest div:hover,.suggest div.active{background:#fff8dc}
+.chosen{display:none;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--rw-yellow);padding:12px 14px;margin:4px 0 14px}
+.chosen.on{display:flex}
+.chosen img{width:84px;height:60px;object-fit:cover;flex:0 0 84px;background:#eee}
+.chosen b{display:block;font-size:15px;line-height:1.3}
+.chosen span{font-size:13px;color:var(--muted)}
+.chosen a{margin-left:auto;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--rw-yellow);white-space:nowrap}
+.what{display:flex;flex-wrap:wrap;gap:8px}
+.what label{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:9px 14px;font-size:14px;cursor:pointer;background:#fff;text-transform:none;letter-spacing:0;color:var(--ink);font-weight:400;margin:0}
+.what input{width:auto;padding:0;margin:0;accent-color:var(--ink)}
+.what label:has(input:checked){background:var(--rw-yellow);border-color:var(--rw-yellow)}
+.btn{display:inline-block;background:var(--rw-yellow);color:var(--ink);text-decoration:none;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:16px 32px;transition:.3s;border:1px solid var(--rw-yellow);cursor:pointer;font-family:var(--sans)}
+.btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn-solid{width:100%;text-align:center;margin-top:6px}
+#msg{margin-top:14px;font-size:14px;min-height:20px}
+.fine{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.5}
+.thanks{display:none;background:#fff;color:var(--ink);padding:40px 30px;border-top:6px solid var(--rw-yellow);text-align:center}
+.thanks h3{font-family:var(--serif);font-size:28px;font-weight:600;margin-bottom:10px}
+.thanks p{font-size:16px;color:var(--ink-soft)}
+.side h2{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.2;margin:6px 0 14px}
+.side p{font-size:15.5px;color:var(--ink-soft);margin-bottom:14px}
+.side .direct{margin-top:22px;font-size:15px}
+.side .direct a{font-weight:700;text-decoration:none;border-bottom:2px solid var(--rw-yellow)}
+.side ul{list-style:none;margin-top:18px}
+.side li{display:flex;gap:12px;font-size:15px;margin-bottom:10px;color:var(--ink-soft)}
+.side li span{flex:0 0 24px;height:24px;border-radius:50%;background:var(--rw-yellow);font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:4px;color:var(--ink)}
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:54px 0 34px}
+footer .wrap{max-width:1240px}
+footer .fg{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between}
+footer a{color:rgba(255,255,255,.7);text-decoration:none}footer a:hover{color:var(--rw-yellow)}
+footer h4{color:#fff;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none}footer li{margin-bottom:9px;font-size:14px}
+footer .legal{border-top:1px solid rgba(255,255,255,.16);margin-top:34px;padding-top:20px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.6}
+@media(max-width:900px){.main{grid-template-columns:1fr;gap:28px}.side{order:2}}
+@media(max-width:560px){.two{grid-template-columns:1fr}.hero{padding-top:44px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="brand" href="/">Harrison Cutfield</a><a class="back" href="/buying">&#8249; Buying</a></div></header>
+<div class="wrap">
+<nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/buying">Buying</a> &rsaquo; Enquire</nav>
+<section class="hero">
+<span class="eyebrow">Enquire &middot; North Shore</span>
+<h1 id="h1">Which home caught your eye?</h1>
+<p class="sub" id="sub">Pick it from the list or start typing the address. Send your details and I will get you through the door, usually before the first open home.</p>
+</section>
+
+<div class="main">
+ <div>
+  <form id="enqForm" novalidate>
+   <div class="pick">
+    <div class="f"><label for="sel">The home</label>
+     <select id="sel" name="Property"><option value="">Loading current listings&hellip;</option></select>
+    </div>
+    <p class="hint">Or start typing the street and pick it from the suggestions.</p>
+    <div class="f"><label for="typ">Type an address</label><input id="typ" type="text" autocomplete="off" placeholder="e.g. 25 Coromandel"></div>
+    <div class="chosen" id="chosen"><img id="chImg" alt=""><div><b id="chAddr"></b><span id="chMeta"></span></div><a id="chLink" href="#" target="_blank" rel="noopener" hidden>View listing &#8250;</a></div>
+   </div>
+   <div class="two">
+    <div class="f"><label for="fn">First name</label><input id="fn" type="text" name="First Name" autocomplete="given-name" required></div>
+    <div class="f"><label for="ln">Last name</label><input id="ln" type="text" name="Last Name" autocomplete="family-name" required></div>
+   </div>
+   <div class="two">
+    <div class="f"><label for="em">Email</label><input id="em" type="email" name="Email" autocomplete="email" required></div>
+    <div class="f"><label for="mob">Mobile</label><input id="mob" type="tel" name="Mobile" autocomplete="tel" required pattern="[0-9+()\s-]{8,}"></div>
+   </div>
+   <div class="f"><label>What would you like?</label>
+    <div class="what">
+     <label><input type="checkbox" name="Request" value="Private viewing" checked>Private viewing</label>
+     <label><input type="checkbox" name="Request" value="Property files">Property files</label>
+     <label><input type="checkbox" name="Request" value="Price guidance">Price guidance</label>
+     <label><input type="checkbox" name="Request" value="Call me">Call me</label>
+    </div></div>
+   <div class="f"><label for="m">Anything else</label><textarea id="m" name="Message" rows="3" placeholder="Times that suit, questions, what you are comparing it to."></textarea></div>
+   <input type="hidden" name="Source" id="src" value="website">
+   <input type="hidden" name="Listing URL" id="lurl" value="">
+   <button class="btn btn-solid" type="submit" id="sendBtn">Send to Harrison</button>
+   <p id="msg"></p>
+   <p class="fine">Your details go straight to Harrison and nowhere else. No lists, no third parties.</p>
+  </form>
+  <div class="thanks" id="thanks"><h3>Got it.</h3><p id="thanksP">I will come back to you today with times. If it is urgent, call <a href="tel:+64211361955" style="font-weight:700">021 136 1955</a>.</p></div>
+ </div>
+ <aside class="side">
+  <span class="eyebrow">How this works</span>
+  <h2>One form. Any home in the Ray White CR Group.</h2>
+  <p>You do not need to track down the listing agent. Tell me the home, and I handle the enquiry, the viewing and the paperwork from your side of the table.</p>
+  <ul>
+   <li><span>1</span>Pick the home from the list, or type it.</li>
+   <li><span>2</span>Tell me what you want: a viewing, the files, a steer on price.</li>
+   <li><span>3</span>I come back to you the same day, usually within the hour during the week.</li>
+  </ul>
+  <div class="direct">Prefer to talk? <a href="tel:+64211361955">021 136 1955</a></div>
+  <p style="margin-top:26px;font-size:13.5px;color:var(--muted)">Not on the list? It may have just gone live or be off market. Type the address anyway and send, I will find it.</p>
+ </aside>
+</div>
+</div>
+
+<footer><div class="wrap">
+<div class="fg">
+<div style="max-width:300px">
+<a href="/" class="brand" style="font-size:20px">Harrison Cutfield</a>
+<p style="margin-top:14px;font-size:14px">Bespoke real estate on Auckland's North Shore. Considered marketing, sharp negotiation, results that last.</p>
+</div>
+<div><h4>Explore</h4><ul>
+<li><a href="/">Home</a></li>
+<li><a href="/listings.html">Current Listings</a></li>
+<li><a href="/sales.html">Recent Sales</a></li>
+<li><a href="/offmarket.html">Off-Market Homes</a></li>
+<li><a href="/buying">Buying</a></li>
+<li><a href="/insights.html">Insights</a></li>
+</ul></div>
+<div><h4>North Shore Areas</h4><ul>
+<li><a href="/milford.html">Milford</a></li>
+<li><a href="/takapuna.html">Takapuna</a></li>
+<li><a href="/mairangi-bay.html">Mairangi Bay</a></li>
+<li><a href="/campbells-bay.html">Campbells Bay</a></li>
+<li><a href="/browns-bay.html">Browns Bay</a></li>
+<li><a href="/forrest-hill.html">Forrest Hill</a></li>
+</ul></div>
+<div><h4>Contact</h4><ul>
+<li><a href="tel:+64211361955">021 136 1955</a></li>
+<li><a href="mailto:harrison.cutfield@raywhite.com">harrison.cutfield@raywhite.com</a></li>
+<li>425 Beach Road, Mairangi Bay, Auckland 0630</li>
+</ul></div>
+</div>
+<div class="legal">&copy; <span id="yr"></span> Harrison Cutfield &middot; Ray White. Licensed under the REAA 2008, working for CR Marketing North Shore Limited (REAA 2008). All information is provided in good faith; prospective purchasers should make their own enquiries.</div>
+</div></footer>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+const q=new URLSearchParams(location.search);
+const clean=v=>v&&!/^\[@/.test(v)?v.trim():'';
+const set=(id,v)=>{const el=document.getElementById(id);if(el&&v&&!el.value)el.value=v;};
+set('fn',clean(q.get('fn')));set('ln',clean(q.get('ln')));set('em',clean(q.get('em')));set('mob',clean(q.get('mob')));
+if(q.get('src'))document.getElementById('src').value=q.get('src');else if(q.get('p')||q.get('t'))document.getElementById('src').value='weekly-buyers-email';
+
+const sel=document.getElementById('sel'),typ=document.getElementById('typ'),chosen=document.getElementById('chosen');
+let ITEMS=[],current=null;
+const norm=s=>String(s||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function choose(it,fromSelect){
+ current=it;
+ if(!fromSelect){const o=[...sel.options].find(o=>o.value===it.label);if(o)sel.value=it.label;}
+ document.getElementById('chAddr').textContent=it.label;
+ document.getElementById('chMeta').textContent=[it.price,[it.beds&&it.beds+' bed',it.baths&&it.baths+' bath',it.cars&&it.cars+' car'].filter(Boolean).join(' · ')].filter(Boolean).join(' · ');
+ const img=document.getElementById('chImg');if(it.image){img.src=it.image;img.style.display='';}else img.style.display='none';
+ const lk=document.getElementById('chLink');if(it.url){lk.href=it.url;lk.hidden=false;}else lk.hidden=true;
+ document.getElementById('lurl').value=it.url||'';
+ chosen.classList.add('on');
+ document.getElementById('h1').textContent='Enquire on '+(it.address||it.label)+'.';
+ document.getElementById('sub').textContent='Send your details and I will come back to you today with viewing times.';
+}
+function fill(items){
+ ITEMS=items;
+ sel.innerHTML='<option value="">Choose a home</option>'+items.map(it=>`<option value="${esc(it.label)}">${esc(it.label)}${it.price?' · '+esc(it.price):''}</option>`).join('');
+ // preselect from ?p= (address text, loose match)
+ const p=clean(q.get('p'));
+ if(p){const n=norm(p);let hit=items.find(it=>norm(it.label)===n)||items.find(it=>norm(it.address)===n)||items.find(it=>norm(it.label).startsWith(n))||items.find(it=>norm(it.label).includes(n));
+  if(hit)choose(hit);else{typ.value=p;sel.insertAdjacentHTML('beforeend',`<option value="${esc(p)}">${esc(p)} (not in the current list)</option>`);sel.value=p;document.getElementById('h1').textContent='Enquire on '+p+'.';}}
+}
+sel.addEventListener('change',()=>{const it=ITEMS.find(x=>x.label===sel.value);if(it)choose(it,true);else{current=null;chosen.classList.remove('on');document.getElementById('lurl').value='';}});
+// type ahead over the same list
+(function(){let box=null,items=[],active=-1;const wrap=typ.closest('.f');
+ const close=()=>{if(box){box.remove();box=null;}items=[];active=-1;};
+ const render=list=>{close();if(!list.length)return;box=document.createElement('div');box.className='suggest';list.forEach(it=>{const d=document.createElement('div');d.innerHTML=`${esc(it.address)}<small>${esc(it.suburb||'')}${it.price?' · '+esc(it.price):''}</small>`;d.addEventListener('mousedown',e=>{e.preventDefault();typ.value=it.label;choose(it);close();});box.appendChild(d);});wrap.appendChild(box);items=[...box.children];};
+ typ.addEventListener('input',()=>{const n=norm(typ.value);if(n.length<2){close();return;}const toks=n.split(' ');render(ITEMS.filter(it=>{const h=norm(it.label);return toks.every(t=>h.includes(t));}).slice(0,8));});
+ typ.addEventListener('keydown',e=>{if(!box)return;if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,items.length-1);}else if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);}else if(e.key==='Enter'&&active>=0){e.preventDefault();items[active].dispatchEvent(new Event('mousedown'));return;}else if(e.key==='Escape'){close();return;}else return;items.forEach((it,i)=>it.classList.toggle('active',i===active));});
+ typ.addEventListener('blur',()=>setTimeout(close,150));
+})();
+// load the live feed export, fall back to the site's own listings
+(async()=>{
+ let items=[];
+ try{const r=await fetch('/data/live-listings.json',{cache:'no-store'});if(r.ok){const j=await r.json();items=(j.items||[]).map(it=>({...it,label:it.label||(it.address+(it.suburb?', '+it.suburb:''))}));}}catch(e){}
+ if(!items.length){try{const r=await fetch('/data/listings.json',{cache:'no-store'});if(r.ok){const j=await r.json();items=(j.items||j||[]).map(it=>({address:it.address,suburb:String(it.suburb||'').split(',')[0],label:it.address+(it.suburb?', '+String(it.suburb).split(',')[0]:''),price:it.price,url:'',beds:it.beds,baths:it.baths,cars:it.cars,image:it.image}));}}catch(e){}}
+ fill(items);
+})();
+
+const ENQUIRY_TO='harrison.cutfield@raywhite.com';
+const ENQUIRY_CC='harrycutfield@gmail.com';
+async function sendToInbox(fd,subject){
+ fd.append('_subject',subject);fd.append('_cc',ENQUIRY_CC);fd.append('_template','table');fd.append('_captcha','false');
+ try{const r=await fetch('https://formsubmit.co/ajax/'+ENQUIRY_TO,{method:'POST',headers:{'Accept':'application/json'},body:fd});const j=await r.json().catch(()=>({}));return r.ok&&(j.success==='true'||j.success===true);}catch(e){return false;}
+}
+const form=document.getElementById('enqForm');
+form.addEventListener('submit',async e=>{
+ e.preventDefault();
+ const msg=document.getElementById('msg');
+ if(!sel.value&&!typ.value.trim()){msg.style.color='#b00020';msg.textContent='Pick the home from the list or type the address.';sel.focus();return;}
+ if(!form.reportValidity())return;
+ const btn=document.getElementById('sendBtn');btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
+ const fd=new FormData(form);
+ const prop=sel.value||typ.value.trim();fd.set('Property',prop);
+ const reqs=[...form.querySelectorAll('input[name="Request"]:checked')].map(i=>i.value).join(', ');fd.delete('Request');if(reqs)fd.append('Request',reqs);
+ const ok=await sendToInbox(fd,'Property enquiry, '+prop+', '+(fd.get('First Name')||'').trim()+' '+(fd.get('Last Name')||'').trim());
+ if(ok){if(window.gtag)gtag('event','generate_lead',{lead_type:'enquiry',property:prop});form.style.display='none';document.getElementById('thanks').style.display='block';}
+ else{msg.style.color='#b00020';msg.innerHTML='Could not send. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> or call 021 136 1955.';btn.disabled=false;btn.textContent='Send to Harrison';}
+});
+</script>
+</body>
+</html>
