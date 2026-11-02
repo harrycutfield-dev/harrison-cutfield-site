@@ -672,7 +672,6 @@ footer .brand .mark svg text{fill:#141414}
  <a href="#offmarket">Off-Market</a>
  <a href="#listings">Listings</a>
  <a href="#sales">Recent Sales</a>
- <a href="#showcase">Showcase</a>
  <a href="#method">The Method</a>
  <a href="/insights.html">Insights</a>
  <a href="#team">Team</a>
@@ -884,19 +883,6 @@ footer .brand .mark svg text{fill:#141414}
     <div class="rm-info"><h3 id="rmTitle"></h3><div class="rm-meta" id="rmMeta"></div><p id="rmBlurb"></p></div>
   </div>
 </div>
-
-<!-- ===================== LUXURY SHOWCASE ===================== -->
-<section class="showcase" id="showcase">
- <div class="wrap">
- <div class="sec-head reveal">
- <span class="eyebrow gold">Property Showcase</span>
- <h2>A luxury showcase of the beautiful North Shore.</h2>
- <p class="sec-sub" id="showcaseIntro"></p>
- </div>
- <div class="lux-grid" id="luxuryGrid"></div>
- <p class="lux-note reveal">Homes shown reflect the calibre of residences across the Ray White North Shore network. Listings change continually; for homes available now, please get in touch.</p>
- </div>
-</section>
 
 <!-- ===================== METHOD / NURTURECLOUD ===================== -->
 <section class="method" id="method">
@@ -1120,7 +1106,6 @@ footer .brand .mark svg text{fill:#141414}
  <li><a href="#offmarket">Off-Market</a></li>
  <li><a href="#listings">Listings</a></li>
  <li><a href="#sales">Recent Sales</a></li>
- <li><a href="#showcase">Luxury Showcase</a></li>
  <li><a href="#method">The Method</a></li>
  <li><a href="/insights.html">Insights</a></li>
  </ul>
@@ -1528,25 +1513,6 @@ async function load(file){try{const r=await fetch('data/'+file,{cache:'no-store'
 
  // listings: open the viewing calendar from a "Book a private viewing" link
  document.addEventListener('click',ev=>{const b=ev.target.closest('.view-link');if(!b)return;ev.preventDefault();var pm=document.getElementById('propModal');if(pm){pm.classList.remove('open');document.body.style.overflow='';}const ref=b.dataset.ref||'Listing';vf.dataset.listing=ref;document.getElementById('viewTitle').textContent='Private Viewing, '+ref;document.getElementById('viewSub').textContent='Pick a day and time that suits. Harrison will confirm the viewing with the vendor and be in touch with you very soon.';modal.classList.add('open');modal.setAttribute('aria-hidden','false');});
-
- // deep link: ?viewing=<ref> opens the viewing calendar straight from an email link.
- // Same steps as the .view-link click handler above, so the two paths cannot drift.
- (function(){
- try{
- var ref=new URLSearchParams(location.search).get('viewing');
- if(!ref)return;
- ref=String(ref).trim(); if(!ref)return;
- var vt=document.getElementById('viewTitle'), vs=document.getElementById('viewSub');
- if(!vf||!modal||!vt||!vs)return;
- var pm=document.getElementById('propModal');
- if(pm){pm.classList.remove('open');document.body.style.overflow='';}
- vf.dataset.listing=ref;
- vt.textContent='Private Viewing, '+ref;
- vs.textContent='Pick a day and time that suits. Harrison will confirm the viewing with the vendor and be in touch with you very soon.';
- modal.classList.add('open');
- modal.setAttribute('aria-hidden','false');
- }catch(_){ }
- })();
 
  // gate / unlock, remembers the visitor so they do not re-enter details
  const UNLOCK_KEY='hcco_offmarket_unlocked';
