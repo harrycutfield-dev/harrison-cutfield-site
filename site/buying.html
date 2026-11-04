@@ -288,6 +288,7 @@ footer .legal{border-top:1px solid rgba(255,255,255,.16);margin-top:34px;padding
 <div class="legal">&copy; <span id="yr"></span> Harrison Cutfield &middot; Ray White. Licensed under the REAA 2008, working for CR Marketing North Shore Limited (REAA 2008). All information is provided in good faith; prospective purchasers should make their own enquiries.</div>
 </div></footer>
 
+<script src="/send.js?v=1"></script>
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 
@@ -340,12 +341,6 @@ document.getElementById('t').addEventListener('change',e=>applyTopic(e.target.va
 document.querySelectorAll('[data-t]').forEach(a=>a.addEventListener('click',()=>{applyTopic(a.dataset.t);if(a.dataset.who){const m=document.getElementById('m');if(!m.value)m.value='Please introduce me to '+a.dataset.who+'.';}}));
 
 /* ---------- Send (FormSubmit, same pattern as the home page) ---------- */
-const ENQUIRY_TO='harrison.cutfield@raywhite.com';
-const ENQUIRY_CC='harrycutfield@gmail.com';
-async function sendToInbox(fd,subject){
- fd.append('_subject',subject);fd.append('_cc',ENQUIRY_CC);fd.append('_template','table');fd.append('_captcha','false');
- try{const r=await fetch('https://formsubmit.co/ajax/'+ENQUIRY_TO,{method:'POST',headers:{'Accept':'application/json'},body:fd});const j=await r.json().catch(()=>({}));return r.ok&&(j.success==='true'||j.success===true);}catch(e){return false;}
-}
 const LABEL={viewing:'Viewing request',buyersagent:'Buyers agent enquiry',broker:'Broker introduction',inspector:'Inspector introduction',offer:'Offer review',other:'Buyer enquiry'};
 const form=document.getElementById('buyForm');
 form.addEventListener('submit',async e=>{
@@ -353,12 +348,13 @@ form.addEventListener('submit',async e=>{
  const btn=document.getElementById('sendBtn'),msg=document.getElementById('msg');
  btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
  const fd=new FormData(form);const t=fd.get('Topic');const p=(fd.get('Property Address')||'').trim();
- const ok=await sendToInbox(fd,(LABEL[t]||'Buyer enquiry')+(p?', '+p:'')+', '+(fd.get('First Name')||'').trim()+' '+(fd.get('Last Name')||'').trim());
- if(ok){
+ const res=await ccSend(fd,(LABEL[t]||'Buyer enquiry')+(p?', '+p:'')+', '+(fd.get('First Name')||'').trim()+' '+(fd.get('Last Name')||'').trim());
+ if(res.ok){
   if(window.gtag)gtag('event','generate_lead',{lead_type:'buyer_'+t});
   form.style.display='none';document.getElementById('thanks').style.display='block';
  }else{
-  msg.style.color='#b00020';msg.innerHTML='Could not send. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> or call 021 136 1955.';btn.disabled=false;btn.textContent='Send to Harrison';
+  if(window.gtag)gtag('event','generate_lead',{lead_type:'buyer_'+t+'_mailto'});
+  msg.textContent='';ccFallback(msg,res.mailto);btn.disabled=false;btn.textContent='Send to Harrison';
  }
 });
 

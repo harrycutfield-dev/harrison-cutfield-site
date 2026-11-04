@@ -153,7 +153,18 @@
     openModal(view);
   }
 
+  /* Routes through the shared sender so a FormSubmit outage falls back to mailto
+     instead of losing the lead. Keeps the boolean contract the call sites expect and
+     stashes the ready made mailto on window.__ccMailto for the error branches. */
   async function sendToInbox(fd, subject) {
+    if (typeof window.ccSend === 'function') {
+      var res = await window.ccSend(fd, subject);
+      window.__ccMailto = res.ok ? '' : res.mailto;
+      return !!res.ok;
+    }
+    return sendToInboxLegacy(fd, subject);
+  }
+  async function sendToInboxLegacy(fd, subject) {
     fd.append('_subject', subject); fd.append('_cc', ENQUIRY_CC); fd.append('_template', 'table'); fd.append('_captcha', 'false');
     try { var r = await fetch('https://formsubmit.co/ajax/' + ENQUIRY_TO, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd }); var j = await r.json().catch(function () { return {}; }); return r.ok && (j.success === 'true' || j.success === true); } catch (e) { return false; }
   }
@@ -181,7 +192,7 @@
     var btn = gid('pdxEnqBtn'), msg = gid('pdxEnqMsg'); btn.disabled = true; btn.textContent = 'Sending…'; msg.style.color = 'var(--muted,#5a5446)'; msg.textContent = '';
     var ok = await sendToInbox(fd, 'Property enquiry' + (ref ? ', ' + ref : ''));
     if (ok) { if (window.gtag) gtag('event', 'generate_lead', { property: ref, lead_type: 'enquiry' }); msg.style.color = '#1a7a3a'; msg.textContent = 'Sent. Harrison will be in touch shortly.'; f.reset(); btn.textContent = 'Sent ✓'; setTimeout(function () { closeModal(enq); }, 2400); setTimeout(function () { btn.disabled = false; btn.textContent = 'Send Enquiry'; }, 2600); }
-    else { msg.style.color = '#b00020'; msg.innerHTML = 'Could not send, please email <a href="mailto:' + ENQUIRY_TO + '">' + ENQUIRY_TO + '</a>.'; btn.disabled = false; btn.textContent = 'Send Enquiry'; }
+    else { msg.innerHTML = ''; if (window.ccFallback && window.__ccMailto) { window.ccFallback(msg, window.__ccMailto); } else { msg.style.color = '#b00020'; msg.innerHTML = 'Could not send, please email <a href="mailto:' + ENQUIRY_TO + '">' + ENQUIRY_TO + '</a>.'; } btn.disabled = false; btn.textContent = 'Send Enquiry'; }
   });
   /* viewing submit */
   gid('pdxViewForm').addEventListener('submit', async function (e) {
@@ -190,7 +201,7 @@
     var btn = gid('pdxViewBtn'), msg = gid('pdxViewMsg'); btn.disabled = true; btn.textContent = 'Sending…'; msg.style.color = 'var(--muted,#5a5446)'; msg.textContent = '';
     var ok = await sendToInbox(fd, 'Private viewing request' + (ref ? ', ' + ref : ''));
     if (ok) { if (window.gtag) gtag('event', 'schedule_viewing', { property: ref }); msg.style.color = '#1a7a3a'; msg.textContent = 'Request received. Harrison will confirm a time and be in touch very soon.'; f.reset(); btn.textContent = 'Sent ✓'; setTimeout(function () { closeModal(view); }, 2400); setTimeout(function () { btn.disabled = false; btn.textContent = 'Send Viewing Request'; }, 2600); }
-    else { msg.style.color = '#b00020'; msg.innerHTML = 'Could not send, please email <a href="mailto:' + ENQUIRY_TO + '">' + ENQUIRY_TO + '</a>.'; btn.disabled = false; btn.textContent = 'Send Viewing Request'; }
+    else { msg.innerHTML = ''; if (window.ccFallback && window.__ccMailto) { window.ccFallback(msg, window.__ccMailto); } else { msg.style.color = '#b00020'; msg.innerHTML = 'Could not send, please email <a href="mailto:' + ENQUIRY_TO + '">' + ENQUIRY_TO + '</a>.'; } btn.disabled = false; btn.textContent = 'Send Viewing Request'; }
   });
 
   /* deep link: ?enquire=<address> opens the enquiry modal with that property pre set,

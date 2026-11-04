@@ -179,6 +179,7 @@ footer .legal{border-top:1px solid rgba(255,255,255,.16);margin-top:34px;padding
 <div class="legal">&copy; <span id="yr"></span> Harrison Cutfield &middot; Ray White. Licensed under the REAA 2008, working for CR Marketing North Shore Limited (REAA 2008). All information is provided in good faith; prospective purchasers should make their own enquiries.</div>
 </div></footer>
 
+<script src="/send.js?v=1"></script>
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 const q=new URLSearchParams(location.search);
@@ -229,11 +230,6 @@ sel.addEventListener('change',()=>{const it=ITEMS.find(x=>x.label===sel.value);i
 })();
 
 const ENQUIRY_TO='harrison.cutfield@raywhite.com';
-const ENQUIRY_CC='harrycutfield@gmail.com';
-async function sendToInbox(fd,subject){
- fd.append('_subject',subject);fd.append('_cc',ENQUIRY_CC);fd.append('_template','table');fd.append('_captcha','false');
- try{const r=await fetch('https://formsubmit.co/ajax/'+ENQUIRY_TO,{method:'POST',headers:{'Accept':'application/json'},body:fd});const j=await r.json().catch(()=>({}));return r.ok&&(j.success==='true'||j.success===true);}catch(e){return false;}
-}
 const form=document.getElementById('enqForm');
 form.addEventListener('submit',async e=>{
  e.preventDefault();
@@ -244,9 +240,9 @@ form.addEventListener('submit',async e=>{
  const fd=new FormData(form);
  const prop=sel.value||typ.value.trim();fd.set('Property',prop);
  const reqs=[...form.querySelectorAll('input[name="Request"]:checked')].map(i=>i.value).join(', ');fd.delete('Request');if(reqs)fd.append('Request',reqs);
- const ok=await sendToInbox(fd,'Property enquiry, '+prop+', '+(fd.get('First Name')||'').trim()+' '+(fd.get('Last Name')||'').trim());
- if(ok){if(window.gtag)gtag('event','generate_lead',{lead_type:'enquiry',property:prop});form.style.display='none';document.getElementById('thanks').style.display='block';}
- else{msg.style.color='#b00020';msg.innerHTML='Could not send. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> or call 021 136 1955.';btn.disabled=false;btn.textContent='Send to Harrison';}
+ const res=await ccSend(fd,'Property enquiry, '+prop+', '+(fd.get('First Name')||'').trim()+' '+(fd.get('Last Name')||'').trim());
+ if(res.ok){if(window.gtag)gtag('event','generate_lead',{lead_type:'enquiry',property:prop});form.style.display='none';document.getElementById('thanks').style.display='block';}
+ else{if(window.gtag)gtag('event','generate_lead',{lead_type:'enquiry_mailto',property:prop});msg.textContent='';ccFallback(msg,res.mailto);btn.disabled=false;btn.textContent='Send to Harrison';}
 });
 </script>
 </body>

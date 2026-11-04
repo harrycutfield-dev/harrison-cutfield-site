@@ -1543,6 +1543,10 @@ const ENQUIRY_TO='harrison.cutfield@raywhite.com'; // primary recipient
 const ENQUIRY_CC='harrycutfield@gmail.com'; // copy
 // Shared sender used by the enquiry, off-market gate, and viewing forms.
 async function sendToInbox(fd,subject){
+ if(typeof window.ccSend==='function'){const r=await window.ccSend(fd,subject);window.__ccMailto=r.ok?'':r.mailto;return !!r.ok;}
+ return sendToInboxLegacy(fd,subject);
+}
+async function sendToInboxLegacy(fd,subject){
  fd.append('_subject',subject);
  fd.append('_cc',ENQUIRY_CC);
  fd.append('_template','table');
@@ -1567,7 +1571,7 @@ if(enqModal){
  eBtn.disabled=true;eBtn.textContent='Sending…';eMsg.style.color='var(--muted)';eMsg.textContent='';
  const ok=await sendToInbox(fd,'Property enquiry'+(ref?', '+ref:''));
  if(ok){eMsg.style.color='#1a7a3a';eMsg.textContent='Sent. Harrison will be in touch shortly.';ef2.reset();eBtn.textContent='Sent ✓';setTimeout(closeEnq,2400);setTimeout(()=>{eBtn.disabled=false;eBtn.textContent='Send Enquiry';},2600);}
- else{eMsg.style.color='#b00020';eMsg.innerHTML='Could not send, please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a>.';eBtn.disabled=false;eBtn.textContent='Send Enquiry';}
+ else{eMsg.innerHTML='';if(window.ccFallback&&window.__ccMailto){window.ccFallback(eMsg,window.__ccMailto);}else{eMsg.style.color='#b00020';eMsg.innerHTML='Could not send, please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a>.';}eBtn.disabled=false;eBtn.textContent='Send Enquiry';}
  });
 }
 // ---------- Comparables tool (valuation) ----------
@@ -1607,7 +1611,7 @@ if(ef){
  btn.disabled=true;btn.textContent='Sending…';msg.style.color='var(--muted)';msg.textContent='';
  const ok=await sendToInbox(new FormData(ef),'Appraisal request, Harrison Cutfield');
  if(ok){if(window.gtag)gtag('event','generate_lead',{lead_type:'appraisal'});ef.reset();msg.style.color='#1a7a3a';msg.textContent='Request sent.';btn.disabled=false;btn.textContent='Send Enquiry';var tm=document.getElementById('apprThanks');var ph=(site&&site.phone)?String(site.phone):'';var tc=document.getElementById('apprThanksCall');if(tc)tc.innerHTML=ph?('Prefer to talk now? Call <a href="tel:'+ph.replace(/\s/g,'')+'">'+ph+'</a>.'):'';if(tm){tm.classList.add('open');tm.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}}
- else{msg.style.color='#b00020';msg.innerHTML='Sorry, something went wrong. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> directly.';btn.disabled=false;btn.textContent='Send Enquiry';}
+ else{msg.innerHTML='';if(window.ccFallback&&window.__ccMailto){window.ccFallback(msg,window.__ccMailto);}else{msg.style.color='#b00020';msg.innerHTML='Sorry, something went wrong. Please email <a href="mailto:'+ENQUIRY_TO+'">'+ENQUIRY_TO+'</a> directly.';}btn.disabled=false;btn.textContent='Send Enquiry';}
  });
 }
 const __at=document.getElementById('apprThanks');
@@ -1655,5 +1659,6 @@ if(__at){const cl=()=>{__at.classList.remove('open');__at.setAttribute('aria-hid
  if(document.readyState!=='loading')init();else document.addEventListener('DOMContentLoaded',init);
 })();
 </script>
+<script src="/send.js?v=1"></script>
 </body>
 </html>
