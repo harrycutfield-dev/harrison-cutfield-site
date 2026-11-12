@@ -19,39 +19,6 @@
       }
     },
     {
-      "address": "16 Madison Place",
-      "suburb": "Forrest Hill, North Shore",
-      "price": "By Negotiation",
-      "method": "For Sale",
-      "beds": 4,
-      "baths": 2,
-      "cars": 1,
-      "image": "images/uploads/listings/16-madison-place/01.jpg",
-      "detail": {
-        "description": "A comfortable four bedroom, two bathroom family home tucked into a peaceful Forrest Hill street. A practical layout, easy indoor to outdoor flow and a sought after address make this an ideal entry into one of the North Shore's premium school zones. Walking distance to local shops and reserves, with Milford, Takapuna and the motorway all close at hand. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
-        "schools": {
-          "primary": "Forrest Hill School",
-          "intermediate": "Wairau Intermediate",
-          "secondary": "Westlake Boys' and Westlake Girls' High School"
-        }
-      },
-      "gallery": [
-        "images/uploads/listings/16-madison-place/01.jpg",
-        "images/uploads/listings/16-madison-place/02.jpg",
-        "images/uploads/listings/16-madison-place/03.jpg",
-        "images/uploads/listings/16-madison-place/04.jpg",
-        "images/uploads/listings/16-madison-place/05.jpg",
-        "images/uploads/listings/16-madison-place/06.jpg",
-        "images/uploads/listings/16-madison-place/07.jpg",
-        "images/uploads/listings/16-madison-place/08.jpg",
-        "images/uploads/listings/16-madison-place/09.jpg",
-        "images/uploads/listings/16-madison-place/10.jpg",
-        "images/uploads/listings/16-madison-place/11.jpg",
-        "images/uploads/listings/16-madison-place/12.jpg",
-        "images/uploads/listings/16-madison-place/13.jpg"
-      ]
-    },
-    {
       "address": "394c East Coast Road",
       "suburb": "Sunnynook, North Shore",
       "price": "Deadline Sale",
@@ -137,44 +104,92 @@
       }
     },
     {
-      "address": "2/8 Park Rise",
+      "address": "8/8 Park Rise",
       "suburb": "Campbells Bay, North Shore",
       "price": "By Negotiation",
       "method": "For Sale",
       "beds": 4,
       "baths": 2,
       "cars": 2,
-      "image": "images/uploads/listings/2-8-park-rise/01.jpg",
-      "gallery": [
-        "images/uploads/listings/2-8-park-rise/01.jpg",
-        "images/uploads/listings/2-8-park-rise/02.jpg",
-        "images/uploads/listings/2-8-park-rise/03.jpg",
-        "images/uploads/listings/2-8-park-rise/04.jpg",
-        "images/uploads/listings/2-8-park-rise/05.jpg",
-        "images/uploads/listings/2-8-park-rise/06.jpg",
-        "images/uploads/listings/2-8-park-rise/07.jpg",
-        "images/uploads/listings/2-8-park-rise/08.jpg",
-        "images/uploads/listings/2-8-park-rise/09.jpg",
-        "images/uploads/listings/2-8-park-rise/10.jpg",
-        "images/uploads/listings/2-8-park-rise/11.jpg",
-        "images/uploads/listings/2-8-park-rise/12.jpg",
-        "images/uploads/listings/2-8-park-rise/13.jpg",
-        "images/uploads/listings/2-8-park-rise/14.jpg",
-        "images/uploads/listings/2-8-park-rise/15.jpg",
-        "images/uploads/listings/2-8-park-rise/16.jpg",
-        "images/uploads/listings/2-8-park-rise/17.jpg",
-        "images/uploads/listings/2-8-park-rise/18.jpg"
-      ],
+      "image": "images/uploads/listings/8-8-park-rise/01.jpg",
       "detail": {
-        "description": "A near-new four bedroom, two bathroom home in a tightly held Campbells Bay setting, with single garaging plus additional off street parking, 191 sqm of floor area on a 200 sqm site. Campbells Bay is one of the North Shore's most sought after coastal suburbs, known for its sandy beach, reserves and relaxed village feel, and zoned for some of Auckland's strongest schools. Mairangi Bay, Milford and the motorway are all a short drive away. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
+        "description": "A brand new four bedroom, two bathroom home in a tightly held Campbells Bay setting, with double parking and sea views. Finished to a high standard and zoned for both Rangitoto College and Westlake, it offers easy, low maintenance living moments from Campbells Bay beach, reserves and the village, with Mairangi Bay, Milford and the motorway all close at hand. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
         "schools": {
           "primary": "Campbells Bay School",
           "intermediate": "Murrays Bay Intermediate",
-          "secondary": "Rangitoto College"
-        },
-        "floor": "191 sqm",
-        "land": "200 sqm"
-      }
+          "secondary": "Rangitoto College and Westlake Boys' and Westlake Girls' High School"
+        }
+      },
+      "gallery": [
+        "images/uploads/listings/8-8-park-rise/01.jpg",
+        "images/uploads/listings/8-8-park-rise/02.jpg",
+        "images/uploads/listings/8-8-park-rise/03.jpg",
+        "images/uploads/listings/8-8-park-rise/04.jpg",
+        "images/uploads/listings/8-8-park-rise/05.jpg",
+        "images/uploads/listings/8-8-park-rise/06.jpg",
+        "images/uploads/listings/8-8-park-rise/07.jpg",
+        "images/uploads/listings/8-8-park-rise/08.jpg",
+        "images/uploads/listings/8-8-park-rise/09.jpg",
+        "images/uploads/listings/8-8-park-rise/10.jpg",
+        "images/uploads/listings/8-8-park-rise/11.jpg",
+        "images/uploads/listings/8-8-park-rise/12.jpg",
+        "images/uploads/listings/8-8-park-rise/13.jpg",
+        "images/uploads/listings/8-8-park-rise/14.jpg",
+        "images/uploads/listings/8-8-park-rise/15.jpg",
+        "images/uploads/listings/8-8-park-rise/16.jpg",
+        "images/uploads/listings/8-8-park-rise/17.jpg",
+        "images/uploads/listings/8-8-park-rise/18.jpg",
+        "images/uploads/listings/8-8-park-rise/19.jpg",
+        "images/uploads/listings/8-8-park-rise/20.jpg",
+        "images/uploads/listings/8-8-park-rise/21.jpg",
+        "images/uploads/listings/8-8-park-rise/22.jpg",
+        "images/uploads/listings/8-8-park-rise/23.jpg",
+        "images/uploads/listings/8-8-park-rise/24.jpg"
+      ]
+    },
+    {
+      "address": "9/8 Park Rise",
+      "suburb": "Campbells Bay, North Shore",
+      "price": "By Negotiation",
+      "method": "For Sale",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "image": "images/uploads/listings/9-8-park-rise/01.jpg",
+      "detail": {
+        "description": "A brand new four bedroom, two bathroom home in a tightly held Campbells Bay setting, with double parking and sea views. Finished to a high standard and zoned for both Rangitoto College and Westlake, it offers easy, low maintenance living moments from Campbells Bay beach, reserves and the village, with Mairangi Bay, Milford and the motorway all close at hand. Offered for sale by negotiation. Contact Harrison for the full information pack and a private viewing.",
+        "schools": {
+          "primary": "Campbells Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College and Westlake Boys' and Westlake Girls' High School"
+        }
+      },
+      "gallery": [
+        "images/uploads/listings/9-8-park-rise/01.jpg",
+        "images/uploads/listings/9-8-park-rise/02.jpg",
+        "images/uploads/listings/9-8-park-rise/03.jpg",
+        "images/uploads/listings/9-8-park-rise/04.jpg",
+        "images/uploads/listings/9-8-park-rise/05.jpg",
+        "images/uploads/listings/9-8-park-rise/06.jpg",
+        "images/uploads/listings/9-8-park-rise/07.jpg",
+        "images/uploads/listings/9-8-park-rise/08.jpg",
+        "images/uploads/listings/9-8-park-rise/09.jpg",
+        "images/uploads/listings/9-8-park-rise/10.jpg",
+        "images/uploads/listings/9-8-park-rise/11.jpg",
+        "images/uploads/listings/9-8-park-rise/12.jpg",
+        "images/uploads/listings/9-8-park-rise/13.jpg",
+        "images/uploads/listings/9-8-park-rise/14.jpg",
+        "images/uploads/listings/9-8-park-rise/15.jpg",
+        "images/uploads/listings/9-8-park-rise/16.jpg",
+        "images/uploads/listings/9-8-park-rise/17.jpg",
+        "images/uploads/listings/9-8-park-rise/18.jpg",
+        "images/uploads/listings/9-8-park-rise/19.jpg",
+        "images/uploads/listings/9-8-park-rise/20.jpg",
+        "images/uploads/listings/9-8-park-rise/21.jpg",
+        "images/uploads/listings/9-8-park-rise/22.jpg",
+        "images/uploads/listings/9-8-park-rise/23.jpg",
+        "images/uploads/listings/9-8-park-rise/24.jpg"
+      ]
     }
   ]
 }

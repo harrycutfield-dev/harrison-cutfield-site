@@ -29,24 +29,6 @@
           "secondary": "Westlake Boys' and Westlake Girls' High School"
         }
       }
-    },
-    {
-      "title": "1/23a Becroft Drive",
-      "suburb": "Forrest Hill, North Shore",
-      "priceValue": 1050000,
-      "priceDisplay": "By Negotiation",
-      "beds": 2,
-      "baths": 1,
-      "cars": 1,
-      "image": "https://s.oneroof.co.nz/image/06/6c/066c0346dda91435e11515d0d8bf52c7.jpg?x-oss-process=image/quality,q_100/resize,w_1200",
-      "detail": {
-        "description": "A private, off market opportunity in Forrest Hill. A low maintenance two bedroom home in a sought after school zone, ideal for first home buyers, downsizers or investors. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
-        "schools": {
-          "primary": "Forrest Hill School",
-          "intermediate": "Wairau Intermediate",
-          "secondary": "Westlake Boys' and Westlake Girls' High School"
-        }
-      }
     }
   ]
 }
