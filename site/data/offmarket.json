@@ -1,6 +1,42 @@
 {
   "items": [
     {
+      "title": "1 View Road",
+      "suburb": "Campbells Bay, North Shore",
+      "priceValue": 3100000,
+      "priceDisplay": "By Negotiation",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "image": "",
+      "detail": {
+        "description": "A private, off market opportunity in Campbells Bay. A modern four bedroom home with two bathrooms and a double garage, moments from the beach and reserve in one of the North Shore's most tightly held coastal suburbs. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
+        "schools": {
+          "primary": "Campbells Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College"
+        }
+      }
+    },
+    {
+      "title": "144 Beach Road",
+      "suburb": "Campbells Bay, North Shore",
+      "priceValue": 2525000,
+      "priceDisplay": "By Negotiation",
+      "beds": 5,
+      "baths": 3,
+      "cars": 3,
+      "image": "",
+      "detail": {
+        "description": "A private, off market opportunity in Campbells Bay. A substantial five bedroom, three bathroom home a short walk from the beach, on a freehold site in one of the North Shore's most tightly held coastal suburbs. Available to qualified buyers by negotiation. Register your interest with Harrison to arrange a confidential viewing.",
+        "schools": {
+          "primary": "Campbells Bay School",
+          "intermediate": "Murrays Bay Intermediate",
+          "secondary": "Rangitoto College"
+        }
+      }
+    },
+    {
       "title": "8a Becroft Drive",
       "suburb": "Forrest Hill, North Shore",
       "priceValue": 1150000,
